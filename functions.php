@@ -319,8 +319,26 @@ function edublink_child_force_custom_templates() {
     
     $is_shop_2_url = ( strpos( $request_uri, '/shop-2' ) !== false );
     
+    // Handle blog page separately (when is_home() is true for Posts page, or by URL)
+    $request_uri = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '';
+    
+    // Check if this is the blog page by URL or WordPress conditions
+    $is_blog_page = ( is_home() && ! is_front_page() ) 
+        || preg_match( '#/blog/?(\?.*)?$#', $request_uri );
+    
+    if ( $is_blog_page ) {
+        // This is the Posts page (blog archive)
+        $blog_template = get_stylesheet_directory() . '/page-blog.php';
+        
+        if ( file_exists( $blog_template ) ) {
+            include( $blog_template );
+            exit;
+        }
+    }
+    
     // Check if we are on the front page or the specific page ID 9834 found in your HTML
-    if ( is_front_page() || is_home() || get_the_ID() == 9834 ) {
+    // Note: is_home() removed - we handle it above for the blog page
+    if ( is_front_page() || get_the_ID() == 9834 ) {
         $custom_front = get_stylesheet_directory() . '/front-page.php';
         
         if ( file_exists( $custom_front ) ) {
@@ -379,6 +397,25 @@ add_filter( 'template_include', 'edublink_child_force_front_page_template', 9999
 
 function edublink_child_force_front_page_template( $template ) {
     // This is a fallback - template_redirect should handle it first
+    return $template;
+}
+
+/**
+ * Force blog page to use page-blog.php template
+ */
+add_filter( 'template_include', 'edublink_child_force_blog_template', 999998 );
+
+function edublink_child_force_blog_template( $template ) {
+    // Check if this is the blog page
+    $request_uri = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '';
+    $is_blog_page = is_page( 'blog' ) || preg_match( '#/blog/?(\?.*)?$#', $request_uri );
+    
+    if ( $is_blog_page ) {
+        $blog_template = get_stylesheet_directory() . '/page-blog.php';
+        if ( file_exists( $blog_template ) ) {
+            return $blog_template;
+        }
+    }
     return $template;
 }
 

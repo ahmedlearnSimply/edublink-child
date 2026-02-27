@@ -1,0 +1,87 @@
+    <!-- ===== START: Articles Section ===== -->
+    <section id="articles" class="learnsimply-featured-courses-section">
+      <div class="learnsimply-section-container">
+        <div class="learnsimply-section-header">
+          <img
+            src="{{ theme_uri }}/assets/img/icon-courses.png"
+            alt=""
+            class="learnsimply-section-icon"
+          />
+          <h2 class="learnsimply-section-title">المقالات</h2>
+        </div>
+        <p class="learnsimply-section-description">
+          تصفّح أحدث المقالات التقنية وابقَ على اطلاع دائم بكل جديد.
+        </p>
+
+        <div class="learnsimply-courses-grid">
+          {% if articles and articles|length > 0 %}
+            {% for article in articles %}
+            <article class="course-card article-card">
+              <!-- Article Image -->
+              <div class="course-image">
+                <a href="{{ article.link }}">
+                  <img src="{{ article.thumbnail }}" alt="{{ article.title }}" />
+                </a>
+              </div>
+
+              <!-- Header: Badge + Author -->
+              <div class="course-header">
+                <div class="instructor-info">
+                  <div class="instructor-text">
+                    {% if article.author %}
+                      <p class="name">{{ article.author.display_name }}</p>
+                      <p class="title">{{ instructor_title }}</p>
+                    {% else %}
+                      <p class="name">م. احمد عادل</p>
+                      <p class="title">{{ instructor_title }}</p>
+                    {% endif %}
+                  </div>
+
+                  <div class="instructor-avatar">
+                    <div class="avatar-glow avatar-glow-1"></div>
+                    <div class="avatar-glow avatar-glow-2"></div>
+                    {% if article.author and article.author.avatar %}
+                      <img src="{{ article.author.avatar }}" alt="{{ article.author.display_name }}" />
+                    {% else %}
+                      <img src="{{ theme_uri }}/assets/img/card_image.png" alt="الكاتب" />
+                    {% endif %}
+                  </div>
+                </div>
+
+                <div class="course-badge article-badge">
+                  <p>مقال</p>
+                </div>
+              </div>
+
+              <!-- Article Title -->
+              <div class="course-title">
+                <a href="{{ article.link }}" class="stretched-link"><p>{{ article.title }}</p></a>
+              </div>
+
+              <!-- Article Description -->
+              <div class="article-description">
+                <p>{{ article.description }}</p>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="action-buttons">
+                <a 
+                  href="{{ article.link }}" 
+                  class="learnsimply-buy-now-button buy-button article-btn"
+                >
+                  <span>عرض التفاصيل</span>
+                </a>
+              </div>
+            </article>
+            {% endfor %}
+          {% else %}
+            <div class="no-articles-message" style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #999;">
+              <p>لا توجد مقالات متاحة حالياً</p>
+            </div>
+          {% endif %}
+        </div>
+
+        <a href="{{ site.url }}/blog/" class="learnsimply-view-all-button">عرض كل المقالات</a>
+      </div>
+    </section>
+    <!-- ===== END: Articles Section ===== -->

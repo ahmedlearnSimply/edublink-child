@@ -1,9 +1,9 @@
 <?php
 /**
- * Blog Posts Page Template
+ * The main template file (Blog/Posts Archive)
  * 
- * This template is used when a static page is set as the "Posts page" in Settings > Reading
- * Uses Timber Twig template to display blog posts with article cards
+ * This template displays the blog posts archive
+ * Uses Timber Twig template
  * 
  * @package EduBlink_Child
  */

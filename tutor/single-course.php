@@ -207,6 +207,31 @@ if ( $course_reviews && is_array( $course_reviews ) ) {
 	}
 }
 
+// Check if user can write a review (enrolled users only)
+$context['can_write_review'] = false;
+$context['user_review'] = null;
+$context['is_user_logged_in'] = is_user_logged_in();
+
+// Add Tutor nonce for review form
+$context['tutor_nonce'] = wp_create_nonce( tutor()->nonce_action );
+$context['tutor_nonce_field'] = tutor()->nonce;
+
+if ( $context['is_enrolled'] && is_user_logged_in() ) {
+	$context['can_write_review'] = true;
+	
+	// Check if user already has a review
+	$current_user_id = get_current_user_id();
+	$my_rating = tutor_utils()->get_reviews_by_user( 0, 0, 150, false, $course_id, array( 'approved', 'hold' ) );
+	
+	if ( $my_rating && ! empty( $my_rating->rating ) ) {
+		$context['user_review'] = array(
+			'id' => $my_rating->comment_ID,
+			'rating' => $my_rating->rating,
+			'content' => stripslashes( $my_rating->comment_content ),
+		);
+	}
+}
+
 // Get course categories and tags
 $categories = get_the_terms( $course_id, 'course-category' );
 $context['categories'] = $categories && ! is_wp_error( $categories ) ? $categories : array();

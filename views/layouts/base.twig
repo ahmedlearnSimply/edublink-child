@@ -39,7 +39,9 @@
 	{% endblock %}
 
     {# Additional body content (buttons, etc.) #}
-    {% block body_extra %}{% endblock %}
+    {% block body_extra %}
+        {% include 'components/whatsapp-button.twig' %}
+    {% endblock %}
 
     {# Global Scripts - Always loaded #}
     <script src="{{ theme_uri }}/assets/global/script.js"></script>

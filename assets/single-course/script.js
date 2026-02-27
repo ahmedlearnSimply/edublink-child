@@ -152,3 +152,120 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 });
 
+// Star Rating Input functionality
+document.addEventListener("DOMContentLoaded", function () {
+	const starRatingInput = document.getElementById("star-rating-input");
+	if (!starRatingInput) return;
+	
+	const stars = starRatingInput.querySelectorAll(".star-icon");
+	const ratingInput = document.getElementById("tutor_rating_gen_input");
+	
+	if (!stars.length || !ratingInput) return;
+	
+	let currentRating = parseInt(ratingInput.value) || 0;
+	
+	// Apply initial visual state
+	updateStarsVisual(currentRating);
+	
+	// Hover effect
+	stars.forEach((star) => {
+		star.addEventListener("mouseenter", function () {
+			const rating = parseInt(this.dataset.rating);
+			updateStarsVisual(rating, true);
+		});
+		
+		star.addEventListener("mouseleave", function () {
+			updateStarsVisual(currentRating);
+		});
+		
+		// Click to select rating
+		star.addEventListener("click", function () {
+			currentRating = parseInt(this.dataset.rating);
+			ratingInput.value = currentRating;
+			updateStarsVisual(currentRating);
+		});
+	});
+	
+	function updateStarsVisual(rating, isHover = false) {
+		stars.forEach((star) => {
+			const starRating = parseInt(star.dataset.rating);
+			star.classList.remove("filled", "hovered");
+			
+			if (starRating <= rating) {
+				star.classList.add(isHover ? "hovered" : "filled");
+			}
+		});
+	}
+});
+
+// Review Form Submission via AJAX (Tutor LMS)
+document.addEventListener("DOMContentLoaded", function () {
+	const reviewForm = document.getElementById("tutor-review-form");
+	if (!reviewForm) return;
+	
+	reviewForm.addEventListener("submit", function (e) {
+		e.preventDefault();
+		
+		const submitBtn = reviewForm.querySelector(".submit-review-btn");
+		const messageDiv = document.getElementById("review-message");
+		const ratingInput = document.getElementById("tutor_rating_gen_input");
+		const reviewTextarea = reviewForm.querySelector('textarea[name="review"]');
+		const courseIdInput = reviewForm.querySelector('input[name="course_id"]');
+		const reviewIdInput = reviewForm.querySelector('input[name="review_id"]');
+		
+		// Validate rating
+		if (!ratingInput.value || parseInt(ratingInput.value) < 1) {
+			showMessage(messageDiv, "يرجى اختيار تقييم من النجوم", "error");
+			return;
+		}
+		
+		// Validate review text
+		if (!reviewTextarea.value.trim()) {
+			showMessage(messageDiv, "يرجى كتابة تقييمك", "error");
+			return;
+		}
+		
+		// Disable submit button
+		submitBtn.disabled = true;
+		submitBtn.innerHTML = '<span>جاري الإرسال...</span>';
+		
+		// Prepare form data using FormData from the form itself
+		const formData = new FormData(reviewForm);
+		
+		// Send AJAX request
+		fetch(window.ajaxurl || "/wp-admin/admin-ajax.php", {
+			method: "POST",
+			body: formData,
+			credentials: "same-origin"
+		})
+		.then(response => response.json())
+		.then(data => {
+			if (data.success) {
+				showMessage(messageDiv, "تم إرسال تقييمك بنجاح! سيظهر بعد المراجعة.", "success");
+				// Optionally reload after a delay
+				setTimeout(() => {
+					window.location.reload();
+				}, 2000);
+			} else {
+				const errorMsg = data.data?.message || data.message || "حدث خطأ أثناء إرسال التقييم";
+				showMessage(messageDiv, errorMsg, "error");
+				submitBtn.disabled = false;
+				submitBtn.innerHTML = '<span>إرسال التقييم</span>';
+			}
+		})
+		.catch(error => {
+			console.error("Review submission error:", error);
+			showMessage(messageDiv, "حدث خطأ في الاتصال. يرجى المحاولة مرة أخرى.", "error");
+			submitBtn.disabled = false;
+			submitBtn.innerHTML = '<span>إرسال التقييم</span>';
+		});
+	});
+	
+	function showMessage(el, message, type) {
+		if (!el) return;
+		el.textContent = message;
+		el.className = "review-message " + type;
+		el.style.display = "block";
+	}
+});
+

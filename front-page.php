@@ -329,6 +329,52 @@ if ( ! isset( $context['bundles'] ) ) {
 	$context['bundles'] = array();
 }
 
+// Get articles (WordPress posts)
+$context['articles'] = array();
+$articles_args = array(
+	'post_type'      => 'post',
+	'post_status'    => 'publish',
+	'posts_per_page' => 6,
+	'orderby'        => 'date',
+	'order'          => 'DESC',
+);
+
+$articles_query = new WP_Query( $articles_args );
+
+if ( $articles_query->have_posts() ) {
+	while ( $articles_query->have_posts() ) {
+		$articles_query->the_post();
+		$post_id = get_the_ID();
+		
+		$article = Timber::get_post( $post_id );
+		
+		if ( $article ) {
+			// Get featured image
+			$article->thumbnail = get_the_post_thumbnail_url( $post_id, 'full' );
+			if ( ! $article->thumbnail ) {
+				$article->thumbnail = $context['theme_uri'] . '/assets/img/DataStructure.png';
+			}
+			
+			// Get author
+			$author_id = get_post_field( 'post_author', $post_id );
+			if ( $author_id ) {
+				$article->author = Timber::get_user( $author_id );
+			} else {
+				$article->author = null;
+			}
+			
+			// Get excerpt (short description)
+			$article->description = get_the_excerpt( $post_id );
+			if ( empty( $article->description ) ) {
+				$article->description = wp_trim_words( get_the_content( null, false, $post_id ), 20, '...' );
+			}
+			
+			$context['articles'][] = $article;
+		}
+	}
+	wp_reset_postdata();
+}
+
 // Render Twig template
 Timber::render( 'front-page.twig', $context );
 

@@ -1,9 +1,9 @@
 <?php
 /**
- * Blog Posts Page Template
+ * Template Name: Blog - Articles
  * 
- * This template is used when a static page is set as the "Posts page" in Settings > Reading
- * Uses Timber Twig template to display blog posts with article cards
+ * Custom page template for displaying blog posts/articles
+ * Uses Timber Twig template
  * 
  * @package EduBlink_Child
  */

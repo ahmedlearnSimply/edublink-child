@@ -12,10 +12,10 @@
 
 {% block content %}
 <!-- ===== START: Shop 2 Page ===== -->
-<section id="books" class="learnsimply-books-section">
+<section id="{{ product_cat == 'bundle' ? 'bundles' : 'books' }}" class="learnsimply-{{ product_cat == 'bundle' ? 'featured-courses' : 'books' }}-section">
     <div class="learnsimply-section-container">
         <div class="learnsimply-section-header">
-            <img src="{{ theme_uri }}/assets/img/book.png" alt="" class="learnsimply-section-icon">
+            <img src="{{ theme_uri }}/assets/img/{{ product_cat == 'bundle' ? 'Video Library.png' : 'book.png' }}" alt="" class="learnsimply-section-icon">
             <h2 class="learnsimply-section-title">{{ page_title }}</h2>
         </div>
         <p class="learnsimply-section-description">
@@ -36,7 +36,7 @@
                         type="text" 
                         name="s" 
                         class="search-input" 
-                        placeholder="ابحث عن منتج..." 
+                        placeholder="ابحث عن {{ product_cat == 'bundle' ? 'باقة' : 'منتج' }}..." 
                         value="{{ search_term }}"
                         autocomplete="off"
                     />
@@ -57,9 +57,231 @@
             {% endif %}
         </div>
 
-        <div class="learnsimply-books-grid">
+        <div class="learnsimply-{{ product_cat == 'bundle' ? 'courses' : 'books' }}-grid">
             {% if products and products|length > 0 %}
                 {% for product in products %}
+                
+                {% if product_cat == 'bundle' %}
+                {# ===== Bundle Card Design (same as bundles-section.twig) ===== #}
+                <article class="course-card">
+                    <!-- Bundle Image -->
+                    <div class="course-image">
+                        <a href="{{ product.link }}">
+                            <img src="{{ product.thumbnail }}" alt="{{ product.title }}" />
+                        </a>
+                    </div>
+
+                    <!-- Header: Badge + Instructor Info -->
+                    <div class="course-header">
+                        <div class="instructor-info">
+                            <div class="instructor-text">
+                                {% if product.author %}
+                                    <p class="name">{{ product.author.display_name }}</p>
+                                    <p class="title">مهندس برمجيات</p>
+                                {% else %}
+                                    <p class="name">م. احمد عادل</p>
+                                    <p class="title">مهندس برمجيات</p>
+                                {% endif %}
+                            </div>
+
+                            <div class="instructor-avatar">
+                                <div class="avatar-glow avatar-glow-1"></div>
+                                <div class="avatar-glow avatar-glow-2"></div>
+                                {% if product.author and product.author.avatar %}
+                                    <img src="{{ product.author.avatar }}" alt="{{ product.author.display_name }}" />
+                                {% else %}
+                                    <img src="{{ theme_uri }}/assets/img/card_image.png" alt="المدرب" />
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="course-badge">
+                            <p>باقة</p>
+                        </div>
+                    </div>
+
+                    <!-- Bundle Title -->
+                    <div class="course-title">
+                        <a href="{{ product.link }}" class="stretched-link"><p>{{ product.title }}</p></a>
+                    </div>
+
+                    <!-- Review and Bundle Items Count -->
+                    <div class="review-students">
+                        <div class="review">
+                            <svg class="star-icon" fill="none" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2l2.9 6.26L21.9 9.27l-5 3.86L18 21l-6-3.16L6 21l1.1-7.87-5-3.86 6.99-0.99L12 2z"
+                                    fill="#FFBB54"
+                                />
+                            </svg>
+                            <p>{{ product.rating_avg }} ({{ product.rating_count }} تقييم)</p>
+                        </div>
+
+                        <div class="students">
+                            <div class="students-avatars">
+                                <img
+                                    class="student-avatar student-avatar-1"
+                                    src="{{ theme_uri }}/assets/img/ellipse1.png"
+                                    alt=""
+                                />
+                                <img
+                                    class="student-avatar student-avatar-2"
+                                    src="{{ theme_uri }}/assets/img/ellipse2.png"
+                                    alt=""
+                                />
+                                <img
+                                    class="student-avatar student-avatar-3"
+                                    src="{{ theme_uri }}/assets/img/ellipse3.png"
+                                    alt=""
+                                />
+
+                                <div class="student-count">
+                                    <div class="student-count-circle">
+                                        <svg fill="none" viewBox="0 0 36.3884 36.9753">
+                                            <circle
+                                                cx="18"
+                                                cy="18"
+                                                r="16"
+                                                fill="#FFCE31"
+                                                stroke="white"
+                                                stroke-width="2"
+                                            />
+                                        </svg>
+                                    </div>
+                                    <p class="student-count-text">{{ product.bundle_items_count|default(0) }}+</p>
+                                </div>
+                            </div>
+                            <p>دورات في الباقة</p>
+                        </div>
+                    </div>
+
+                    <!-- Bundle Info -->
+                    <div class="course-info">
+                        <div class="info-item">
+                            <svg class="info-icon" fill="none" viewBox="0 0 24 24">
+                                <path d="M3 7h18" stroke="#999EB2" stroke-width="1.5" />
+                                <path
+                                    d="M4 19.5A2.5 2.5 0 016.5 17H20"
+                                    stroke="#999EB2"
+                                    stroke-width="1.5"
+                                />
+                            </svg>
+                            <p>{{ product.bundle_items_count|default(0) }} دورة</p>
+                        </div>
+
+                        <div class="info-divider">
+                            <svg fill="none" viewBox="0 0 32 1">
+                                <line
+                                    stroke="white"
+                                    stroke-opacity="0.05"
+                                    x2="32"
+                                    y1="0.5"
+                                    y2="0.5"
+                                />
+                            </svg>
+                        </div>
+
+                        <div class="info-item level">
+                            <svg class="info-icon" fill="none" viewBox="0 0 24 24">
+                                <path
+                                    d="M4 13l4-4 4 4 8-8"
+                                    stroke="#999EB2"
+                                    stroke-width="1.5"
+                                />
+                            </svg>
+                            <p>متقدم</p>
+                        </div>
+
+                        <div class="info-divider">
+                            <svg fill="none" viewBox="0 0 33 1">
+                                <line
+                                    stroke="white"
+                                    stroke-opacity="0.05"
+                                    x2="33"
+                                    y1="0.5"
+                                    y2="0.5"
+                                />
+                            </svg>
+                        </div>
+
+                        <div class="info-item">
+                            <svg class="info-icon" fill="none" viewBox="0 0 24 24">
+                                <circle
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="#999EB2"
+                                    stroke-width="1.5"
+                                />
+                                <path
+                                    d="M12 8V12L14.5 14.5"
+                                    stroke="#999EB2"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                            <p>مفتوح</p>
+                        </div>
+                    </div>
+
+                    <!-- Price Section -->
+                    <div class="price-section">
+                        {% if product.is_free %}
+                            <div class="price-display">
+                                <p class="new-price">مجاني</p>
+                            </div>
+                        {% elseif product.regular_price or product.sale_price %}
+                            {% if product.discount_percent > 0 %}
+                                <div class="discount-badge">
+                                    <p>خصم {{ product.discount_percent }}%</p>
+                                </div>
+                            {% endif %}
+                            <div class="price-display">
+                                {% if product.regular_price and product.sale_price %}
+                                    <p class="new-price">{{ product.sale_price|number_format(2, '.', ',') }} جنيه مصري</p>
+                                    <p class="old-price">{{ product.regular_price|number_format(2, '.', ',') }} جنيه مصري</p>
+                                {% else %}
+                                    <p class="new-price">{{ product.price|number_format(2, '.', ',') }} جنيه مصري</p>
+                                {% endif %}
+                            </div>
+                        {% else %}
+                            <div class="price-display">
+                                <p class="new-price">مجاني</p>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        {% if product.is_free %}
+                            <a 
+                                href="{{ product.link }}" 
+                                class="learnsimply-buy-now-button buy-button"
+                            >
+                                <span>احصل عليه مجاناً</span>
+                            </a>
+                        {% else %}
+                            <a 
+                                href="{{ site.url }}/?add-to-cart={{ product.id }}"
+                                class="cart-button" 
+                                aria-label="أضف إلى السلة"
+                            >
+                                <img class="cart-icon" src="{{ theme_uri }}/assets/img/Cart.png" alt="سلة التسوق" />
+                            </a>
+                            
+                            <a 
+                                href="{{ product.link }}" 
+                                class="learnsimply-buy-now-button buy-button"
+                            >
+                                <span>اشتر الآن</span>
+                            </a>
+                        {% endif %}
+                    </div>
+                </article>
+                
+                {% else %}
+                {# ===== Regular Product/Book Card Design ===== #}
                 <article class="book-card">
                     <!-- Product Image -->
                     <div class="book-image">
@@ -131,7 +353,7 @@
 
                     <!-- Product Title -->
                     <div class="book-title">
-                        <p>{{ product.title }}</p>
+                        <a href="{{ product.link }}" class="stretched-link"><p>{{ product.title }}</p></a>
                     </div>
 
                     <!-- Product Info -->
@@ -224,6 +446,7 @@
                         {% endif %}
                     </div>
                 </article>
+                {% endif %}
                 {% endfor %}
             {% else %}
                 <!-- Fallback: No products available -->

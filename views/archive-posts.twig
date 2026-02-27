@@ -1,0 +1,120 @@
+{% extends "layouts/base.twig" %}
+
+{% block title %}{{ page_title }} - {{ site.name }}{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ theme_uri }}/assets/home/style.css" />
+{% endblock %}
+
+{% block content %}
+<!-- ===== START: Articles Archive ===== -->
+<section id="articles" class="learnsimply-featured-courses-section learnsimply-archive-section">
+  <div class="learnsimply-section-container">
+    <div class="learnsimply-section-header">
+      <img
+        src="{{ theme_uri }}/assets/img/icon-courses.png"
+        alt=""
+        class="learnsimply-section-icon"
+      />
+      <h2 class="learnsimply-section-title">{{ page_title }}</h2>
+    </div>
+    <p class="learnsimply-section-description">
+      {{ page_description }}
+    </p>
+
+    <div class="learnsimply-courses-grid">
+      {% if articles and articles|length > 0 %}
+        {% for article in articles %}
+        <article class="course-card article-card">
+          <!-- Article Image -->
+          <div class="course-image">
+            <a href="{{ article.link }}">
+              <img src="{{ article.thumbnail }}" alt="{{ article.title }}" />
+            </a>
+          </div>
+
+          <!-- Header: Badge + Author -->
+          <div class="course-header">
+            <div class="instructor-info">
+              <div class="instructor-text">
+                {% if article.author %}
+                  <p class="name">{{ article.author.display_name }}</p>
+                  <p class="title">{{ instructor_title }}</p>
+                {% else %}
+                  <p class="name">م. احمد عادل</p>
+                  <p class="title">{{ instructor_title }}</p>
+                {% endif %}
+              </div>
+
+              <div class="instructor-avatar">
+                <div class="avatar-glow avatar-glow-1"></div>
+                <div class="avatar-glow avatar-glow-2"></div>
+                {% if article.author and article.author.avatar %}
+                  <img src="{{ article.author.avatar }}" alt="{{ article.author.display_name }}" />
+                {% else %}
+                  <img src="{{ theme_uri }}/assets/img/card_image.png" alt="الكاتب" />
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="course-badge">
+              <p>مقال</p>
+            </div>
+          </div>
+
+          <!-- Article Title -->
+          <div class="course-title">
+            <a href="{{ article.link }}" class="stretched-link"><p>{{ article.title }}</p></a>
+          </div>
+
+          <!-- Article Description -->
+          <div class="article-description">
+            <p>{{ article.description }}</p>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons">
+            <a 
+              href="{{ article.link }}" 
+              class="learnsimply-buy-now-button buy-button article-btn"
+            >
+              <span>عرض التفاصيل</span>
+            </a>
+          </div>
+        </article>
+        {% endfor %}
+      {% else %}
+        <div class="no-articles-message" style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #999;">
+          <p>لا توجد مقالات متاحة حالياً</p>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if pagination_links and pagination_links|length > 0 %}
+    <div class="learnsimply-pagination">
+      <nav class="pagination-nav" aria-label="التنقل بين الصفحات">
+        {% for link in pagination_links %}
+          {{ link|raw }}
+        {% endfor %}
+      </nav>
+    </div>
+    {% endif %}
+  </div>
+</section>
+<!-- ===== END: Articles Archive ===== -->
+{% endblock %}
+
+{% block body_extra %}
+    {% include 'components/whatsapp-button.twig' %}
+
+    <!-- Floating Scroll to Top Button -->
+    <button class="learnsimply-scroll-to-top" aria-label="الرجوع للأعلى">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 19V5M5 12l7-7 7 7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ theme_uri }}/assets/home/script.js"></script>
+{% endblock %}

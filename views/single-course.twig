@@ -614,11 +614,81 @@
           {% endif %}
         </div>
         {% endif %}
+
+        {# Add Review Form for Enrolled Users #}
+        {% if can_write_review %}
+        <div class="add-review-section">
+          <div class="card-content">
+            <div class="section-header">
+              <div class="section-icon-box">
+                <svg width="33" height="33" fill="none" viewBox="0 0 33 33">
+                  <path clip-rule="evenodd" d="M16.5 30.25C10.0182 30.25 6.77728 30.25 4.76365 28.2363C2.75 26.2228 2.75 22.9818 2.75 16.5C2.75 10.0182 2.75 6.77728 4.76365 4.76365C6.77728 2.75 10.0182 2.75 16.5 2.75C22.9818 2.75 26.2228 2.75 28.2363 4.76365C30.25 6.77728 30.25 10.0182 30.25 16.5C30.25 22.9818 30.25 26.2228 28.2363 28.2363C26.2228 30.25 22.9818 30.25 16.5 30.25ZM16.5 24.4062C17.0695 24.4062 17.5312 23.9445 17.5312 23.375V15.125C17.5312 14.5555 17.0695 14.0938 16.5 14.0938C15.9305 14.0938 15.4688 14.5555 15.4688 15.125V23.375C15.4688 23.9445 15.9305 24.4062 16.5 24.4062ZM16.5 9.625C17.2594 9.625 17.875 10.2406 17.875 11C17.875 11.7594 17.2594 12.375 16.5 12.375C15.7406 12.375 15.125 11.7594 15.125 11C15.125 10.2406 15.7406 9.625 16.5 9.625Z" fill="white" fill-rule="evenodd" />
+                </svg>
+              </div>
+              <h2 class="section-title">{% if user_review %}تعديل تقييمك{% else %}أضف تقييمك للكورس{% endif %}</h2>
+            </div>
+
+            <div class="add-review-form">
+              <form method="post" class="tutor-review-form" id="tutor-review-form">
+                <input type="hidden" name="course_id" value="{{ course.ID }}"/>
+                <input type="hidden" name="review_id" value="{{ user_review.id|default('') }}"/>
+                <input type="hidden" name="action" value="tutor_place_rating"/>
+                <input type="hidden" name="{{ tutor_nonce_field }}" value="{{ tutor_nonce }}"/>
+                
+                <div class="form-group star-rating-group">
+                  <label class="form-label">التقييم</label>
+                  <div class="star-rating-input" id="star-rating-input">
+                    {% for i in 1..5 %}
+                    <svg class="star-icon {% if user_review and i <= user_review.rating %}filled{% endif %}" data-rating="{{ i }}" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 2l2.9 6.26L21.9 9.27l-5 3.86L18 21l-6-3.16L6 21l1.1-7.87-5-3.86 6.99-0.99L12 2z" />
+                    </svg>
+                    {% endfor %}
+                    <input type="hidden" name="tutor_rating_gen_input" id="tutor_rating_gen_input" value="{{ user_review.rating|default(0) }}"/>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label class="form-label">تقييمك</label>
+                  <textarea name="review" class="review-textarea" placeholder="اكتب تقييمك هنا..." rows="4">{{ user_review.content|default('') }}</textarea>
+                </div>
+                
+                <div class="form-group">
+                  <button type="submit" class="submit-review-btn">
+                    <span>{% if user_review %}تحديث التقييم{% else %}إرسال التقييم{% endif %}</span>
+                  </button>
+                </div>
+                
+                <div class="review-message" id="review-message" style="display: none;"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+        {% elseif is_enrolled and not is_user_logged_in %}
+        <div class="add-review-section">
+          <div class="card-content">
+            <div class="section-header">
+              <div class="section-icon-box">
+                <svg width="33" height="33" fill="none" viewBox="0 0 33 33">
+                  <path clip-rule="evenodd" d="M16.5 30.25C10.0182 30.25 6.77728 30.25 4.76365 28.2363C2.75 26.2228 2.75 22.9818 2.75 16.5C2.75 10.0182 2.75 6.77728 4.76365 4.76365C6.77728 2.75 10.0182 2.75 16.5 2.75C22.9818 2.75 26.2228 2.75 28.2363 4.76365C30.25 6.77728 30.25 10.0182 30.25 16.5C30.25 22.9818 30.25 26.2228 28.2363 28.2363C26.2228 30.25 22.9818 30.25 16.5 30.25ZM16.5 24.4062C17.0695 24.4062 17.5312 23.9445 17.5312 23.375V15.125C17.5312 14.5555 17.0695 14.0938 16.5 14.0938C15.9305 14.0938 15.4688 14.5555 15.4688 15.125V23.375C15.4688 23.9445 15.9305 24.4062 16.5 24.4062ZM16.5 9.625C17.2594 9.625 17.875 10.2406 17.875 11C17.875 11.7594 17.2594 12.375 16.5 12.375C15.7406 12.375 15.125 11.7594 15.125 11C15.125 10.2406 15.7406 9.625 16.5 9.625Z" fill="white" fill-rule="evenodd" />
+                </svg>
+              </div>
+              <h2 class="section-title">أضف تقييمك للكورس</h2>
+            </div>
+            <div class="add-review-form">
+              <p class="login-required-message">
+                يجب تسجيل الدخول أولًا قبل إضافة تقييم.
+              </p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
       </div>
     </main>
     <!-- ===== END: Main Content ===== -->
 
     {% include 'components/footer.twig' %}
+
+    {% include 'components/whatsapp-button.twig' %}
 
     <!-- Floating Scroll to Top Button -->
     <button class="learnsimply-scroll-to-top" aria-label="الرجوع للأعلى">
@@ -654,6 +724,9 @@
     </script>
     {% endif %}
     
+    <script>
+        window.ajaxurl = '{{ site.url }}/wp-admin/admin-ajax.php';
+    </script>
     <script src="{{ theme_uri }}/assets/global/script.js"></script>
     <script src="{{ theme_uri }}/assets/single-course/script.js"></script>
   </body>
