@@ -60,7 +60,7 @@ if ( $articles_query->have_posts() ) {
 			// Get featured image
 			$article->thumbnail = get_the_post_thumbnail_url( $post_id, 'full' );
 			if ( ! $article->thumbnail ) {
-				$article->thumbnail = $context['theme_uri'] . '/assets/img/DataStructure.png';
+				$article->thumbnail = learnsimply_no_image_url();
 			}
 			
 			// Get author

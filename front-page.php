@@ -106,7 +106,7 @@ if ( function_exists( 'tutor_utils' ) ) {
 				// Get course image
 				$course->thumbnail = get_the_post_thumbnail_url( $course_id, 'full' );
 				if ( ! $course->thumbnail ) {
-					$course->thumbnail = tutor()->url . 'assets/images/placeholder-course.jpg';
+					$course->thumbnail = learnsimply_no_image_url();
 				}
 				
 				// Get WooCommerce product ID if course is monetized by WooCommerce
@@ -192,7 +192,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 						// Get product image
 						$product->thumbnail = get_the_post_thumbnail_url( $product_id, 'full' );
 						if ( ! $product->thumbnail ) {
-							$product->thumbnail = wc_placeholder_img_src( 'full' );
+							$product->thumbnail = learnsimply_no_image_url();
 						}
 						
 						// Get stock quantity (use custom field if available, otherwise use WooCommerce stock)
@@ -274,7 +274,7 @@ if ( class_exists( 'WooCommerce' ) && class_exists( 'AsanaPlugins\WooCommerce\Pr
 						'id' => $bundle_product_id,
 						'title' => $product->get_name(),
 						'link' => get_permalink( $bundle_product_id ),
-						'thumbnail' => get_the_post_thumbnail_url( $bundle_product_id, 'full' ) ?: wc_placeholder_img_src(),
+						'thumbnail' => get_the_post_thumbnail_url( $bundle_product_id, 'full' ) ?: learnsimply_no_image_url(),
 						'bundle_items_count' => $bundle_items_count,
 					);
 					
@@ -352,7 +352,7 @@ if ( $articles_query->have_posts() ) {
 			// Get featured image
 			$article->thumbnail = get_the_post_thumbnail_url( $post_id, 'full' );
 			if ( ! $article->thumbnail ) {
-				$article->thumbnail = $context['theme_uri'] . '/assets/img/DataStructure.png';
+				$article->thumbnail = learnsimply_no_image_url();
 			}
 			
 			// Get author

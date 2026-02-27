@@ -255,7 +255,7 @@ $context['course_material_includes'] = get_post_meta( $course_id, '_tutor_course
 // Get course image
 $context['course_image'] = get_the_post_thumbnail_url( $course_id, 'full' );
 if ( ! $context['course_image'] ) {
-	$context['course_image'] = $context['theme_uri'] . '/assets/img/DataStructure.png'; // Fallback image
+	$context['course_image'] = learnsimply_no_image_url(); // Fallback image
 }
 
 // Get course intro video (if available)

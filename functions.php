@@ -10,6 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Placeholder image URL when no image is available
+ * Change path here to update across the entire theme
+ */
+function learnsimply_no_image_url() {
+	return get_stylesheet_directory_uri() . '/assets/img/no-image.jpg';
+}
+
+/**
  * Load Composer dependencies
  */
 if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
@@ -36,6 +44,9 @@ if ( class_exists( 'Timber\Timber' ) ) {
 	function edublink_child_add_to_context( $context ) {
 		// Global theme URI for assets in Twig (images, CSS, JS)
 		$context['theme_uri'] = get_stylesheet_directory_uri();
+		
+		// Placeholder image when no image exists (change path in learnsimply_no_image_url())
+		$context['no_image_url'] = learnsimply_no_image_url();
 		
 		// Cart page URL for JavaScript redirects
 		$cart_page_id = function_exists( 'wc_get_page_id' ) ? wc_get_page_id( 'cart' ) : 0;

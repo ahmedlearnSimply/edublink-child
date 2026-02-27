@@ -129,7 +129,7 @@ if ( have_posts() ) {
 			// Get course image
 			$course->thumbnail = get_the_post_thumbnail_url( $course_id, 'full' );
 			if ( ! $course->thumbnail ) {
-				$course->thumbnail = tutor()->url . 'assets/images/placeholder-course.jpg';
+				$course->thumbnail = learnsimply_no_image_url();
 			}
 			
 			// Get WooCommerce product ID if course is monetized by WooCommerce

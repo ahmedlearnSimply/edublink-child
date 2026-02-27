@@ -88,7 +88,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 					'title' => $product->get_name(),
 					'link' => get_permalink( $product_id ),
 					'product_url' => get_permalink( $product_id ),
-					'thumbnail' => get_the_post_thumbnail_url( $product_id, 'full' ) ?: wc_placeholder_img_src(),
+					'thumbnail' => get_the_post_thumbnail_url( $product_id, 'full' ) ?: learnsimply_no_image_url(),
 				);
 				
 				// Get prices

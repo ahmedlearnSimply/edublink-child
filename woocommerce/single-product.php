@@ -100,7 +100,7 @@ $context['stock_quantity'] = $product->get_stock_quantity();
 $context['product_image_id'] = $product->get_image_id();
 $context['product_image'] = wp_get_attachment_image_url( $context['product_image_id'], 'full' );
 if ( ! $context['product_image'] ) {
-	$context['product_image'] = $context['theme_uri'] . '/assets/img/book.png'; // Fallback image
+	$context['product_image'] = learnsimply_no_image_url(); // Fallback image
 }
 
 // Get product gallery images
