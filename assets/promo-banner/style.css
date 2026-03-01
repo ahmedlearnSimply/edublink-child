@@ -1,0 +1,206 @@
+/**
+ * Learnsimply Promo Banner Styles
+ * From reference: Learrnsimply-Front-End-Html-Pure-dev
+ */
+
+/* ===== START: Promo Banner Section ===== */
+.learnsimply-promo-banner {
+  background-color: transparent;
+  width: 100%;
+  padding-top: 100px;
+}
+
+.learnsimply-promo-banner-inner {
+  background-color: var(--learnsimply-card-bg);
+  width: 100%;
+  position: relative;
+  border-top: 1px solid var(--learnsimply-card-border);
+  border-bottom: 1px solid var(--learnsimply-card-border);
+}
+
+.learnsimply-promo-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  gap: 12px;
+}
+
+/* Text Section */
+.learnsimply-promo-text-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.learnsimply-promo-text-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.learnsimply-promo-emoji {
+  display: inline-block;
+}
+
+.learnsimply-promo-emoji-lg {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.learnsimply-promo-emoji-sm {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.learnsimply-promo-text-primary {
+  font-family: var(--learnsimply-font-primary, "Cairo", sans-serif);
+  font-size: 14px;
+  color: var(--learnsimply-text-white);
+  line-height: 24px;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.learnsimply-promo-highlight {
+  color: var(--learnsimply-primary-blue);
+  font-weight: 700;
+}
+
+.learnsimply-promo-text-secondary {
+  font-family: var(--learnsimply-font-primary, "Cairo", sans-serif);
+  font-size: 12px;
+  color: var(--learnsimply-primary-blue);
+  line-height: 20px;
+  white-space: nowrap;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Countdown Timer */
+.learnsimply-promo-countdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.learnsimply-promo-timer-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.learnsimply-promo-timer-box {
+  background-color: var(--learnsimply-dark-bg);
+  border-radius: 8px;
+  width: 48px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--learnsimply-card-border);
+}
+
+.learnsimply-promo-timer-number {
+  font-family: var(--learnsimply-font-primary, "Cairo", sans-serif);
+  font-size: 22px;
+  color: var(--learnsimply-primary-blue);
+  line-height: 28px;
+  letter-spacing: -0.5px;
+  font-weight: 700;
+}
+
+.learnsimply-promo-timer-label {
+  font-family: var(--learnsimply-font-primary, "Cairo", sans-serif);
+  font-size: 10px;
+  color: var(--learnsimply-text-gray);
+  line-height: 14px;
+}
+
+.learnsimply-promo-timer-separator {
+  font-family: var(--learnsimply-font-primary, "Cairo", sans-serif);
+  font-size: 20px;
+  color: var(--learnsimply-primary-blue);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+/* CTA Button/Link */
+.learnsimply-promo-cta-btn {
+  background-color: var(--learnsimply-primary-blue) !important;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 28px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.learnsimply-promo-cta-btn:hover {
+  background-color: #3066e0 !important;
+  color: inherit;
+  text-decoration: none;
+}
+
+.learnsimply-promo-cta-text {
+  font-family: var(--learnsimply-font-primary, "Cairo", sans-serif);
+  font-size: 15px;
+  color: #ffffff;
+  line-height: 22px;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+/* Responsive: md (768px+) */
+@media (min-width: 768px) {
+  .learnsimply-promo-content {
+    flex-direction: row;
+    padding: 10px 30px;
+  }
+
+  .learnsimply-promo-text-section {
+    align-items: flex-end;
+  }
+
+  .learnsimply-promo-text-primary {
+    font-size: 15px;
+  }
+
+  .learnsimply-promo-text-secondary {
+    font-size: 13px;
+  }
+}
+
+/* Responsive: sm (max 768px) */
+@media (max-width: 768px) {
+  .learnsimply-promo-banner {
+    padding-top: 88px;
+  }
+}
+
+/* Responsive: xs (max 480px) */
+@media (max-width: 480px) {
+  .learnsimply-promo-banner {
+    padding-top: 76px;
+  }
+}
+
+/* Responsive: lg (1024px+) */
+@media (min-width: 1024px) {
+  .learnsimply-promo-content {
+    padding: 10px 40px;
+  }
+}
+/* ===== END: Promo Banner Section ===== */

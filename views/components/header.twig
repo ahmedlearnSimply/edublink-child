@@ -81,3 +81,73 @@
   </div>
 </header>
 <!-- ===== END: Header Section ===== -->
+
+{% if promo_banner_enabled %}
+<!-- ===== START: Promo Banner Section ===== -->
+<section class="learnsimply-promo-banner">
+  <div class="learnsimply-promo-banner-inner">
+    <div class="learnsimply-promo-content">
+
+      <!-- Right Side: Text Section -->
+      <div class="learnsimply-promo-text-section">
+        <!-- Line 1 -->
+        <div class="learnsimply-promo-text-line">
+          <span class="learnsimply-promo-emoji learnsimply-promo-emoji-lg">{{ promo_emoji|default('🔥') }}</span>
+          <p class="learnsimply-promo-text-primary">
+            {% if promo_highlight %}
+              {{ promo_text_primary|default('خصم 50% لمدة 3 أيام فقط — العرض سينتهي قريبًا!')|replace({(promo_highlight): '<span class="learnsimply-promo-highlight">' ~ promo_highlight ~ '</span>'})|raw }}
+            {% else %}
+              {{ promo_text_primary|default('خصم 50% لمدة 3 أيام فقط — العرض سينتهي قريبًا!') }}
+            {% endif %}
+          </p>
+        </div>
+        <!-- Line 2 -->
+        <div class="learnsimply-promo-text-line">
+          <span class="learnsimply-promo-emoji learnsimply-promo-emoji-sm">{{ promo_emoji|default('🔥') }}</span>
+          <p class="learnsimply-promo-text-secondary">
+            {{ promo_text_secondary|default('الأماكن محدودة — الحق العرض قبل انتهاء المدة!') }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Center: Countdown Timer -->
+      <div class="learnsimply-promo-countdown">
+        <div class="learnsimply-promo-timer-unit">
+          <div class="learnsimply-promo-timer-box">
+            <span class="learnsimply-promo-timer-number" id="promo-seconds">00</span>
+          </div>
+          <span class="learnsimply-promo-timer-label">ثانية</span>
+        </div>
+        <span class="learnsimply-promo-timer-separator">:</span>
+        <div class="learnsimply-promo-timer-unit">
+          <div class="learnsimply-promo-timer-box">
+            <span class="learnsimply-promo-timer-number" id="promo-minutes">00</span>
+          </div>
+          <span class="learnsimply-promo-timer-label">دقيقة</span>
+        </div>
+        <span class="learnsimply-promo-timer-separator">:</span>
+        <div class="learnsimply-promo-timer-unit">
+          <div class="learnsimply-promo-timer-box">
+            <span class="learnsimply-promo-timer-number" id="promo-hours">00</span>
+          </div>
+          <span class="learnsimply-promo-timer-label">ساعة</span>
+        </div>
+        <span class="learnsimply-promo-timer-separator">:</span>
+        <div class="learnsimply-promo-timer-unit">
+          <div class="learnsimply-promo-timer-box">
+            <span class="learnsimply-promo-timer-number" id="promo-days">00</span>
+          </div>
+          <span class="learnsimply-promo-timer-label">يوم</span>
+        </div>
+      </div>
+
+      <!-- Left Side: CTA Button -->
+      <a href="{{ promo_cta_url|default(site.url)|e('html_attr') }}" class="learnsimply-promo-cta-btn">
+        <span class="learnsimply-promo-cta-text">{{ promo_cta_text|default('اشترك الآن') }}</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+<!-- ===== END: Promo Banner Section ===== -->
+{% endif %}

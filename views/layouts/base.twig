@@ -12,8 +12,8 @@
     <link rel="apple-touch-icon" href="{{ site_icon_url }}" />
     {% endif %}
     
-    {# Global Styles - Always loaded #}
-    <link rel="stylesheet" href="{{ theme_uri }}/assets/global/styles.css" />
+    {# WordPress head - styles, scripts, meta (uses wp_enqueue) #}
+    {{ fn('wp_head') }}
     
     {# Page-specific styles #}
     {% block styles %}{% endblock %}
@@ -43,8 +43,8 @@
         {% include 'components/whatsapp-button.twig' %}
     {% endblock %}
 
-    {# Global Scripts - Always loaded #}
-    <script src="{{ theme_uri }}/assets/global/script.js"></script>
+    {# WordPress footer - scripts with in_footer=true #}
+    {{ fn('wp_footer') }}
     
     {# Cart URL for JavaScript redirects #}
     {% if cart_url %}

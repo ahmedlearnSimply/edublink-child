@@ -448,6 +448,65 @@
     });
   }
 
+  // ===== PROMO COUNTDOWN TIMER =====
+
+  /**
+   * Initialize promo banner countdown
+   * Uses deadline from window.learnsimplyPromoDeadline (set by wp_localize_script)
+   */
+  function initPromoCountdown() {
+    var daysEl = document.getElementById("promo-days");
+    var hoursEl = document.getElementById("promo-hours");
+    var minutesEl = document.getElementById("promo-minutes");
+    var secondsEl = document.getElementById("promo-seconds");
+
+    if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+    var STORAGE_KEY = "learnsimply_promo_deadline";
+    var deadline = window.learnsimplyPromoDeadline
+      ? parseInt(window.learnsimplyPromoDeadline, 10)
+      : null;
+
+    if (!deadline || isNaN(deadline)) {
+      deadline = parseInt(localStorage.getItem(STORAGE_KEY), 10);
+    }
+    if (!deadline || isNaN(deadline)) {
+      deadline = Date.now() + 3 * 24 * 60 * 60 * 1000;
+      localStorage.setItem(STORAGE_KEY, deadline);
+    }
+
+    function pad(n) {
+      return n.toString().padStart(2, "0");
+    }
+
+    function tick() {
+      var diff = deadline - Date.now();
+
+      if (diff <= 0) {
+        daysEl.textContent = "00";
+        hoursEl.textContent = "00";
+        minutesEl.textContent = "00";
+        secondsEl.textContent = "00";
+        clearInterval(timer);
+        return;
+      }
+
+      var totalSeconds = Math.floor(diff / 1000);
+      var secs = totalSeconds % 60;
+      var mins = Math.floor(totalSeconds / 60) % 60;
+      var hrs = Math.floor(totalSeconds / 3600) % 24;
+      var days = Math.floor(totalSeconds / 86400);
+
+      daysEl.textContent = pad(days);
+      hoursEl.textContent = pad(hrs);
+      minutesEl.textContent = pad(mins);
+      secondsEl.textContent = pad(secs);
+    }
+
+    tick();
+    var timer = setInterval(tick, 1000);
+  }
+
   // ===== INITIALIZE ALL FUNCTIONALITY =====
 
   /**
@@ -467,6 +526,7 @@
     initScrollToTop();
     initHeaderScrollEffect();
     setupMarquee();
+    initPromoCountdown();
   }
 
   // Start initialization

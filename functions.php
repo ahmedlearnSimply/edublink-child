@@ -26,6 +26,256 @@ if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 
 add_filter('show_admin_bar', '__return_false');
 
+/* ==========================================================================
+   PROMO BANNER - صفحة العروض
+   ========================================================================== */
+
+/**
+ * Add العروض (Offers) admin menu page
+ */
+function learnsimply_add_promo_admin_menu() {
+	add_menu_page(
+		'العروض',
+		'العروض',
+		'manage_options',
+		'learnsimply-promo',
+		'learnsimply_promo_admin_page',
+		'dashicons-megaphone',
+		30
+	);
+}
+add_action( 'admin_menu', 'learnsimply_add_promo_admin_menu' );
+
+/**
+ * Register promo settings
+ */
+function learnsimply_register_promo_settings() {
+	register_setting( 'learnsimply_promo_group', 'learnsimply_promo_enabled', array(
+		'type'              => 'boolean',
+		'default'           => false,
+		'sanitize_callback' => function( $v ) { return ! empty( $v ); },
+	) );
+	register_setting( 'learnsimply_promo_group', 'learnsimply_promo_text_primary', array(
+		'type'              => 'string',
+		'default'           => 'خصم 50% لمدة 3 أيام فقط — العرض سينتهي قريبًا!',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	register_setting( 'learnsimply_promo_group', 'learnsimply_promo_text_secondary', array(
+		'type'              => 'string',
+		'default'           => 'الأماكن محدودة — الحق العرض قبل انتهاء المدة!',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	register_setting( 'learnsimply_promo_group', 'learnsimply_promo_highlight', array(
+		'type'              => 'string',
+		'default'           => '50%',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	register_setting( 'learnsimply_promo_group', 'learnsimply_promo_emoji', array(
+		'type'              => 'string',
+		'default'           => '🔥',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	register_setting( 'learnsimply_promo_group', 'learnsimply_promo_cta_text', array(
+		'type'              => 'string',
+		'default'           => 'اشترك الآن',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+	register_setting( 'learnsimply_promo_group', 'learnsimply_promo_cta_url', array(
+		'type'              => 'string',
+		'default'           => '',
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+	register_setting( 'learnsimply_promo_group', 'learnsimply_promo_deadline', array(
+		'type'              => 'string',
+		'default'           => '',
+		'sanitize_callback' => function( $v ) {
+			if ( empty( $v ) ) return '';
+			if ( is_numeric( $v ) ) return (string) (int) $v;
+			$ts = strtotime( $v );
+			return $ts ? (string) $ts : '';
+		},
+	) );
+}
+add_action( 'admin_init', 'learnsimply_register_promo_settings' );
+
+/**
+ * Render promo admin page
+ */
+function learnsimply_promo_admin_page() {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+	$enabled = get_option( 'learnsimply_promo_enabled', false );
+	?>
+	<div class="wrap" style="max-width: 700px;">
+		<h1>العروض - إعدادات بانر البرومو</h1>
+		<p style="margin-bottom: 24px; color: #666;">تحكم في ظهور بانر العروض الترويجية أسفل الهيدر وتعديل النصوص والوقت والرابط.</p>
+
+		<form method="post" action="options.php" id="learnsimply-promo-form">
+			<?php settings_fields( 'learnsimply_promo_group' ); ?>
+
+			<table class="form-table" role="presentation">
+				<tr>
+					<th scope="row">إظهار البانر</th>
+					<td>
+						<label>
+							<input type="checkbox" name="learnsimply_promo_enabled" value="1" <?php checked( $enabled ); ?> />
+							تفعيل عرض بانر البرومو
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="learnsimply_promo_text_primary">النص الرئيسي</label></th>
+					<td>
+						<input type="text" id="learnsimply_promo_text_primary" name="learnsimply_promo_text_primary"
+							value="<?php echo esc_attr( get_option( 'learnsimply_promo_text_primary', 'خصم 50% لمدة 3 أيام فقط — العرض سينتهي قريبًا!' ) ); ?>"
+							class="large-text" dir="rtl" />
+						<p class="description">مثال: خصم 50% لمدة 3 أيام فقط — العرض سينتهي قريبًا!</p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="learnsimply_promo_highlight">النص المميز (للتلوين)</label></th>
+					<td>
+						<input type="text" id="learnsimply_promo_highlight" name="learnsimply_promo_highlight"
+							value="<?php echo esc_attr( get_option( 'learnsimply_promo_highlight', '50%' ) ); ?>"
+							class="regular-text" dir="rtl" />
+						<p class="description">سيتم تمييز هذا النص باللون الأزرق داخل النص الرئيسي (مثال: 50%)</p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="learnsimply_promo_text_secondary">النص الثانوي</label></th>
+					<td>
+						<input type="text" id="learnsimply_promo_text_secondary" name="learnsimply_promo_text_secondary"
+							value="<?php echo esc_attr( get_option( 'learnsimply_promo_text_secondary', 'الأماكن محدودة — الحق العرض قبل انتهاء المدة!' ) ); ?>"
+							class="large-text" dir="rtl" />
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="learnsimply_promo_emoji">الإيموجي</label></th>
+					<td>
+						<input type="text" id="learnsimply_promo_emoji" name="learnsimply_promo_emoji"
+							value="<?php echo esc_attr( get_option( 'learnsimply_promo_emoji', '🔥' ) ); ?>"
+							class="small-text" />
+						<p class="description">مثال: 🔥 أو ⚡ أو 🎉</p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">وقت انتهاء العرض</th>
+					<td>
+						<?php
+						$deadline_ts  = get_option( 'learnsimply_promo_deadline', '' );
+						$dl_year = $dl_month = $dl_day = $dl_hour = $dl_min = '';
+						if ( $deadline_ts && is_numeric( $deadline_ts ) ) {
+							$ts = (int) $deadline_ts;
+							$dl_year  = (int) ( function_exists( 'wp_date' ) ? wp_date( 'Y', $ts ) : gmdate( 'Y', $ts ) );
+							$dl_month = (int) ( function_exists( 'wp_date' ) ? wp_date( 'n', $ts ) : gmdate( 'n', $ts ) );
+							$dl_day   = (int) ( function_exists( 'wp_date' ) ? wp_date( 'j', $ts ) : gmdate( 'j', $ts ) );
+							$dl_hour  = (int) ( function_exists( 'wp_date' ) ? wp_date( 'G', $ts ) : gmdate( 'G', $ts ) );
+							$dl_min   = (int) ( function_exists( 'wp_date' ) ? wp_date( 'i', $ts ) : gmdate( 'i', $ts ) );
+						} else {
+							$dt = function_exists( 'current_datetime' ) ? current_datetime() : new DateTime( 'now' );
+							$dl_year  = (int) $dt->format( 'Y' );
+							$dl_month = (int) $dt->format( 'n' );
+							$dl_day   = (int) $dt->format( 'j' );
+							$dl_hour  = 23;
+							$dl_min   = 59;
+						}
+						?>
+						<div class="learnsimply-promo-deadline-fields" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+							<span>
+								<label for="promo_dl_year">سنة</label>
+								<input type="number" id="promo_dl_year" name="learnsimply_promo_deadline_year"
+									value="<?php echo esc_attr( $dl_year ); ?>" min="<?php echo (int) gmdate( 'Y' ); ?>" max="2100" style="width:70px;" />
+							</span>
+							<span>
+								<label for="promo_dl_month">شهر</label>
+								<input type="number" id="promo_dl_month" name="learnsimply_promo_deadline_month"
+									value="<?php echo esc_attr( $dl_month ); ?>" min="1" max="12" style="width:50px;" />
+							</span>
+							<span>
+								<label for="promo_dl_day">يوم</label>
+								<input type="number" id="promo_dl_day" name="learnsimply_promo_deadline_day"
+									value="<?php echo esc_attr( $dl_day ); ?>" min="1" max="31" style="width:50px;" />
+							</span>
+							<span>
+								<label for="promo_dl_hour">ساعة</label>
+								<input type="number" id="promo_dl_hour" name="learnsimply_promo_deadline_hour"
+									value="<?php echo esc_attr( $dl_hour ); ?>" min="0" max="23" style="width:50px;" />
+							</span>
+							<span>
+								<label for="promo_dl_min">دقيقة</label>
+								<input type="number" id="promo_dl_min" name="learnsimply_promo_deadline_minute"
+									value="<?php echo esc_attr( $dl_min ); ?>" min="0" max="59" style="width:50px;" />
+							</span>
+						</div>
+						<input type="hidden" id="learnsimply_promo_deadline" name="learnsimply_promo_deadline" value="<?php echo esc_attr( $deadline_ts ); ?>" />
+						<p class="description">التاريخ والوقت الذي ينتهي فيه العد التنازلي: السنة، الشهر، اليوم، الساعة (0–23)، الدقيقة (0–59)</p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="learnsimply_promo_cta_text">نص الزر</label></th>
+					<td>
+						<input type="text" id="learnsimply_promo_cta_text" name="learnsimply_promo_cta_text"
+							value="<?php echo esc_attr( get_option( 'learnsimply_promo_cta_text', 'اشترك الآن' ) ); ?>"
+							class="regular-text" dir="rtl" />
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="learnsimply_promo_cta_url">رابط الزر</label></th>
+					<td>
+						<input type="url" id="learnsimply_promo_cta_url" name="learnsimply_promo_cta_url"
+							value="<?php echo esc_attr( get_option( 'learnsimply_promo_cta_url', home_url( '/' ) ) ); ?>"
+							class="large-text" />
+						<p class="description">الرابط الذي ينتقل إليه المستخدم عند الضغط على الزر</p>
+					</td>
+				</tr>
+			</table>
+
+			<?php submit_button( 'حفظ الإعدادات' ); ?>
+		</form>
+	</div>
+	<script>
+	(function() {
+		var form = document.getElementById('learnsimply-promo-form');
+		if (!form) return;
+		form.addEventListener('submit', function() {
+			var y = parseInt(document.getElementById('promo_dl_year').value, 10) || new Date().getFullYear();
+			var m = (parseInt(document.getElementById('promo_dl_month').value, 10) || 1) - 1;
+			var d = parseInt(document.getElementById('promo_dl_day').value, 10) || 1;
+			var h = parseInt(document.getElementById('promo_dl_hour').value, 10) || 0;
+			var min = parseInt(document.getElementById('promo_dl_min').value, 10) || 0;
+			var ts = Math.floor(new Date(y, m, d, h, min, 0).getTime() / 1000);
+			document.getElementById('learnsimply_promo_deadline').value = ts;
+		});
+	})();
+	</script>
+	<?php
+}
+
+
+/**
+ * Enqueue promo banner CSS and localize deadline when promo is enabled
+ */
+function learnsimply_enqueue_promo_assets() {
+	if ( ! get_option( 'learnsimply_promo_enabled', false ) ) {
+		return;
+	}
+	$promo_css = get_stylesheet_directory() . '/assets/promo-banner/style.css';
+	if ( file_exists( $promo_css ) ) {
+		wp_enqueue_style(
+			'learnsimply-promo-banner',
+			get_stylesheet_directory_uri() . '/assets/promo-banner/style.css',
+			array( 'edublink-child-style' ),
+			filemtime( $promo_css )
+		);
+	}
+	$deadline = get_option( 'learnsimply_promo_deadline', '' );
+	if ( $deadline && is_numeric( $deadline ) ) {
+		wp_localize_script( 'edublink-global-scripts', 'learnsimplyPromoDeadline', (string) ( (int) $deadline * 1000 ) );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'learnsimply_enqueue_promo_assets', 101 );
+
 /**
  * Initialize Timber
  */
@@ -92,6 +342,18 @@ if ( class_exists( 'Timber\Timber' ) ) {
 		} else {
 			// Fallback to default favicon if no site icon is set
 			$context['site_icon_url'] = get_site_icon_url();
+		}
+		
+		// Promo banner settings (from العروض admin page)
+		$context['promo_banner_enabled'] = (bool) get_option( 'learnsimply_promo_enabled', false );
+		if ( $context['promo_banner_enabled'] ) {
+			$context['promo_text_primary']   = get_option( 'learnsimply_promo_text_primary', 'خصم 50% لمدة 3 أيام فقط — العرض سينتهي قريبًا!' );
+			$context['promo_text_secondary'] = get_option( 'learnsimply_promo_text_secondary', 'الأماكن محدودة — الحق العرض قبل انتهاء المدة!' );
+			$context['promo_highlight']      = get_option( 'learnsimply_promo_highlight', '50%' );
+			$context['promo_emoji']          = get_option( 'learnsimply_promo_emoji', '🔥' );
+			$context['promo_cta_text']       = get_option( 'learnsimply_promo_cta_text', 'اشترك الآن' );
+			$cta_url = get_option( 'learnsimply_promo_cta_url', '' );
+			$context['promo_cta_url']        = $cta_url ? $cta_url : home_url( '/' );
 		}
 		
 		return $context;
@@ -874,19 +1136,23 @@ function edublink_child_disable_elementor_product_mods() {
 add_action( 'template_redirect', 'edublink_child_disable_elementor_product_mods', 1 );
 
 /**
- * Remove PROMO BAR
+ * Remove OLD theme/Elementor promo bar (excludes our learnsimply-promo-banner)
  */
 function edublink_child_remove_promo_bar_enhanced() {
 	if ( ! is_product() ) return;
 	?>
 	<style id="edublink-remove-promo-bar">
-		#promo-bar, .promo-bar, [id*="promo"], [class*="promo-bar"], .promo-inner, .promo-left, .promo-timer, .promo-btn { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; }
+		#promo-bar, .promo-bar, .promo-inner, .promo-left, .promo-timer, .promo-btn { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; }
 	</style>
 	<script>
 	(function() {
 		function removePromoBar() {
-			const selectors = ['#promo-bar', '.promo-bar', '[id*="promo"]', '[class*="promo-bar"]'];
-			selectors.forEach(function(s) { document.querySelectorAll(s).forEach(el => el.remove()); });
+			const selectors = ['#promo-bar', '.promo-bar', '.promo-inner', '.promo-left', '.promo-timer', '.promo-btn'];
+			selectors.forEach(function(s) {
+				document.querySelectorAll(s).forEach(function(el) {
+					if (!el.closest('.learnsimply-promo-banner')) el.remove();
+				});
+			});
 		}
 		if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', removePromoBar);
 		else removePromoBar();
