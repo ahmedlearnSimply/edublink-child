@@ -37,7 +37,10 @@ $checkout_page_url = CheckoutController::get_page_url();
 
 <!-- Custom Cart Header -->
 <section class="custom-cart-header">
-	<h1 class="custom-cart-title">سلة التسوق</h1>
+	<h1 class="custom-cart-title">
+		<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4077f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 10px;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+		سلة التسوق
+	</h1>
 	<?php if ( is_array( $course_list ) && count( $course_list ) > 0 ) : ?>
 		<p class="custom-cart-count"><?php echo esc_html( sprintf( _n( '%d دورة في السلة', '%d دورات في السلة', $total_count, 'tutor' ), $total_count ) ); ?></p>
 	<?php endif; ?>
@@ -82,11 +85,17 @@ $checkout_page_url = CheckoutController::get_page_url();
 					
 					<div class="custom-cart-item-meta">
 						<?php if ( $course_duration ) : ?>
-							<span class="custom-meta-item"><?php echo esc_html( tutor_utils()->clean_html_content( $course_duration ) ); ?></span>
+							<span class="custom-meta-item">
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+								<?php echo esc_html( tutor_utils()->clean_html_content( $course_duration ) ); ?>
+							</span>
 						<?php endif; ?>
 						
 						<?php if ( $course_level ) : ?>
-							<span class="custom-meta-item"><?php echo esc_html( $course_level ); ?></span>
+							<span class="custom-meta-item">
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+								<?php echo esc_html( $course_level ); ?>
+							</span>
 						<?php endif; ?>
 					</div>
 				</div>
@@ -100,6 +109,7 @@ $checkout_page_url = CheckoutController::get_page_url();
 					</div>
 					
 					<button type="button" class="custom-remove-item-btn" data-course-id="<?php echo esc_attr( $course->ID ); ?>">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
 						إزالة
 					</button>
 				</div>
@@ -163,6 +173,7 @@ $checkout_page_url = CheckoutController::get_page_url();
 		<?php if ( $checkout_page_url ) : ?>
 			<a href="<?php echo esc_url( $checkout_page_url ); ?>" class="custom-checkout-btn">
 				المتابعة للدفع
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; transform: scaleX(-1);"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
 			</a>
 		<?php else : ?>
 			<p class="custom-error-message">صفحة الدفع غير مُعرّفة</p>
@@ -175,12 +186,14 @@ $checkout_page_url = CheckoutController::get_page_url();
 <!-- Custom Empty Cart State -->
 <section class="custom-empty-cart-section">
 	<div class="custom-empty-cart-content">
+		<svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#999eb2" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.5; margin-bottom: 8px;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
 		<p class="custom-empty-cart-message">لا توجد دورات في السلة</p>
 		<?php
 		$course_archive_url = tutor_utils()->course_archive_page_url();
 		if ( $course_archive_url ) :
 			?>
 			<a href="<?php echo esc_url( $course_archive_url ); ?>" class="custom-browse-courses-btn">
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
 				تصفح الدورات
 			</a>
 		<?php endif; ?>
