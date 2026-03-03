@@ -9597,6 +9597,21 @@ width: 100%;
   font-weight: 400;
 }
 
+/* عناوين وعناصر داخل وصف الكورس */
+.course-description h1,
+.course-description h2,
+.course-description h3,
+.course-description h4,
+.course-description h5,
+.course-description h6,
+.course-description p,
+.course-description span,
+.course-description li,
+.course-description strong,
+.course-description em {
+  color: #ffffff !important;
+}
+
 /* استجابة للشاشات الصغيرة */
 @media (max-width: 768px) {
   /* .course-image {
