@@ -13,6 +13,19 @@ Tags: custom-design
 */
 
 /* ============================================
+   Global Font Override - Graphik Arabic for entire site
+   ============================================ */
+
+/* Force Graphik Arabic font across entire site */
+* {
+	font-family: "Graphik Arabic", sans-serif !important;
+}
+
+body, html {
+	font-family: "Graphik Arabic", sans-serif !important;
+}
+
+/* ============================================
    Remove ALL WooCommerce CSS from Product Page
    ============================================ */
 

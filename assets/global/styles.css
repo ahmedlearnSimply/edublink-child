@@ -59,6 +59,18 @@ body, html {
   font-family: var(--learnsimply-font-primary) !important;
 }
 
+/* Force Graphik Arabic on ALL elements across the entire site */
+*, *::before, *::after,
+body, html,
+h1, h2, h3, h4, h5, h6,
+p, span, div, a, button, input, textarea, select, label,
+li, ul, ol, dl, dt, dd,
+table, th, td, tr,
+.learnsimply-homepage-body,
+.learnsimply-homepage-body * {
+  font-family: "Graphik Arabic", sans-serif !important;
+}
+
 .learnsimply-homepage-body img {
   max-width: 100%;
   height: auto;
