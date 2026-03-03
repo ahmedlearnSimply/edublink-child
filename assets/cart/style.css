@@ -1188,6 +1188,6 @@ body.woocommerce-cart,
   }
 }
 
-.wpr-cart-section-table-wrap {
-  background-color: #007bff !important;
+.wpr-cart-section-table-wrap .wpr-cart-section-wrap {
+  background-color: #141924 !important;
 }
