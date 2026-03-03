@@ -9,7 +9,7 @@
 }
 
 .course-main-content .container{
-      gap: 20px;
+      gap: 32px;
     display: flex;
     flex-direction: column;
 }
@@ -1282,6 +1282,32 @@ background: linear-gradient(131deg, rgba(100, 84, 213, 0.20) -66.81%, rgba(100, 
   text-align: right;
   color: white;
   font-weight: 400;
+}
+
+/* عناوين داخل نص الوصف */
+.description-text h1,
+.description-text h2,
+.description-text h3,
+.description-text h4,
+.description-text h5,
+.description-text h6 {
+  color: white !important;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.description-text h5 {
+  font-size: 20px;
+}
+
+.description-text h4 {
+  font-size: 22px;
+}
+
+.description-text h3 {
+  font-size: 24px;
 }
 
 .description-text p {

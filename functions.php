@@ -934,7 +934,7 @@ function edublink_child_load_page_assets() {
 	elseif ( is_checkout() ) $page_type = 'checkout';
 	elseif ( function_exists( 'tutor_utils' ) ) {
 		$course_post_type = tutor()->course_post_type;
-		if ( is_singular( $course_post_type ) ) $page_type = 'single_course';
+		if ( is_singular( $course_post_type ) ) $page_type = 'single-course';
 		elseif ( is_post_type_archive( $course_post_type ) || is_tax( 'course-category' ) ) $page_type = 'course_archive';
 	}
 	
@@ -1013,7 +1013,7 @@ function edublink_child_add_page_css_late() {
 	elseif ( is_checkout() ) $page_type = 'checkout';
 	elseif ( function_exists( 'tutor_utils' ) ) {
 		$course_post_type = tutor()->course_post_type;
-		if ( is_singular( $course_post_type ) ) $page_type = 'single_course';
+		if ( is_singular( $course_post_type ) ) $page_type = 'single-course';
 		elseif ( is_post_type_archive( $course_post_type ) || is_tax( 'course-category' ) ) $page_type = 'course_archive';
 	}
 	
