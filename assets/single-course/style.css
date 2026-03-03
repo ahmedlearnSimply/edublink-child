@@ -1280,7 +1280,7 @@ background: linear-gradient(131deg, rgba(100, 84, 213, 0.20) -66.81%, rgba(100, 
   font-size: 18px;
   line-height: 2;
   text-align: right;
-  color: white;
+  color: white !important;
   font-weight: 400;
 }
 
