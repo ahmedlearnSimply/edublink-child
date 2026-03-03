@@ -312,6 +312,11 @@
 	border: 1px solid rgba(64, 119, 243, 0.15);
 }
 
+/* override learning card heading to white (single course page) */
+.learning-card .section-title {
+    color: #fff !important;
+}
+
 /* ============================================
    Shop Pagination Styles
    ============================================ */
