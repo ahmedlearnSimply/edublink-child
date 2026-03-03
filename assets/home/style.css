@@ -70,6 +70,16 @@
     line-height: normal;
 }
 
+/* Certificate section title styling (home page) */
+.learnsimply-certificate-title {
+    color: #FFF;
+    text-align: right;
+    font-family: "Graphik Arabic";
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 500;
+}
+
 
 /* ============================================
    Course Info Icons Fix
