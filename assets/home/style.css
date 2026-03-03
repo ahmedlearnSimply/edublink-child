@@ -43,6 +43,33 @@
     line-height: normal;
 }
 
+/* Hero badge overrides (text font family and ensure container styling) */
+.hero-wrapper .badge-text {
+    font-family: "Graphik Arabic";
+    color: var(--primary, #4077F4); /* keep global color */
+}
+
+.hero-wrapper .badge {
+    /* background / border styles come from global but ensure specificity if needed */
+    display: flex;
+    padding: 6px 16px;
+    align-items: center;
+    gap: 4px;
+    border-radius: 50000px;
+    border: 1px solid #4077F3;
+}
+
+/* Blue card title inside hero */
+.hero-wrapper .blue-card-content .card-title {
+    color: #FFF;
+    text-align: right;
+    font-family: "Graphik Arabic";
+    font-size: 58px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
 
 /* ============================================
    Course Info Icons Fix

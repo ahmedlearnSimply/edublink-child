@@ -20,7 +20,7 @@
   --learnsimply-yellow: #ffbb54;
 
   --learnsimply-font-primary:
-    "Cairo", "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont,
+    "Graphik Arabic", "Cairo", "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
   --learnsimply-font-code: "Consolas", "Courier New", monospace;
 
@@ -44,6 +44,7 @@
 }
 
 .learnsimply-homepage-body {
+  /* force primary font for whole site */
   font-family: var(--learnsimply-font-primary);
   background-color: var(--learnsimply-dark-bg);
   color: var(--learnsimply-text-white);
@@ -51,6 +52,11 @@
   overflow-x: hidden;
   direction: rtl;
   text-align: right;
+}
+
+/* extra fallback in case some elements override family */
+body, html {
+  font-family: var(--learnsimply-font-primary) !important;
 }
 
 .learnsimply-homepage-body img {
