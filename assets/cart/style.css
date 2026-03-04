@@ -1367,3 +1367,6 @@ body.woocommerce-cart,
         border: none;
 
 }
+.tutor-divider tutor-radius-12 tutor-overflow-hidden {
+    border: none !important;
+}
