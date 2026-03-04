@@ -812,7 +812,8 @@ body.tutor-screen-frontend-dashboard .entry-content {
 .tutor-wrap.tutor-dashboard .tutor-qna-single-question,
 .tutor-wrap.tutor-dashboard .tutor-qna-question-wrap {
     background: var(--db-card-alt) !important;
-    border: 1px solid var(--db-border) !important;
+    /* remove Tutor LMS default white border completely */
+    border: none !important;
     border-radius: var(--db-radius) !important;
     padding: 20px !important;
     margin-bottom: 12px !important;
