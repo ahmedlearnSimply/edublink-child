@@ -1361,3 +1361,9 @@ body.woocommerce-cart,
     /* background-color: currentcolor; */
 
 }
+
+.tutor-divider tutor-radius-12 tutor-overflow-hidden{
+
+        border: none;
+
+}
