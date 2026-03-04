@@ -5,7 +5,8 @@
 
 /* ===== START: Promo Banner Section ===== */
 .learnsimply-promo-banner {
-  background-color: transparent;
+  /* make outer banner match global page background (dark theme) */
+  background-color: var(--learnsimply-dark-bg) !important;
   width: 100%;
   padding-top: 100px;
 }
