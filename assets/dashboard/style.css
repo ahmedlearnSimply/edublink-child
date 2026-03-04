@@ -496,25 +496,37 @@ body.tutor-screen-frontend-dashboard .entry-content {
 
 
 /* ==========================================================================
-   8. TABLES (reviews, order history, quiz attempts)
+   8. TABLES (dashboard home, reviews, order history, quiz attempts)
    ========================================================================== */
+
+/* Responsive wrapper — must be dark; transparent table inherits this */
 .tutor-wrap.tutor-dashboard .tutor-table-responsive {
     border-radius: var(--db-radius) !important;
     overflow: hidden !important;
     border: 1px solid var(--db-border) !important;
+    background: var(--db-card) !important;
 }
 
+/* Table element itself */
 .tutor-wrap.tutor-dashboard .tutor-table,
-.tutor-wrap.tutor-dashboard table.tutor-table {
+.tutor-wrap.tutor-dashboard table.tutor-table,
+.tutor-wrap.tutor-dashboard table.table-popular-courses {
     width: 100% !important;
     border-collapse: collapse !important;
-    background: transparent !important;
+    background: var(--db-card) !important;
     color: var(--db-white) !important;
 }
 
 /* Table header */
+.tutor-wrap.tutor-dashboard .tutor-table thead,
+.tutor-wrap.tutor-dashboard table.table-popular-courses thead {
+    background: var(--db-card-alt) !important;
+}
+
 .tutor-wrap.tutor-dashboard .tutor-table thead tr,
-.tutor-wrap.tutor-dashboard .tutor-table thead th {
+.tutor-wrap.tutor-dashboard .tutor-table thead th,
+.tutor-wrap.tutor-dashboard table.table-popular-courses thead tr,
+.tutor-wrap.tutor-dashboard table.table-popular-courses thead th {
     background: var(--db-card-alt) !important;
     color: var(--db-gray) !important;
     font-size: 12px !important;
@@ -526,38 +538,61 @@ body.tutor-screen-frontend-dashboard .entry-content {
     text-align: right !important;
 }
 
-/* Table body */
-.tutor-wrap.tutor-dashboard .tutor-table tbody td {
+/* Table body — explicit dark so no Tutor LMS white leaks through */
+.tutor-wrap.tutor-dashboard .tutor-table tbody,
+.tutor-wrap.tutor-dashboard table.table-popular-courses tbody {
+    background: var(--db-card) !important;
+}
+
+.tutor-wrap.tutor-dashboard .tutor-table tbody td,
+.tutor-wrap.tutor-dashboard table.table-popular-courses tbody td {
     padding: 14px 16px !important;
     border-bottom: 1px solid var(--db-border) !important;
+    background: transparent !important;
     color: var(--db-white) !important;
     font-size: 14px !important;
     vertical-align: middle !important;
 }
 
-.tutor-wrap.tutor-dashboard .tutor-table tbody tr {
+.tutor-wrap.tutor-dashboard .tutor-table tbody tr,
+.tutor-wrap.tutor-dashboard table.table-popular-courses tbody tr {
     background: transparent !important;
     transition: var(--db-transition) !important;
 }
 
-.tutor-wrap.tutor-dashboard .tutor-table tbody tr:nth-child(even) {
+.tutor-wrap.tutor-dashboard .tutor-table tbody tr:nth-child(even),
+.tutor-wrap.tutor-dashboard table.table-popular-courses tbody tr:nth-child(even) {
     background: rgba(255, 255, 255, 0.02) !important;
 }
 
-.tutor-wrap.tutor-dashboard .tutor-table tbody tr:hover {
+.tutor-wrap.tutor-dashboard .tutor-table tbody tr:hover,
+.tutor-wrap.tutor-dashboard table.table-popular-courses tbody tr:hover {
     background: var(--db-blue-soft) !important;
 }
 
 /* Table links */
-.tutor-wrap.tutor-dashboard .tutor-table a {
+.tutor-wrap.tutor-dashboard .tutor-table a,
+.tutor-wrap.tutor-dashboard table.table-popular-courses a {
     color: var(--db-blue) !important;
     text-decoration: none !important;
     transition: var(--db-transition) !important;
 }
 
-.tutor-wrap.tutor-dashboard .tutor-table a:hover {
+.tutor-wrap.tutor-dashboard .tutor-table a:hover,
+.tutor-wrap.tutor-dashboard table.table-popular-courses a:hover {
     color: #5a93ff !important;
     text-decoration: underline !important;
+}
+
+/* Catch-all: any Tutor LMS bg-white / bg-light utility inside dashboard tables */
+.tutor-wrap.tutor-dashboard .tutor-table-responsive .tutor-bg-white,
+.tutor-wrap.tutor-dashboard .tutor-table-responsive [style*="background: #fff"],
+.tutor-wrap.tutor-dashboard .tutor-table-responsive [style*="background:#fff"],
+.tutor-wrap.tutor-dashboard .tutor-table-responsive [style*="background: white"],
+.tutor-wrap.tutor-dashboard .tutor-table-responsive [style*="background-color: #fff"],
+.tutor-wrap.tutor-dashboard .tutor-table-responsive [style*="background-color:#fff"] {
+    background: var(--db-card) !important;
+    background-color: var(--db-card) !important;
 }
 
 
