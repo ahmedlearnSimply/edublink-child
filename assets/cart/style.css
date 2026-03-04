@@ -235,6 +235,19 @@ body.woocommerce-cart,
    and avoid any light overlay behind the button */
 .woocommerce-cart table.shop_table .coupon {
   background: #141924 !important;
+  /* spacing around and within card */
+  margin-top: 20px !important;
+  padding: 6px 8px !important;
+  gap: 8px !important;
+  display: inline-flex; /* ensure gap works in desktop layout */
+  align-items: stretch;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+}
+
+/* force the coupon input to have transparent background */
+.woocommerce-cart table.shop_table .coupon input#coupon_code {
+  background: transparent !important;
 }
 
 /* ─── Product thumbnail ─── */
@@ -1113,15 +1126,24 @@ body.woocommerce-cart,
     align-items: stretch;
     width: 100%;
     border-radius: 14px;
+    margin-top: 20px !important;
+    gap: 8px !important;
+    padding: 8px !important;
+    background: #141924 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
   }
 
   .woocommerce-cart table.shop_table .coupon input#coupon_code {
     width: 100% !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    background: transparent !important;
+    padding: 12px 18px !important;
   }
 
   .woocommerce-cart table.shop_table .coupon button[name="apply_coupon"] {
     border-radius: 0 0 14px 14px !important;
+    width: 100% !important;
   }
 
   /* Tutor cart items */
