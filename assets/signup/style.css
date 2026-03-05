@@ -1,21 +1,839 @@
-/**
- * Signup Page Custom Styles
- * This file contains CSS overrides for the signup page
- * Path: /signup/
- */
+/* ==========================================================================
+   SIGNUP / REGISTRATION PAGE — Premium Dark Theme
+   LearnSimply (beta.learrnsimply.com)
 
-/* Add your custom signup styles here */
-/* These styles will override the default theme styles */
+   Matches the site's dark visual identity:
+     Background:  #0a0f1a
+     Card:        #141924
+     Accent:      #4077f3
+     Text:        #ffffff / #999eb2
 
-/* Test: Change body background to verify CSS is loading */
+   Targets: #tutor-registration-wrap  >  #tutor-registration-form
+   Also covers .tutor-login-wrap (login page shares this style)
+   ========================================================================== */
+
+/* ─── 0. CSS VARIABLES ─── */
+:root {
+    --sp-bg:           #0a0f1a;
+    --sp-card:         #141924;
+    --sp-card-alt:     #1a2232;
+    --sp-glass:        rgba(255, 255, 255, 0.04);
+    --sp-glass-border: rgba(255, 255, 255, 0.08);
+    --sp-glass-hover:  rgba(255, 255, 255, 0.07);
+    --sp-blue:         #4077f3;
+    --sp-blue-soft:    rgba(64, 119, 243, 0.10);
+    --sp-blue-glow:    rgba(64, 119, 243, 0.22);
+    --sp-white:        #ffffff;
+    --sp-white-soft:   #d0d4e0;
+    --sp-gray:         #999eb2;
+    --sp-gray-dim:     #6c7278;
+    --sp-green:        #18a963;
+    --sp-red:          #f96a7b;
+    --sp-border:       rgba(255, 255, 255, 0.08);
+    --sp-radius:       16px;
+    --sp-radius-lg:    24px;
+    --sp-radius-sm:    10px;
+    --sp-font:         "Graphik Arabic", "Cairo", "IBM Plex Sans Arabic", sans-serif;
+    --sp-transition:   all 0.3s ease;
+}
+
+
+/* ==========================================================================
+   1. PAGE FOUNDATION
+   ========================================================================== */
 body {
-    background: #000000 !important;
+    background-color: var(--sp-bg) !important;
 }
 
-/* Test: Change main content area */
-main#main,
-.site-content,
-.content-area {
-    background: #1a1a1a !important;
+body .site-content,
+body .content-area,
+body .entry-content,
+body main,
+body main#main,
+body .site-main,
+body .edublink-main-wrapper,
+body .eb-container,
+body .site-content-inner,
+body #page,
+body .learnsimply-homepage-body,
+body .page-content {
+    background-color: var(--sp-bg) !important;
 }
 
+/* Hide breadcrumbs, page title bar */
+.edublink-breadcrumb-area,
+.entry-header,
+.page-title-area,
+.woocommerce-breadcrumb,
+.eb-breadcrumb-area,
+.page-header,
+.entry-title {
+    display: none !important;
+}
+
+
+/* ==========================================================================
+   2. CENTRED LAYOUT
+   ========================================================================== */
+.entry-content,
+.page-content,
+.site-main > article,
+.site-main > .type-page {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: calc(100vh - 200px) !important;
+    padding: 60px 20px 80px !important;
+    background: transparent !important;
+}
+
+
+/* ==========================================================================
+   3. REGISTRATION CARD
+   ========================================================================== */
+#tutor-registration-wrap,
+.tutor-login-wrap {
+    width: 100% !important;
+    max-width: 500px !important;
+    background: var(--sp-card) !important;
+    border: 1px solid var(--sp-border) !important;
+    border-radius: var(--sp-radius-lg) !important;
+    padding: 40px 36px 36px !important;
+    margin: 0 auto !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(255, 255, 255, 0.03) !important;
+    direction: rtl !important;
+    position: relative !important;
+    font-family: var(--sp-font) !important;
+    animation: signupCardFadeIn 0.5s ease-out !important;
+}
+
+/* Card top accent line */
+#tutor-registration-wrap::before,
+.tutor-login-wrap::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    right: 10% !important;
+    left: 10% !important;
+    height: 3px !important;
+    background: linear-gradient(90deg, transparent, var(--sp-blue), transparent) !important;
+    border-radius: 0 0 3px 3px !important;
+}
+
+/* Heading text injected above the form */
+#tutor-registration-wrap::after {
+    content: "انشاء حساب جديد" !important;
+    display: block !important;
+    text-align: center !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: var(--sp-white) !important;
+    margin-bottom: 28px !important;
+    font-family: var(--sp-font) !important;
+    line-height: 1.4 !important;
+    order: -1 !important;
+}
+
+
+/* ==========================================================================
+   4. TYPOGRAPHY RESET
+   ========================================================================== */
+#tutor-registration-wrap,
+#tutor-registration-wrap *,
+#tutor-registration-form,
+#tutor-registration-form *,
+.tutor-login-wrap,
+.tutor-login-wrap * {
+    font-family: var(--sp-font) !important;
+    box-sizing: border-box !important;
+}
+
+
+/* ==========================================================================
+   5. FORM ELEMENT (inside card)
+   ========================================================================== */
+#tutor-registration-form {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+
+/* ==========================================================================
+   6. FORM ROWS & COLUMNS
+   ========================================================================== */
+#tutor-registration-form .tutor-form-row,
+.tutor-login-wrap .tutor-form-row {
+    display: flex !important;
+    gap: 14px !important;
+    margin-bottom: 0 !important;
+    flex-wrap: wrap !important;
+}
+
+#tutor-registration-form .tutor-form-col-6,
+.tutor-login-wrap .tutor-form-col-6 {
+    flex: 1 1 calc(50% - 7px) !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#tutor-registration-form .tutor-form-col-12,
+.tutor-login-wrap .tutor-form-col-12 {
+    flex: 1 1 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+/* ==========================================================================
+   7. FORM GROUPS (spacing)
+   ========================================================================== */
+#tutor-registration-form .tutor-form-group,
+.tutor-login-wrap .tutor-form-group {
+    margin-bottom: 20px !important;
+}
+
+
+/* ==========================================================================
+   8. LABELS
+   ========================================================================== */
+#tutor-registration-form label,
+.tutor-login-wrap label,
+.tutor-login-wrap .tutor-form-label {
+    display: block !important;
+    color: var(--sp-gray) !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    margin-bottom: 8px !important;
+    letter-spacing: 0.01em !important;
+}
+
+
+/* ==========================================================================
+   9. INPUT FIELDS
+   ========================================================================== */
+#tutor-registration-form input[type="text"],
+#tutor-registration-form input[type="email"],
+#tutor-registration-form input[type="password"],
+#tutor-registration-form input[type="tel"],
+#tutor-registration-form input[type="url"],
+#tutor-registration-form input[type="number"],
+#tutor-registration-form select,
+#tutor-registration-form textarea,
+#tutor-registration-form .tutor-form-control,
+#tutor-registration-form .tutor-form-wrap input,
+.tutor-login-wrap input[type="text"],
+.tutor-login-wrap input[type="email"],
+.tutor-login-wrap input[type="password"],
+.tutor-login-wrap input[type="tel"],
+.tutor-login-wrap input[type="search"],
+.tutor-login-wrap textarea,
+.tutor-login-wrap select,
+.tutor-login-wrap .tutor-form-control {
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid var(--sp-border) !important;
+    border-radius: var(--sp-radius-sm) !important;
+    color: var(--sp-white) !important;
+    padding: 13px 16px !important;
+    font-size: 14px !important;
+    font-family: var(--sp-font) !important;
+    transition: var(--sp-transition) !important;
+    outline: none !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    line-height: 1.5 !important;
+    height: auto !important;
+}
+
+/* Focus state */
+#tutor-registration-form input[type="text"]:focus,
+#tutor-registration-form input[type="email"]:focus,
+#tutor-registration-form input[type="password"]:focus,
+#tutor-registration-form input[type="tel"]:focus,
+#tutor-registration-form .tutor-form-wrap input:focus,
+.tutor-login-wrap input:focus,
+.tutor-login-wrap textarea:focus,
+.tutor-login-wrap select:focus {
+    border-color: var(--sp-blue) !important;
+    box-shadow: 0 0 0 3px var(--sp-blue-soft) !important;
+    background: rgba(255, 255, 255, 0.07) !important;
+}
+
+/* Placeholder */
+#tutor-registration-form input::placeholder,
+#tutor-registration-form .tutor-form-wrap input::placeholder,
+.tutor-login-wrap input::placeholder,
+.tutor-login-wrap textarea::placeholder {
+    color: var(--sp-gray-dim) !important;
+    opacity: 1 !important;
+    font-size: 13px !important;
+}
+
+
+/* ==========================================================================
+   10. PASSWORD FIELD
+   ========================================================================== */
+#tutor-registration-form .tutor-password-strength-checker,
+#tutor-registration-form .tutor-password-field,
+#tutor-registration-form .tutor-form-wrap,
+.tutor-login-wrap .tutor-input-group,
+.tutor-login-wrap .tutor-password-field {
+    position: relative !important;
+}
+
+/* Show/hide icon */
+#tutor-registration-form .tutor-password-field [class*="tutor-icon-eye"],
+#tutor-registration-form .tutor-password-field .tutor-icon,
+.tutor-login-wrap .tutor-password-field .tutor-icon,
+.tutor-login-wrap .tutor-input-group .tutor-icon,
+.tutor-login-wrap .tutor-input-group button {
+    position: absolute !important;
+    left: 14px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: none !important;
+    border: none !important;
+    color: var(--sp-gray-dim) !important;
+    cursor: pointer !important;
+    transition: var(--sp-transition) !important;
+    padding: 4px !important;
+    z-index: 2 !important;
+}
+
+#tutor-registration-form .tutor-password-field [class*="tutor-icon-eye"]:hover,
+.tutor-login-wrap .tutor-password-field .tutor-icon:hover {
+    color: var(--sp-white) !important;
+}
+
+/* Validation icon in confirm password */
+#tutor-registration-form .tutor-form-wrap .tutor-validation-icon {
+    position: absolute !important;
+    left: 14px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 2 !important;
+}
+
+/* Password strength bar */
+#tutor-registration-form .tutor-password-strength-hint,
+#tutor-registration-form .password-strength-meter {
+    font-size: 12px !important;
+    color: var(--sp-gray) !important;
+    margin-top: 6px !important;
+}
+
+#tutor-registration-form [class*="password-strength-meter"],
+#tutor-registration-form .tutor-password-strength-meter {
+    height: 4px !important;
+    border-radius: 4px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    margin-top: 8px !important;
+    overflow: hidden !important;
+}
+
+
+/* ==========================================================================
+   11. SUBMIT BUTTON
+   ========================================================================== */
+#tutor-registration-form .tutor-btn,
+#tutor-registration-form .tutor-btn-primary,
+#tutor-registration-form button[type="submit"],
+.tutor-login-wrap .tutor-btn,
+.tutor-login-wrap .tutor-btn-primary,
+.tutor-login-wrap button[type="submit"],
+.tutor-login-wrap input[type="submit"] {
+    width: 100% !important;
+    padding: 14px 24px !important;
+    background: linear-gradient(135deg, #4077f3 0%, #3568d4 100%) !important;
+    color: var(--sp-white) !important;
+    border: none !important;
+    border-radius: var(--sp-radius-sm) !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    font-family: var(--sp-font) !important;
+    cursor: pointer !important;
+    transition: var(--sp-transition) !important;
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    margin-top: 8px !important;
+    box-shadow: 0 4px 14px var(--sp-blue-glow) !important;
+    letter-spacing: 0.02em !important;
+    line-height: 1.5 !important;
+    text-decoration: none !important;
+}
+
+#tutor-registration-form .tutor-btn:hover,
+#tutor-registration-form button[type="submit"]:hover,
+.tutor-login-wrap .tutor-btn:hover,
+.tutor-login-wrap button[type="submit"]:hover {
+    background: linear-gradient(135deg, #3568d4 0%, #2a57bf 100%) !important;
+    box-shadow: 0 6px 20px var(--sp-blue-glow) !important;
+    transform: translateY(-1px) !important;
+}
+
+#tutor-registration-form .tutor-btn:active,
+#tutor-registration-form button[type="submit"]:active,
+.tutor-login-wrap .tutor-btn:active,
+.tutor-login-wrap button[type="submit"]:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 8px var(--sp-blue-glow) !important;
+}
+
+/* Loading state */
+#tutor-registration-form .tutor-btn.is-loading,
+#tutor-registration-form button[type="submit"]:disabled,
+.tutor-login-wrap .tutor-btn.is-loading {
+    opacity: 0.7 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+}
+
+
+/* ==========================================================================
+   12. SOCIAL LOGIN BUTTONS (Google / Twitter)
+   ========================================================================== */
+
+/* Twitter button */
+#tutor-pro-twitter-login {
+    width: 100% !important;
+    max-width: 100% !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: var(--sp-radius-sm) !important;
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: var(--sp-white-soft) !important;
+    cursor: pointer !important;
+    transition: var(--sp-transition) !important;
+    font-family: var(--sp-font) !important;
+    margin-top: 16px !important;
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    box-sizing: border-box !important;
+}
+
+#tutor-pro-twitter-login:hover {
+    background: rgba(29, 161, 242, 0.1) !important;
+    border-color: rgba(29, 161, 242, 0.3) !important;
+    color: #1da1f2 !important;
+}
+
+/* Google login button */
+#tutor-registration-wrap [id*="google"],
+#tutor-registration-wrap .tutor-social-login-btn,
+#tutor-registration-wrap [class*="google-login"],
+#tutor-registration-wrap [class*="social-login"] button,
+#tutor-registration-wrap [class*="social-login"] a,
+.tutor-login-wrap .tutor-social-login a,
+.tutor-login-wrap .tutor-social-login button {
+    width: 100% !important;
+    max-width: 100% !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: var(--sp-radius-sm) !important;
+    padding: 12px 20px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: var(--sp-white-soft) !important;
+    cursor: pointer !important;
+    transition: var(--sp-transition) !important;
+    font-family: var(--sp-font) !important;
+    margin-top: 12px !important;
+    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    box-sizing: border-box !important;
+    text-decoration: none !important;
+}
+
+#tutor-registration-wrap [id*="google"]:hover,
+#tutor-registration-wrap .tutor-social-login-btn:hover,
+.tutor-login-wrap .tutor-social-login a:hover,
+.tutor-login-wrap .tutor-social-login button:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.18) !important;
+}
+
+/* Social login divider "or" */
+#tutor-registration-wrap .tutor-social-login-separator,
+#tutor-registration-wrap [class*="separator"],
+.tutor-login-wrap .tutor-social-login-separator,
+.tutor-login-wrap .or-separator {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin: 20px 0 !important;
+    color: var(--sp-gray-dim) !important;
+    font-size: 13px !important;
+}
+
+#tutor-registration-wrap .tutor-social-login-separator::before,
+#tutor-registration-wrap .tutor-social-login-separator::after,
+.tutor-login-wrap .tutor-social-login-separator::before,
+.tutor-login-wrap .tutor-social-login-separator::after {
+    content: "" !important;
+    flex: 1 !important;
+    height: 1px !important;
+    background: var(--sp-border) !important;
+}
+
+
+/* ==========================================================================
+   13. LINKS
+   ========================================================================== */
+#tutor-registration-wrap a,
+#tutor-registration-form a,
+.tutor-login-wrap a:not(.tutor-btn) {
+    color: var(--sp-blue) !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    transition: var(--sp-transition) !important;
+}
+
+#tutor-registration-wrap a:hover,
+#tutor-registration-form a:hover,
+.tutor-login-wrap a:not(.tutor-btn):hover {
+    color: #5a94ff !important;
+    text-decoration: underline !important;
+}
+
+/* "Already have account? Login" text below the form */
+#tutor-registration-wrap > p,
+#tutor-registration-wrap > div > p,
+.tutor-login-wrap > p:last-child,
+.tutor-login-wrap .tutor-mt-20,
+.tutor-login-wrap .tutor-mt-24 {
+    text-align: center !important;
+    color: var(--sp-gray) !important;
+    font-size: 14px !important;
+    margin-top: 24px !important;
+    padding-top: 20px !important;
+    border-top: 1px solid var(--sp-border) !important;
+}
+
+
+/* ==========================================================================
+   14. CHECKBOX & AGREEMENT
+   ========================================================================== */
+#tutor-registration-form input[type="checkbox"],
+.tutor-login-wrap input[type="checkbox"],
+.tutor-login-wrap input[type="radio"] {
+    width: 18px !important;
+    height: 18px !important;
+    accent-color: var(--sp-blue) !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    margin-left: 8px !important;
+    padding: 0 !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+
+.tutor-login-wrap .tutor-form-check,
+.tutor-login-wrap .tutor-d-flex.tutor-align-center {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 16px !important;
+}
+
+
+/* ==========================================================================
+   15. VALIDATION / ERROR / SUCCESS
+   ========================================================================== */
+
+/* Error border on input */
+#tutor-registration-form .tutor-has-error input,
+#tutor-registration-form input.error,
+.tutor-login-wrap .tutor-has-error input,
+.tutor-login-wrap input.error {
+    border-color: var(--sp-red) !important;
+    box-shadow: 0 0 0 3px rgba(249, 106, 123, 0.12) !important;
+}
+
+/* Error text */
+#tutor-registration-form .tutor-form-feedback,
+#tutor-registration-form .tutor-has-error .tutor-form-feedback,
+.tutor-login-wrap .tutor-form-feedback,
+.tutor-login-wrap .tutor-has-error .tutor-form-feedback {
+    font-size: 12px !important;
+    margin-top: 6px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    color: var(--sp-red) !important;
+}
+
+/* Alert boxes */
+#tutor-registration-wrap .tutor-alert-success,
+.tutor-login-wrap .tutor-alert-success {
+    background: rgba(24, 169, 99, 0.08) !important;
+    border: 1px solid rgba(24, 169, 99, 0.2) !important;
+    border-radius: var(--sp-radius-sm) !important;
+    color: var(--sp-green) !important;
+    padding: 14px 18px !important;
+    margin-bottom: 20px !important;
+}
+
+#tutor-registration-wrap .tutor-alert-danger,
+#tutor-registration-wrap .tutor-alert-warning,
+.tutor-login-wrap .tutor-alert-danger,
+.tutor-login-wrap .tutor-alert-warning {
+    background: rgba(249, 106, 123, 0.08) !important;
+    border: 1px solid rgba(249, 106, 123, 0.2) !important;
+    border-right: 4px solid var(--sp-red) !important;
+    border-radius: var(--sp-radius-sm) !important;
+    color: var(--sp-red) !important;
+    padding: 14px 18px !important;
+    margin-bottom: 20px !important;
+}
+
+#tutor-registration-wrap .tutor-alert-danger *,
+.tutor-login-wrap .tutor-alert-danger * {
+    color: var(--sp-red) !important;
+}
+
+
+/* ==========================================================================
+   16. TAB NAVIGATION (Login <-> Register toggle on /dashboard/)
+   ========================================================================== */
+.tutor-login-wrap .tutor-nav,
+.tutor-login-wrap .tutor-header-nav,
+.tutor-login-wrap ul[role="tablist"] {
+    display: flex !important;
+    background: var(--sp-glass) !important;
+    border-radius: var(--sp-radius-sm) !important;
+    padding: 4px !important;
+    margin-bottom: 28px !important;
+    gap: 4px !important;
+    border: 1px solid var(--sp-glass-border) !important;
+}
+
+.tutor-login-wrap .tutor-nav-item,
+.tutor-login-wrap .tutor-nav li {
+    flex: 1 !important;
+    list-style: none !important;
+}
+
+.tutor-login-wrap .tutor-nav-link,
+.tutor-login-wrap .tutor-nav a,
+.tutor-login-wrap ul[role="tablist"] a,
+.tutor-login-wrap ul[role="tablist"] button {
+    display: block !important;
+    width: 100% !important;
+    padding: 10px 16px !important;
+    text-align: center !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: var(--sp-gray) !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: var(--sp-transition) !important;
+    text-decoration: none !important;
+}
+
+.tutor-login-wrap .tutor-nav-link:hover,
+.tutor-login-wrap .tutor-nav a:hover {
+    color: var(--sp-white) !important;
+    background: var(--sp-glass-hover) !important;
+}
+
+.tutor-login-wrap .tutor-nav-link.is-active,
+.tutor-login-wrap .tutor-nav-link.active,
+.tutor-login-wrap .tutor-nav-link[aria-selected="true"],
+.tutor-login-wrap .tutor-nav a.is-active,
+.tutor-login-wrap .tutor-nav a.active,
+.tutor-login-wrap ul[role="tablist"] button.active,
+.tutor-login-wrap ul[role="tablist"] button[aria-selected="true"] {
+    color: var(--sp-white) !important;
+    background: var(--sp-blue) !important;
+    box-shadow: 0 2px 8px var(--sp-blue-glow) !important;
+}
+
+
+/* ==========================================================================
+   17. HEADINGS & TEXT (form titles)
+   ========================================================================== */
+#tutor-registration-wrap h1,
+#tutor-registration-wrap h2,
+#tutor-registration-wrap h3,
+.tutor-login-wrap h1,
+.tutor-login-wrap h2,
+.tutor-login-wrap h3,
+.tutor-login-wrap .tutor-fs-4,
+.tutor-login-wrap .tutor-fs-5 {
+    color: var(--sp-white) !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    margin-bottom: 8px !important;
+    text-align: center !important;
+    line-height: 1.4 !important;
+}
+
+#tutor-registration-wrap p,
+.tutor-login-wrap p,
+.tutor-login-wrap .tutor-color-secondary,
+.tutor-login-wrap .tutor-color-muted {
+    color: var(--sp-gray) !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+}
+
+
+/* ==========================================================================
+   18. PARENT-THEME RESETS
+   ========================================================================== */
+#tutor-registration-wrap .bg-white,
+#tutor-registration-wrap .card,
+#tutor-registration-wrap .card-body,
+.tutor-login-wrap .bg-white,
+.tutor-login-wrap .card,
+.tutor-login-wrap .card-body {
+    background: transparent !important;
+    color: inherit !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Tutor utility overrides */
+#tutor-registration-wrap .tutor-color-black,
+#tutor-registration-wrap .tutor-color-design-dark,
+.tutor-login-wrap .tutor-color-black,
+.tutor-login-wrap .tutor-color-design-dark {
+    color: var(--sp-white) !important;
+}
+
+/* Override Tutor CSS variables */
+#tutor-registration-wrap,
+.tutor-login-wrap {
+    --tutor-color-primary: #4077f3;
+    --tutor-color-primary-hover: #3568d4;
+    --tutor-body-color: #0a0f1a;
+    --tutor-border-color: rgba(255, 255, 255, 0.1);
+    --tutor-color-gray: #999eb2;
+    --tutor-color-white: #ffffff;
+    --tutor-border-radius: 10px;
+}
+
+
+/* ==========================================================================
+   19. AUTOFILL FIX (prevent Chrome white autofill)
+   ========================================================================== */
+#tutor-registration-form input:-webkit-autofill,
+#tutor-registration-form input:-webkit-autofill:hover,
+#tutor-registration-form input:-webkit-autofill:focus,
+.tutor-login-wrap input:-webkit-autofill,
+.tutor-login-wrap input:-webkit-autofill:hover,
+.tutor-login-wrap input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--sp-white) !important;
+    -webkit-box-shadow: 0 0 0px 1000px #1a2232 inset !important;
+    box-shadow: 0 0 0px 1000px #1a2232 inset !important;
+    border-color: var(--sp-border) !important;
+    transition: background-color 5000s ease-in-out 0s !important;
+}
+
+
+/* ==========================================================================
+   20. LOADING / SPINNER
+   ========================================================================== */
+#tutor-registration-form .tutor-btn .tutor-icon-spinner,
+.tutor-login-wrap .tutor-btn .tutor-icon-spinner,
+.tutor-login-wrap .tutor-btn .tutor-spinner {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    border-top-color: var(--sp-white) !important;
+}
+
+
+/* ==========================================================================
+   21. RESPONSIVE
+   ========================================================================== */
+@media (max-width: 600px) {
+    #tutor-registration-wrap,
+    .tutor-login-wrap {
+        max-width: 100% !important;
+        padding: 28px 20px 28px !important;
+        border-radius: var(--sp-radius) !important;
+        margin: 0 12px !important;
+    }
+
+    .entry-content,
+    .page-content,
+    .site-main > article,
+    .site-main > .type-page {
+        padding: 24px 8px 60px !important;
+        min-height: calc(100vh - 140px) !important;
+    }
+
+    /* Stack columns on mobile */
+    #tutor-registration-form .tutor-form-row,
+    .tutor-login-wrap .tutor-form-row {
+        flex-direction: column !important;
+        gap: 0 !important;
+    }
+
+    #tutor-registration-form .tutor-form-col-6,
+    .tutor-login-wrap .tutor-form-col-6 {
+        flex: 1 1 100% !important;
+    }
+
+    #tutor-registration-wrap::after {
+        font-size: 20px !important;
+        margin-bottom: 20px !important;
+    }
+
+    #tutor-registration-form .tutor-btn,
+    #tutor-registration-form button[type="submit"],
+    .tutor-login-wrap .tutor-btn,
+    .tutor-login-wrap button[type="submit"] {
+        padding: 13px 20px !important;
+        font-size: 14px !important;
+    }
+}
+
+@media (max-width: 400px) {
+    #tutor-registration-wrap,
+    .tutor-login-wrap {
+        padding: 24px 16px !important;
+        margin: 0 8px !important;
+    }
+
+    #tutor-registration-form input[type="text"],
+    #tutor-registration-form input[type="email"],
+    #tutor-registration-form input[type="password"],
+    #tutor-registration-form .tutor-form-wrap input {
+        padding: 11px 14px !important;
+    }
+}
+
+
+/* ==========================================================================
+   22. ENTRANCE ANIMATION
+   ========================================================================== */
+@keyframes signupCardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
