@@ -477,7 +477,7 @@
                       </div>
                       <div class="user-details">
                         <p class="user-name">{{ review.author }}</p>
-                        <p class="review-date">{{ review.date|date('d/m/Y') }}</p>
+                        <p class="review-date">{{ review.date|date('d/m/Y') }}{% if review.pending|default(false) %} <span class="review-pending-badge">قيد المراجعة</span>{% endif %}</p>
                       </div>
                     </div>
                   </div>

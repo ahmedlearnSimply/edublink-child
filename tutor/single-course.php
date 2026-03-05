@@ -191,8 +191,9 @@ if ( $topics && $topics->have_posts() ) {
 	wp_reset_postdata();
 }
 
-// Get course reviews
-$course_reviews = tutor_utils()->get_course_reviews( $course_id, 0, 10, false, array( 'approved' ) );
+// Get course reviews (include current user's review even if pending, so they see "قيد المراجعة")
+$current_user_id_for_reviews = get_current_user_id();
+$course_reviews = tutor_utils()->get_course_reviews( $course_id, 0, 10, false, array( 'approved' ), $current_user_id_for_reviews );
 $context['course_reviews'] = array();
 if ( $course_reviews && is_array( $course_reviews ) ) {
 	foreach ( $course_reviews as $review ) {
@@ -203,6 +204,7 @@ if ( $course_reviews && is_array( $course_reviews ) ) {
 			'content' => $review->comment_content,
 			'date' => $review->comment_date,
 			'avatar' => get_avatar_url( $review->user_id, array( 'size' => 40 ) ),
+			'pending' => isset( $review->comment_status ) && $review->comment_status === 'hold',
 		);
 	}
 }

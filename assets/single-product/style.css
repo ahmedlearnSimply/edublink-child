@@ -2385,6 +2385,17 @@ background: linear-gradient(131deg, rgba(100, 84, 213, 0.20) -66.81%, rgba(100, 
   flex-shrink: 0;
 }
 
+.review-pending-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #b8860b;
+  background: rgba(184, 134, 11, 0.15);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 6px;
+}
+
 .avatar {
   overflow: hidden;
   position: relative;
