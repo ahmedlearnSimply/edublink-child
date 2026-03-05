@@ -128,8 +128,12 @@ body.woocommerce-checkout body,
 }
 
 .woocommerce-checkout .col2-set .col-1,
-.woocommerce-checkout .col2-set .col-2 {
+.woocommerce-checkout .col2-set .col-2,
+.woocommerce-checkout .col-1,
+.woocommerce-checkout .col-2 {
     background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 /* ─── 5. CHECKOUT CARDS ─── */
