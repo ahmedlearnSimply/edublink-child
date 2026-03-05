@@ -167,6 +167,40 @@ if ( $comments && is_array( $comments ) ) {
 			'content' => $comment->comment_content,
 			'date'    => $comment->comment_date,
 			'avatar'  => $avatar_url,
+			'pending' => false,
+		);
+	}
+}
+
+// If user is logged in, add their pending (unapproved) review so they see "قيد المراجعة"
+$current_user_id = get_current_user_id();
+if ( $current_user_id > 0 ) {
+	$pending = get_comments(
+		array(
+			'post_id' => $context['product_id'],
+			'status'  => 'hold',
+			'type'    => 'review',
+			'user_id' => $current_user_id,
+			'number'  => 1,
+		)
+	);
+	if ( ! empty( $pending ) ) {
+		$comment = $pending[0];
+		$rating  = intval( get_comment_meta( $comment->comment_ID, 'rating', true ) );
+		$avatar_url = get_avatar_url( $current_user_id, array( 'size' => 40 ) );
+		$context['course_reviews'] = array_merge(
+			array(
+				array(
+					'id'      => $comment->comment_ID,
+					'author'  => $comment->comment_author,
+					'rating'  => $rating,
+					'content' => $comment->comment_content,
+					'date'    => $comment->comment_date,
+					'avatar'  => $avatar_url,
+					'pending' => true,
+				),
+			),
+			$context['course_reviews']
 		);
 	}
 }
@@ -182,22 +216,19 @@ if ( comments_open( $context['product_id'] ) ) {
 		'label_submit'         => __( 'إرسال التقييم', 'woocommerce' ),
 		'comment_notes_before' => '',
 		'comment_notes_after'  => '',
+		// Redirect back to this product page after submit so the template loads and shows success/pending
+		'redirect_to'          => get_permalink( $product->get_id() ),
 		// Remove name/email/website fields – reviews rely on logged-in user data only.
 		'fields'               => array(),
 	);
 
-	// Custom rating + textarea structure (stars + hidden select) similar to theme's original markup.
+	// Custom rating + textarea structure. We only output the label and <select id="rating">.
+	// WooCommerce's single-product.js adds the star links via JS when it finds #rating.
+	// Including stars here would duplicate them because WooCommerce JS adds them anyway.
 	if ( wc_review_ratings_enabled() ) {
 		$comment_form['comment_field']  = '<div class="comment-form-rating">';
-		// Arabic label: \"تقييمك\" with clarification about selecting number of stars
+		// Arabic label: "تقييمك" with clarification about selecting number of stars
 		$comment_form['comment_field'] .= '<label for="rating" id="comment-form-rating-label">' . esc_html__( 'تقييمك (اختر عدد النجوم من 1 إلى 5)', 'woocommerce' ) . ( wc_review_ratings_required() ? '&nbsp;<span class="required">*</span>' : '' ) . '</label>';
-		$comment_form['comment_field'] .= '<p class="stars"><span role="group" aria-labelledby="comment-form-rating-label">';
-		$comment_form['comment_field'] .= '<a role="radio" tabindex="0" aria-checked="false" class="star-1" href="#">1 ' . esc_html__( 'من أصل 5 نجوم', 'woocommerce' ) . '</a>';
-		$comment_form['comment_field'] .= '<a role="radio" tabindex="-1" aria-checked="false" class="star-2" href="#">2 ' . esc_html__( 'من أصل 5 نجوم', 'woocommerce' ) . '</a>';
-		$comment_form['comment_field'] .= '<a role="radio" tabindex="-1" aria-checked="false" class="star-3" href="#">3 ' . esc_html__( 'من أصل 5 نجوم', 'woocommerce' ) . '</a>';
-		$comment_form['comment_field'] .= '<a role="radio" tabindex="-1" aria-checked="false" class="star-4" href="#">4 ' . esc_html__( 'من أصل 5 نجوم', 'woocommerce' ) . '</a>';
-		$comment_form['comment_field'] .= '<a role="radio" tabindex="-1" aria-checked="false" class="star-5" href="#">5 ' . esc_html__( 'من أصل 5 نجوم', 'woocommerce' ) . '</a>';
-		$comment_form['comment_field'] .= '</span></p>';
 		$comment_form['comment_field'] .= '<select name="rating" id="rating" required style="display:none;">';
 		$comment_form['comment_field'] .= '<option value="">' . esc_html__( 'Rate…', 'woocommerce' ) . '</option>';
 		$comment_form['comment_field'] .= '<option value="5">' . esc_html__( 'Perfect', 'woocommerce' ) . '</option>';
