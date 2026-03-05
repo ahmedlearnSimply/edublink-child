@@ -319,6 +319,107 @@ body.woocommerce-checkout body,
     width: 100% !important;
 }
 
+/* WPR Checkout Order Review Table Inner - Dark theme background */
+.wpr-checkout-order-review-table-inner {
+    background: var(--db-card) !important;
+    border: none !important;
+    border-radius: var(--db-radius) !important;
+    padding: 28px 32px 32px !important;
+    margin-bottom: 24px !important;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+.wpr-checkout-order-review-table-inner table {
+    background: transparent !important;
+    border: none !important;
+    width: 100% !important;
+}
+
+.wpr-checkout-order-review-table-inner table th,
+.wpr-checkout-order-review-table-inner table td {
+    background: transparent !important;
+    border: none !important;
+    padding: 14px 4px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+    color: var(--db-white) !important;
+    font-size: 14px !important;
+    vertical-align: middle !important;
+}
+
+.wpr-checkout-order-review-table-inner table thead th {
+    color: #7a7f96 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    letter-spacing: 0.4px !important;
+    border-bottom: 1px solid rgba(64, 119, 243, 0.08) !important;
+    text-align: right !important;
+}
+
+.wpr-checkout-order-review-table-inner table tbody tr {
+    background: transparent !important;
+    transition: background 0.25s ease !important;
+}
+
+.wpr-checkout-order-review-table-inner table tbody tr:hover {
+    background: rgba(64, 119, 243, 0.03) !important;
+}
+
+.wpr-checkout-order-review-table-inner table td.product-name {
+    color: #e8eaf0 !important;
+    font-weight: 500 !important;
+}
+
+.wpr-checkout-order-review-table-inner table tfoot th {
+    color: #7a7f96 !important;
+    font-weight: 400 !important;
+    text-align: right !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+}
+
+.wpr-checkout-order-review-table-inner table tfoot td {
+    text-align: left !important;
+    color: #c5c8d6 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+}
+
+.wpr-checkout-order-review-table-inner table tfoot td bdi,
+.wpr-checkout-order-review-table-inner table tfoot td .woocommerce-Price-amount {
+    color: #c5c8d6 !important;
+    font-weight: 500 !important;
+}
+
+.wpr-checkout-order-review-table-inner table tfoot .order-total th {
+    color: #e8eaf0 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    padding-top: 22px !important;
+    border-bottom: none !important;
+    border-top: 1px solid rgba(64, 119, 243, 0.1) !important;
+}
+
+.wpr-checkout-order-review-table-inner table tfoot .order-total td {
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    padding-top: 22px !important;
+    border-bottom: none !important;
+    border-top: 1px solid rgba(64, 119, 243, 0.1) !important;
+}
+
+.wpr-checkout-order-review-table-inner table tfoot .order-total .woocommerce-Price-amount,
+.wpr-checkout-order-review-table-inner table tfoot .order-total bdi {
+    color: #4077f3 !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+}
+
+.wpr-checkout-order-review-table-inner table tfoot .cart-discount td,
+.wpr-checkout-order-review-table-inner table tfoot .cart-discount th,
+.wpr-checkout-order-review-table-inner table tfoot .cart-discount bdi,
+.wpr-checkout-order-review-table-inner table tfoot .cart-discount .woocommerce-Price-amount {
+    color: #18a963 !important;
+}
+
 .woocommerce-checkout .woocommerce-checkout-review-order table thead th {
     color: #7a7f96 !important;
     font-size: 13px !important;
