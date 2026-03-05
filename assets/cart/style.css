@@ -645,6 +645,17 @@ body.woocommerce-cart,
 .woocommerce-cart .cart_totals table.shop_table td .woocommerce-Price-amount {
   color: #c5c8d6 !important;
   font-weight: 500 !important;
+  border: none !important;
+}
+
+/* Fix: Remove white borders from all price elements in cart totals */
+.woocommerce-cart .cart_totals span,
+.woocommerce-cart .cart_totals bdi, 
+.woocommerce-cart .cart_totals .amount,
+.woocommerce-cart .cart_totals .woocommerce-Price-amount,
+.woocommerce-cart .cart_totals .woocommerce-Price-currencySymbol {
+  border: none !important;
+  border-color: transparent !important;
 }
 
 /* Total row */
@@ -670,6 +681,8 @@ body.woocommerce-cart,
   color: #4077f3 !important;
   font-size: 22px !important;
   font-weight: 700 !important;
+  border: none !important;
+  border-color: transparent !important;
 }
 
 /* Discount row */
@@ -678,6 +691,8 @@ body.woocommerce-cart,
 .woocommerce-cart .cart_totals .cart-discount bdi,
 .woocommerce-cart .cart_totals .cart-discount .woocommerce-Price-amount {
   color: #18a963 !important;
+  border: none !important;
+  border-color: transparent !important;
 }
 
 /* Shipping */
