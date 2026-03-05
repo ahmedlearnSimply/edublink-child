@@ -139,7 +139,7 @@ body.woocommerce-checkout body,
 .woocommerce-checkout .woocommerce-checkout-payment,
 .woocommerce-checkout .woocommerce-checkout-review-order {
     background: var(--db-card) !important;
-    border: 1px solid var(--db-border) !important;
+    border: none !important;
     border-radius: var(--db-radius) !important;
     padding: 28px 32px 32px !important;
     margin-bottom: 24px !important;
@@ -200,7 +200,7 @@ body.woocommerce-checkout body,
 .woocommerce-checkout input[type="number"],
 .woocommerce-checkout input[type="password"] {
     background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid var(--db-border) !important;
+    border: none !important;
     color: #e8eaf0 !important;
     border-radius: var(--db-radius-sm) !important;
     padding: 12px 16px !important;
@@ -237,7 +237,7 @@ body.woocommerce-checkout body,
 /* ─── 8. SELECT2 DROPDOWNS ─── */
 .woocommerce-checkout .select2-container--default .select2-selection--single {
     background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid var(--db-border) !important;
+    border: none !important;
     border-radius: var(--db-radius-sm) !important;
     height: 46px !important;
     outline: none !important;
@@ -271,7 +271,7 @@ body.woocommerce-checkout body,
 .select2-dropdown {
     background: var(--db-card) !important;
     color: var(--db-white) !important;
-    border-color: var(--db-border) !important;
+    border-color: transparent !important;
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected],
@@ -287,7 +287,7 @@ body.woocommerce-checkout body,
 
 .select2-container--default .select2-search--dropdown .select2-search__field {
     background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid var(--db-border) !important;
+    border: none !important;
     color: #e8eaf0 !important;
     border-radius: 8px !important;
     padding: 8px 12px !important;
@@ -435,7 +435,7 @@ body.woocommerce-checkout body,
 
 .woocommerce-checkout #payment ul.payment_methods li {
     background: rgba(255, 255, 255, 0.03) !important;
-    border: 1px solid var(--db-border) !important;
+    border: none !important;
     border-radius: 14px !important;
     padding: 16px 20px !important;
     margin-bottom: 10px !important;
@@ -465,7 +465,7 @@ body.woocommerce-checkout body,
 
 .woocommerce-checkout #payment div.payment_box {
     background: rgba(64, 119, 243, 0.04) !important;
-    border: 1px solid rgba(64, 119, 243, 0.08) !important;
+    border: none !important;
     border-radius: 12px !important;
     padding: 16px 20px !important;
     margin-top: 12px !important;
@@ -489,7 +489,7 @@ body.woocommerce-checkout body,
 .woocommerce-checkout #payment div.payment_box select,
 .woocommerce-checkout #payment div.payment_box textarea {
     background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid var(--db-border) !important;
+    border: none !important;
     color: #e8eaf0 !important;
     border-radius: var(--db-radius-sm) !important;
 }
@@ -564,7 +564,7 @@ body.woocommerce-checkout body,
 .woocommerce-checkout .woocommerce-form-coupon,
 .woocommerce-checkout .woocommerce-form-login {
     background: var(--db-card) !important;
-    border: 1px solid var(--db-border) !important;
+    border: none !important;
     border-radius: var(--db-radius) !important;
     padding: 24px 28px !important;
     margin-bottom: 24px !important;
