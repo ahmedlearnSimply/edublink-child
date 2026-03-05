@@ -37,6 +37,4 @@ body{
    background-color: #0a0f1a !important;
 }
 
-.tutor-login-wrap {
-   background: rgba(255, 255, 255, 0.05) !important;
-}
+/* tutor-login-wrap background now handled by signup/style.css */

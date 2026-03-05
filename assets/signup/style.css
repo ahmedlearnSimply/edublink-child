@@ -1,12 +1,9 @@
 /* ==========================================================================
-   SIGNUP / REGISTRATION PAGE — Premium Dark Theme
+   SIGNUP / REGISTRATION PAGE — Premium Dark Theme v2
    LearnSimply (beta.learrnsimply.com)
 
-   Matches the site's dark visual identity:
-     Background:  #0a0f1a
-     Card:        #141924
-     Accent:      #4077f3
-     Text:        #ffffff / #999eb2
+   Modern split-layout with branded panel + compact form card.
+   Matches the site's glassmorphism dark identity.
 
    Targets: #tutor-registration-wrap  >  #tutor-registration-form
    Also covers .tutor-login-wrap (login page shares this style)
@@ -15,18 +12,19 @@
 /* ─── 0. CSS VARIABLES ─── */
 :root {
     --sp-bg:           #0a0f1a;
-    --sp-card:         #141924;
+    --sp-card:         #111827;
     --sp-card-alt:     #1a2232;
     --sp-glass:        rgba(255, 255, 255, 0.04);
     --sp-glass-border: rgba(255, 255, 255, 0.08);
     --sp-glass-hover:  rgba(255, 255, 255, 0.07);
     --sp-blue:         #4077f3;
-    --sp-blue-soft:    rgba(64, 119, 243, 0.10);
+    --sp-blue-light:   #658FF2;
+    --sp-blue-soft:    rgba(64, 119, 243, 0.12);
     --sp-blue-glow:    rgba(64, 119, 243, 0.22);
     --sp-white:        #ffffff;
     --sp-white-soft:   #d0d4e0;
-    --sp-gray:         #999eb2;
-    --sp-gray-dim:     #6c7278;
+    --sp-gray:         #94a3b8;
+    --sp-gray-dim:     #64748b;
     --sp-green:        #18a963;
     --sp-red:          #f96a7b;
     --sp-border:       rgba(255, 255, 255, 0.08);
@@ -34,7 +32,7 @@
     --sp-radius-lg:    24px;
     --sp-radius-sm:    10px;
     --sp-font:         "Graphik Arabic", "Cairo", "IBM Plex Sans Arabic", sans-serif;
-    --sp-transition:   all 0.3s ease;
+    --sp-transition:   all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -73,7 +71,7 @@ body .page-content {
 
 
 /* ==========================================================================
-   2. CENTRED LAYOUT
+   2. CENTRED LAYOUT — Split Container
    ========================================================================== */
 .entry-content,
 .page-content,
@@ -83,43 +81,71 @@ body .page-content {
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    min-height: calc(100vh - 200px) !important;
-    padding: 60px 20px 80px !important;
+    min-height: calc(100vh - 160px) !important;
+    padding: 40px 20px 60px !important;
     background: transparent !important;
+    position: relative !important;
+}
+
+/* Subtle background pattern */
+.entry-content::before,
+.page-content::before,
+.site-main > article::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 600px !important;
+    height: 600px !important;
+    background: radial-gradient(circle, rgba(64, 119, 243, 0.06) 0%, transparent 70%) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
 }
 
 
 /* ==========================================================================
-   3. REGISTRATION CARD
+   3. REGISTRATION CARD — Glassmorphism Card
    ========================================================================== */
 #tutor-registration-wrap,
 .tutor-login-wrap {
     width: 100% !important;
-    max-width: 500px !important;
-    background: var(--sp-card) !important;
-    border: 1px solid var(--sp-border) !important;
+    max-width: 460px !important;
+    background: linear-gradient(
+        165deg,
+        rgba(17, 24, 39, 0.95) 0%,
+        rgba(15, 23, 42, 0.98) 100%
+    ) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
     border-radius: var(--sp-radius-lg) !important;
-    padding: 40px 36px 36px !important;
+    padding: 36px 32px 32px !important;
     margin: 0 auto !important;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25),
-                0 0 0 1px rgba(255, 255, 255, 0.03) !important;
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.03),
+        0 4px 24px rgba(0, 0, 0, 0.3),
+        0 24px 48px rgba(0, 0, 0, 0.15) !important;
     direction: rtl !important;
     position: relative !important;
     font-family: var(--sp-font) !important;
     animation: signupCardFadeIn 0.5s ease-out !important;
+    z-index: 1 !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    overflow: hidden !important;
 }
 
-/* Card top accent line */
+/* Card corner glow accent */
 #tutor-registration-wrap::before,
 .tutor-login-wrap::before {
     content: "" !important;
     position: absolute !important;
-    top: 0 !important;
-    right: 10% !important;
-    left: 10% !important;
+    top: -1px !important;
+    right: -1px !important;
+    left: -1px !important;
     height: 3px !important;
-    background: linear-gradient(90deg, transparent, var(--sp-blue), transparent) !important;
-    border-radius: 0 0 3px 3px !important;
+    background: linear-gradient(90deg, transparent 5%, var(--sp-blue) 50%, transparent 95%) !important;
+    border-radius: var(--sp-radius-lg) var(--sp-radius-lg) 0 0 !important;
+    z-index: 2 !important;
 }
 
 /* Heading text injected above the form */
@@ -127,14 +153,17 @@ body .page-content {
     content: "انشاء حساب جديد" !important;
     display: block !important;
     text-align: center !important;
-    font-size: 24px !important;
+    font-size: 22px !important;
     font-weight: 700 !important;
     color: var(--sp-white) !important;
-    margin-bottom: 28px !important;
+    margin-bottom: 6px !important;
     font-family: var(--sp-font) !important;
     line-height: 1.4 !important;
     order: -1 !important;
 }
+
+/* Subtitle text via a separate pseudo or JS — skip for now,
+   we'll add a subtle helper text via the form group margin */
 
 
 /* ==========================================================================
@@ -164,19 +193,19 @@ body .page-content {
 
 
 /* ==========================================================================
-   6. FORM ROWS & COLUMNS
+   6. FORM ROWS & COLUMNS — Compact 2-column grid
    ========================================================================== */
 #tutor-registration-form .tutor-form-row,
 .tutor-login-wrap .tutor-form-row {
     display: flex !important;
-    gap: 14px !important;
+    gap: 12px !important;
     margin-bottom: 0 !important;
     flex-wrap: wrap !important;
 }
 
 #tutor-registration-form .tutor-form-col-6,
 .tutor-login-wrap .tutor-form-col-6 {
-    flex: 1 1 calc(50% - 7px) !important;
+    flex: 1 1 calc(50% - 6px) !important;
     min-width: 0 !important;
     padding: 0 !important;
     margin: 0 !important;
@@ -191,16 +220,16 @@ body .page-content {
 
 
 /* ==========================================================================
-   7. FORM GROUPS (spacing)
+   7. FORM GROUPS — Tighter spacing
    ========================================================================== */
 #tutor-registration-form .tutor-form-group,
 .tutor-login-wrap .tutor-form-group {
-    margin-bottom: 20px !important;
+    margin-bottom: 16px !important;
 }
 
 
 /* ==========================================================================
-   8. LABELS
+   8. LABELS — Cleaner, more subtle
    ========================================================================== */
 #tutor-registration-form label,
 .tutor-login-wrap label,
@@ -209,13 +238,13 @@ body .page-content {
     color: var(--sp-gray) !important;
     font-size: 13px !important;
     font-weight: 500 !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 6px !important;
     letter-spacing: 0.01em !important;
 }
 
 
 /* ==========================================================================
-   9. INPUT FIELDS
+   9. INPUT FIELDS — Refined glassmorphism inputs
    ========================================================================== */
 #tutor-registration-form input[type="text"],
 #tutor-registration-form input[type="email"],
@@ -236,11 +265,11 @@ body .page-content {
 .tutor-login-wrap select,
 .tutor-login-wrap .tutor-form-control {
     width: 100% !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid var(--sp-border) !important;
-    border-radius: var(--sp-radius-sm) !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
     color: var(--sp-white) !important;
-    padding: 13px 16px !important;
+    padding: 12px 14px !important;
     font-size: 14px !important;
     font-family: var(--sp-font) !important;
     transition: var(--sp-transition) !important;
@@ -251,7 +280,7 @@ body .page-content {
     height: auto !important;
 }
 
-/* Focus state */
+/* Focus state — Prominent blue ring */
 #tutor-registration-form input[type="text"]:focus,
 #tutor-registration-form input[type="email"]:focus,
 #tutor-registration-form input[type="password"]:focus,
@@ -261,8 +290,9 @@ body .page-content {
 .tutor-login-wrap textarea:focus,
 .tutor-login-wrap select:focus {
     border-color: var(--sp-blue) !important;
-    box-shadow: 0 0 0 3px var(--sp-blue-soft) !important;
-    background: rgba(255, 255, 255, 0.07) !important;
+    box-shadow: 0 0 0 3px var(--sp-blue-soft),
+                0 0 12px rgba(64, 119, 243, 0.08) !important;
+    background: rgba(255, 255, 255, 0.06) !important;
 }
 
 /* Placeholder */
@@ -323,23 +353,23 @@ body .page-content {
 /* Password strength bar */
 #tutor-registration-form .tutor-password-strength-hint,
 #tutor-registration-form .password-strength-meter {
-    font-size: 12px !important;
-    color: var(--sp-gray) !important;
+    font-size: 11px !important;
+    color: var(--sp-gray-dim) !important;
     margin-top: 6px !important;
 }
 
 #tutor-registration-form [class*="password-strength-meter"],
 #tutor-registration-form .tutor-password-strength-meter {
-    height: 4px !important;
-    border-radius: 4px !important;
-    background: rgba(255, 255, 255, 0.08) !important;
-    margin-top: 8px !important;
+    height: 3px !important;
+    border-radius: 3px !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    margin-top: 6px !important;
     overflow: hidden !important;
 }
 
 
 /* ==========================================================================
-   11. SUBMIT BUTTON
+   11. SUBMIT BUTTON — Premium pill button matching site CTA style
    ========================================================================== */
 #tutor-registration-form .tutor-btn,
 #tutor-registration-form .tutor-btn-primary,
@@ -349,11 +379,11 @@ body .page-content {
 .tutor-login-wrap button[type="submit"],
 .tutor-login-wrap input[type="submit"] {
     width: 100% !important;
-    padding: 14px 24px !important;
-    background: linear-gradient(135deg, #4077f3 0%, #3568d4 100%) !important;
+    padding: 13px 24px !important;
+    background: var(--sp-blue) !important;
     color: var(--sp-white) !important;
     border: none !important;
-    border-radius: var(--sp-radius-sm) !important;
+    border-radius: 12px !important;
     font-size: 15px !important;
     font-weight: 700 !important;
     font-family: var(--sp-font) !important;
@@ -364,19 +394,22 @@ body .page-content {
     align-items: center !important;
     justify-content: center !important;
     gap: 8px !important;
-    margin-top: 8px !important;
-    box-shadow: 0 4px 14px var(--sp-blue-glow) !important;
-    letter-spacing: 0.02em !important;
+    margin-top: 4px !important;
+    box-shadow: 0 4px 16px var(--sp-blue-glow) !important;
+    letter-spacing: 0.01em !important;
     line-height: 1.5 !important;
     text-decoration: none !important;
+    position: relative !important;
+    overflow: hidden !important;
 }
 
+/* Hover shimmer */
 #tutor-registration-form .tutor-btn:hover,
 #tutor-registration-form button[type="submit"]:hover,
 .tutor-login-wrap .tutor-btn:hover,
 .tutor-login-wrap button[type="submit"]:hover {
-    background: linear-gradient(135deg, #3568d4 0%, #2a57bf 100%) !important;
-    box-shadow: 0 6px 20px var(--sp-blue-glow) !important;
+    background: var(--sp-blue-light) !important;
+    box-shadow: 0 6px 24px var(--sp-blue-glow) !important;
     transform: translateY(-1px) !important;
 }
 
@@ -399,24 +432,47 @@ body .page-content {
 
 
 /* ==========================================================================
-   12. SOCIAL LOGIN BUTTONS (Google / Twitter)
+   12. SOCIAL LOGIN BUTTONS — Unified glass style
    ========================================================================== */
+
+/* Divider "or" — above social buttons */
+#tutor-registration-wrap .tutor-social-login-separator,
+#tutor-registration-wrap [class*="separator"],
+.tutor-login-wrap .tutor-social-login-separator,
+.tutor-login-wrap .or-separator {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin: 20px 0 16px !important;
+    color: var(--sp-gray-dim) !important;
+    font-size: 12px !important;
+}
+
+#tutor-registration-wrap .tutor-social-login-separator::before,
+#tutor-registration-wrap .tutor-social-login-separator::after,
+.tutor-login-wrap .tutor-social-login-separator::before,
+.tutor-login-wrap .tutor-social-login-separator::after {
+    content: "" !important;
+    flex: 1 !important;
+    height: 1px !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+}
 
 /* Twitter button */
 #tutor-pro-twitter-login {
     width: 100% !important;
     max-width: 100% !important;
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: var(--sp-radius-sm) !important;
-    padding: 12px 20px !important;
-    font-size: 14px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    padding: 11px 18px !important;
+    font-size: 13px !important;
     font-weight: 600 !important;
     color: var(--sp-white-soft) !important;
     cursor: pointer !important;
     transition: var(--sp-transition) !important;
     font-family: var(--sp-font) !important;
-    margin-top: 16px !important;
+    margin-top: 10px !important;
     text-align: center !important;
     display: flex !important;
     align-items: center !important;
@@ -426,8 +482,8 @@ body .page-content {
 }
 
 #tutor-pro-twitter-login:hover {
-    background: rgba(29, 161, 242, 0.1) !important;
-    border-color: rgba(29, 161, 242, 0.3) !important;
+    background: rgba(29, 161, 242, 0.08) !important;
+    border-color: rgba(29, 161, 242, 0.25) !important;
     color: #1da1f2 !important;
 }
 
@@ -441,17 +497,17 @@ body .page-content {
 .tutor-login-wrap .tutor-social-login button {
     width: 100% !important;
     max-width: 100% !important;
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: var(--sp-radius-sm) !important;
-    padding: 12px 20px !important;
-    font-size: 14px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px !important;
+    padding: 11px 18px !important;
+    font-size: 13px !important;
     font-weight: 600 !important;
     color: var(--sp-white-soft) !important;
     cursor: pointer !important;
     transition: var(--sp-transition) !important;
     font-family: var(--sp-font) !important;
-    margin-top: 12px !important;
+    margin-top: 10px !important;
     text-align: center !important;
     display: flex !important;
     align-items: center !important;
@@ -465,31 +521,8 @@ body .page-content {
 #tutor-registration-wrap .tutor-social-login-btn:hover,
 .tutor-login-wrap .tutor-social-login a:hover,
 .tutor-login-wrap .tutor-social-login button:hover {
-    background: rgba(255, 255, 255, 0.08) !important;
-    border-color: rgba(255, 255, 255, 0.18) !important;
-}
-
-/* Social login divider "or" */
-#tutor-registration-wrap .tutor-social-login-separator,
-#tutor-registration-wrap [class*="separator"],
-.tutor-login-wrap .tutor-social-login-separator,
-.tutor-login-wrap .or-separator {
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important;
-    margin: 20px 0 !important;
-    color: var(--sp-gray-dim) !important;
-    font-size: 13px !important;
-}
-
-#tutor-registration-wrap .tutor-social-login-separator::before,
-#tutor-registration-wrap .tutor-social-login-separator::after,
-.tutor-login-wrap .tutor-social-login-separator::before,
-.tutor-login-wrap .tutor-social-login-separator::after {
-    content: "" !important;
-    flex: 1 !important;
-    height: 1px !important;
-    background: var(--sp-border) !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
 }
 
 
@@ -509,7 +542,7 @@ body .page-content {
 #tutor-registration-wrap a:hover,
 #tutor-registration-form a:hover,
 .tutor-login-wrap a:not(.tutor-btn):hover {
-    color: #5a94ff !important;
+    color: var(--sp-blue-light) !important;
     text-decoration: underline !important;
 }
 
@@ -521,10 +554,10 @@ body .page-content {
 .tutor-login-wrap .tutor-mt-24 {
     text-align: center !important;
     color: var(--sp-gray) !important;
-    font-size: 14px !important;
-    margin-top: 24px !important;
-    padding-top: 20px !important;
-    border-top: 1px solid var(--sp-border) !important;
+    font-size: 13px !important;
+    margin-top: 20px !important;
+    padding-top: 16px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
 
 
@@ -534,15 +567,15 @@ body .page-content {
 #tutor-registration-form input[type="checkbox"],
 .tutor-login-wrap input[type="checkbox"],
 .tutor-login-wrap input[type="radio"] {
-    width: 18px !important;
-    height: 18px !important;
+    width: 16px !important;
+    height: 16px !important;
     accent-color: var(--sp-blue) !important;
     border-radius: 4px !important;
     cursor: pointer !important;
     margin-left: 8px !important;
     padding: 0 !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
 .tutor-login-wrap .tutor-form-check,
@@ -550,7 +583,7 @@ body .page-content {
     display: flex !important;
     align-items: center !important;
     gap: 8px !important;
-    margin-bottom: 16px !important;
+    margin-bottom: 14px !important;
 }
 
 
@@ -564,7 +597,7 @@ body .page-content {
 .tutor-login-wrap .tutor-has-error input,
 .tutor-login-wrap input.error {
     border-color: var(--sp-red) !important;
-    box-shadow: 0 0 0 3px rgba(249, 106, 123, 0.12) !important;
+    box-shadow: 0 0 0 3px rgba(249, 106, 123, 0.1) !important;
 }
 
 /* Error text */
@@ -573,7 +606,7 @@ body .page-content {
 .tutor-login-wrap .tutor-form-feedback,
 .tutor-login-wrap .tutor-has-error .tutor-form-feedback {
     font-size: 12px !important;
-    margin-top: 6px !important;
+    margin-top: 4px !important;
     padding: 0 !important;
     background: transparent !important;
     border: none !important;
@@ -583,25 +616,27 @@ body .page-content {
 /* Alert boxes */
 #tutor-registration-wrap .tutor-alert-success,
 .tutor-login-wrap .tutor-alert-success {
-    background: rgba(24, 169, 99, 0.08) !important;
-    border: 1px solid rgba(24, 169, 99, 0.2) !important;
-    border-radius: var(--sp-radius-sm) !important;
+    background: rgba(24, 169, 99, 0.06) !important;
+    border: 1px solid rgba(24, 169, 99, 0.15) !important;
+    border-radius: 12px !important;
     color: var(--sp-green) !important;
-    padding: 14px 18px !important;
-    margin-bottom: 20px !important;
+    padding: 12px 16px !important;
+    margin-bottom: 16px !important;
+    font-size: 13px !important;
 }
 
 #tutor-registration-wrap .tutor-alert-danger,
 #tutor-registration-wrap .tutor-alert-warning,
 .tutor-login-wrap .tutor-alert-danger,
 .tutor-login-wrap .tutor-alert-warning {
-    background: rgba(249, 106, 123, 0.08) !important;
-    border: 1px solid rgba(249, 106, 123, 0.2) !important;
-    border-right: 4px solid var(--sp-red) !important;
-    border-radius: var(--sp-radius-sm) !important;
+    background: rgba(249, 106, 123, 0.06) !important;
+    border: 1px solid rgba(249, 106, 123, 0.15) !important;
+    border-right: 3px solid var(--sp-red) !important;
+    border-radius: 12px !important;
     color: var(--sp-red) !important;
-    padding: 14px 18px !important;
-    margin-bottom: 20px !important;
+    padding: 12px 16px !important;
+    margin-bottom: 16px !important;
+    font-size: 13px !important;
 }
 
 #tutor-registration-wrap .tutor-alert-danger *,
@@ -617,12 +652,12 @@ body .page-content {
 .tutor-login-wrap .tutor-header-nav,
 .tutor-login-wrap ul[role="tablist"] {
     display: flex !important;
-    background: var(--sp-glass) !important;
-    border-radius: var(--sp-radius-sm) !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 12px !important;
     padding: 4px !important;
-    margin-bottom: 28px !important;
+    margin-bottom: 24px !important;
     gap: 4px !important;
-    border: 1px solid var(--sp-glass-border) !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
 
 .tutor-login-wrap .tutor-nav-item,
@@ -637,9 +672,9 @@ body .page-content {
 .tutor-login-wrap ul[role="tablist"] button {
     display: block !important;
     width: 100% !important;
-    padding: 10px 16px !important;
+    padding: 9px 14px !important;
     text-align: center !important;
-    font-size: 14px !important;
+    font-size: 13px !important;
     font-weight: 600 !important;
     color: var(--sp-gray) !important;
     background: transparent !important;
@@ -681,9 +716,9 @@ body .page-content {
 .tutor-login-wrap .tutor-fs-4,
 .tutor-login-wrap .tutor-fs-5 {
     color: var(--sp-white) !important;
-    font-size: 22px !important;
+    font-size: 20px !important;
     font-weight: 700 !important;
-    margin-bottom: 8px !important;
+    margin-bottom: 6px !important;
     text-align: center !important;
     line-height: 1.4 !important;
 }
@@ -693,7 +728,7 @@ body .page-content {
 .tutor-login-wrap .tutor-color-secondary,
 .tutor-login-wrap .tutor-color-muted {
     color: var(--sp-gray) !important;
-    font-size: 14px !important;
+    font-size: 13px !important;
     line-height: 1.6 !important;
 }
 
@@ -725,12 +760,12 @@ body .page-content {
 #tutor-registration-wrap,
 .tutor-login-wrap {
     --tutor-color-primary: #4077f3;
-    --tutor-color-primary-hover: #3568d4;
+    --tutor-color-primary-hover: #658FF2;
     --tutor-body-color: #0a0f1a;
-    --tutor-border-color: rgba(255, 255, 255, 0.1);
-    --tutor-color-gray: #999eb2;
+    --tutor-border-color: rgba(255, 255, 255, 0.08);
+    --tutor-color-gray: #94a3b8;
     --tutor-color-white: #ffffff;
-    --tutor-border-radius: 10px;
+    --tutor-border-radius: 12px;
 }
 
 
@@ -744,9 +779,9 @@ body .page-content {
 .tutor-login-wrap input:-webkit-autofill:hover,
 .tutor-login-wrap input:-webkit-autofill:focus {
     -webkit-text-fill-color: var(--sp-white) !important;
-    -webkit-box-shadow: 0 0 0px 1000px #1a2232 inset !important;
-    box-shadow: 0 0 0px 1000px #1a2232 inset !important;
-    border-color: var(--sp-border) !important;
+    -webkit-box-shadow: 0 0 0px 1000px #111827 inset !important;
+    box-shadow: 0 0 0px 1000px #111827 inset !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
     transition: background-color 5000s ease-in-out 0s !important;
 }
 
@@ -769,7 +804,7 @@ body .page-content {
     #tutor-registration-wrap,
     .tutor-login-wrap {
         max-width: 100% !important;
-        padding: 28px 20px 28px !important;
+        padding: 28px 20px 24px !important;
         border-radius: var(--sp-radius) !important;
         margin: 0 12px !important;
     }
@@ -778,7 +813,7 @@ body .page-content {
     .page-content,
     .site-main > article,
     .site-main > .type-page {
-        padding: 24px 8px 60px !important;
+        padding: 20px 8px 40px !important;
         min-height: calc(100vh - 140px) !important;
     }
 
@@ -795,23 +830,30 @@ body .page-content {
     }
 
     #tutor-registration-wrap::after {
-        font-size: 20px !important;
-        margin-bottom: 20px !important;
+        font-size: 19px !important;
+        margin-bottom: 4px !important;
     }
 
     #tutor-registration-form .tutor-btn,
     #tutor-registration-form button[type="submit"],
     .tutor-login-wrap .tutor-btn,
     .tutor-login-wrap button[type="submit"] {
-        padding: 13px 20px !important;
+        padding: 12px 20px !important;
         font-size: 14px !important;
+    }
+
+    /* Hide background glow on mobile */
+    .entry-content::before,
+    .page-content::before,
+    .site-main > article::before {
+        display: none !important;
     }
 }
 
 @media (max-width: 400px) {
     #tutor-registration-wrap,
     .tutor-login-wrap {
-        padding: 24px 16px !important;
+        padding: 24px 16px 20px !important;
         margin: 0 8px !important;
     }
 
@@ -819,7 +861,7 @@ body .page-content {
     #tutor-registration-form input[type="email"],
     #tutor-registration-form input[type="password"],
     #tutor-registration-form .tutor-form-wrap input {
-        padding: 11px 14px !important;
+        padding: 10px 12px !important;
     }
 }
 
@@ -830,10 +872,10 @@ body .page-content {
 @keyframes signupCardFadeIn {
     from {
         opacity: 0;
-        transform: translateY(16px);
+        transform: translateY(20px) scale(0.98);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
     }
 }
