@@ -11,6 +11,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 add_action( 'wp_enqueue_scripts', 'learnsimply_enqueue_custom_overrides', 999 );
 
+/**
+ * Enqueue custom override styles (loaded late to override other styles)
+ */
+function learnsimply_enqueue_custom_overrides() {
+	$file = get_stylesheet_directory() . '/assets/global/custom-override.css';
+	if ( file_exists( $file ) ) {
+		wp_enqueue_style(
+			'learnsimply-custom-overrides',
+			get_stylesheet_directory_uri() . '/assets/global/custom-override.css',
+			array( 'edublink-child-style' ),
+			filemtime( $file )
+		);
+	}
+}
 
 /**
  * Placeholder image URL when no image is available
