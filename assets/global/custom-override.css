@@ -65,233 +65,123 @@ body{
 }
 
 /* ==========================================================================
-   TUTOR LMS SINGLE LESSON – FULL DARK MODE
-   Site palette: bg #0a0f1a | sidebar #141924 | accent #4077f3 | muted #999eb2
+   TUTOR LMS SINGLE LESSON (SPOTLIGHT) DARK MODE
    ========================================================================== */
-
-/* ── 1. Page-Level Wrappers ── */
 .tutor-course-spotlight-wrapper,
-.tutor-single-lesson-wrap,
-body.tutor-lms .tutor-wrap,
-body[class*="tutor"] #tutor-lesson-wrap {
+.tutor-single-lesson-wrap {
     background-color: #0a0f1a !important;
 }
 
-/* ── 2. Sidebar Container – catch every variant ── */
 .tutor-course-spotlight-sidebar,
-.tutor-lesson-sidebar,
-.tutor-course-single-sidebar-wrapper,
-.tutor-course-topics-sidebar,
-aside[class*="sidebar"],
-div[class*="sidebar-wrapper"],
-.tutor-sidebar,
-.tutor-lesson-sidebar-wrap {
+.tutor-lesson-sidebar {
     background-color: #141924 !important;
-    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
-    border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
-    color: #999eb2 !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-/* ── 3. Sidebar Header / Title Bar ── */
-.tutor-course-single-sidebar-title,
-.tutor-course-topics-sidebar-header,
-.tutor-course-spotlight-sidebar-header,
-.tutor-lesson-sidebar-title,
-.tutor-sidebar-header,
-.tutor-course-spotlight-sidebar > header,
-.tutor-lesson-sidebar > header {
-    background-color: #141924 !important;
-    color: #ffffff !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-
-/* ── 4. Sidebar All Headings ── */
-.tutor-course-spotlight-sidebar h1,
-.tutor-course-spotlight-sidebar h2,
-.tutor-course-spotlight-sidebar h3,
-.tutor-course-spotlight-sidebar h4,
+/* Sidebar Titles */
 .tutor-course-spotlight-sidebar .tutor-course-title,
+.tutor-course-spotlight-sidebar h1, 
+.tutor-course-spotlight-sidebar h2, 
+.tutor-course-spotlight-sidebar h3, 
+.tutor-course-spotlight-sidebar h4,
 .tutor-lesson-sidebar h1,
 .tutor-lesson-sidebar h2,
 .tutor-lesson-sidebar h3,
 .tutor-lesson-sidebar h4,
-.tutor-lesson-sidebar .tutor-lesson-sidebar-title,
-.tutor-course-topics-sidebar h1,
-.tutor-course-topics-sidebar h2,
-.tutor-course-topics-sidebar h3,
-.tutor-course-topics-sidebar h4 {
+.tutor-lesson-sidebar .tutor-lesson-sidebar-title {
     color: #ffffff !important;
 }
 
-/* ── 5. Topic / Module Wrapper ── */
+/* Sidebar Topic Container */
 .tutor-course-spotlight-sidebar .tutor-course-topic,
-.tutor-lesson-sidebar .tutor-lesson-topic,
-.tutor-course-topics-sidebar .tutor-course-topic,
-.tutor-accordion-item,
-.tutor-course-topic {
+.tutor-lesson-sidebar .tutor-lesson-topic {
     background-color: transparent !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-/* ── 6. Topic / Module Titles (accordion headers) ── */
-.tutor-course-topic-title,
+/* Topic Title */
 .tutor-course-spotlight-sidebar .tutor-course-topic-title,
-.tutor-lesson-sidebar .tutor-lesson-topic-title,
-.tutor-course-topics-sidebar .tutor-course-topic-title,
-.tutor-accordion-item-header,
-.tutor-course-topic > .tutor-course-topic-title,
-[class*="topic-title"],
-.tutor-course-topic-title > *,
-.tutor-course-topic-title span,
-.tutor-course-topic-title div {
+.tutor-lesson-sidebar .tutor-lesson-topic-title {
     color: #ffffff !important;
-    background-color: rgba(255, 255, 255, 0.04) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
-    transition: background-color 0.2s ease;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
 }
 
-.tutor-course-topic-title:hover,
+/* Topic Title Hover */
 .tutor-course-spotlight-sidebar .tutor-course-topic-title:hover,
-.tutor-lesson-sidebar .tutor-lesson-topic-title:hover,
-.tutor-accordion-item-header:hover {
+.tutor-lesson-sidebar .tutor-lesson-topic-title:hover {
     background-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* ── 7. Lesson / Content Items ── */
-.tutor-course-topic-item,
-.tutor-course-lesson,
-.tutor-course-topic-lesson-list li,
-.tutor-course-spotlight-sidebar .tutor-course-topic-lesson-list li,
-.tutor-lesson-sidebar .tutor-lesson-list li,
-.tutor-accordion-item-body li,
-[class*="topic-item"] {
-    background-color: transparent !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
-    transition: background-color 0.2s ease;
-}
-
-.tutor-course-topic-item:hover,
-.tutor-course-topic-item.is-active,
-.tutor-course-topic-item.tutor-active,
-.tutor-course-topic-lesson-list li:hover,
-.tutor-course-topic-lesson-list li.is-active,
-.tutor-course-topic-lesson-list li.tutor-active {
-    background-color: rgba(64, 119, 243, 0.1) !important;
-}
-
-/* ── 8. Lesson Item Titles & Links ── */
-.tutor-course-topic-item-title,
-.tutor-course-topic-lesson-list li a,
-.tutor-lesson-sidebar .tutor-lesson-list li a,
+/* Lesson Items */
 .tutor-course-spotlight-sidebar .tutor-course-topic-lesson-list li a,
-.tutor-accordion-item-body a,
-[class*="topic-item-title"] {
+.tutor-lesson-sidebar .tutor-lesson-list li a {
     color: #999eb2 !important;
-    transition: color 0.2s ease;
+    transition: all 0.3s ease;
 }
 
-.tutor-course-topic-item:hover .tutor-course-topic-item-title,
-.tutor-course-topic-item.is-active .tutor-course-topic-item-title,
-.tutor-course-topic-item.tutor-active .tutor-course-topic-item-title,
-.tutor-course-topic-lesson-list li a:hover,
-.tutor-course-topic-lesson-list li.is-active a,
-.tutor-course-topic-lesson-list li.tutor-active a,
+.tutor-course-spotlight-sidebar .tutor-course-topic-lesson-list li a:hover,
+.tutor-course-spotlight-sidebar .tutor-course-topic-lesson-list li.is-active a,
 .tutor-lesson-sidebar .tutor-lesson-list li a:hover,
 .tutor-lesson-sidebar .tutor-lesson-list li.is-active a {
-    color: #ffffff !important;
     background-color: rgba(64, 119, 243, 0.1) !important;
+    color: #ffffff !important;
     border-radius: 6px;
 }
 
-/* ── 9. Lesson Icons & Checkboxes ── */
+/* Lesson Icon */
 .tutor-course-topic-lesson-list li .tutor-lesson-icon,
-.tutor-lesson-list li .tutor-lesson-icon,
-.tutor-course-topic-item .tutor-lesson-icon,
-.tutor-form-check-input {
+.tutor-lesson-list li .tutor-lesson-icon {
     color: #999eb2 !important;
-    border-color: rgba(255, 255, 255, 0.2) !important;
-    background-color: transparent !important;
 }
 
 .tutor-course-topic-lesson-list li.is-active .tutor-lesson-icon,
 .tutor-course-topic-lesson-list li:hover .tutor-lesson-icon,
 .tutor-lesson-list li.is-active .tutor-lesson-icon,
-.tutor-lesson-list li:hover .tutor-lesson-icon,
-.tutor-course-topic-item:hover .tutor-lesson-icon,
-.tutor-course-topic-item.is-active .tutor-lesson-icon {
+.tutor-lesson-list li:hover .tutor-lesson-icon {
     color: #ffffff !important;
 }
 
-/* Arrow / Chevron Icons */
-.tutor-course-spotlight-sidebar .tutor-icon-angle-up,
-.tutor-course-spotlight-sidebar .tutor-icon-angle-down,
-.tutor-lesson-sidebar .tutor-icon-angle-up,
-.tutor-lesson-sidebar .tutor-icon-angle-down,
-.tutor-course-topics-sidebar .tutor-icon-angle-up,
-.tutor-course-topics-sidebar .tutor-icon-angle-down,
-.tutor-course-topic-title .tutor-icon-angle-up,
-.tutor-course-topic-title .tutor-icon-angle-down,
-[class*="sidebar"] [class*="tutor-icon-angle"] {
-    color: #ffffff !important;
-}
-
-/* All sidebar icons (play, book, quiz, etc.) */
-[class*="sidebar"] [class^="tutor-icon-"],
-[class*="sidebar"] [class*=" tutor-icon-"] {
-    color: #999eb2 !important;
-}
-
-/* ── 10. Sidebar Generic Text & Spans ── */
-.tutor-course-spotlight-sidebar span,
-.tutor-course-spotlight-sidebar p,
-.tutor-course-spotlight-sidebar div:not(.tutor-btn),
-.tutor-lesson-sidebar span,
-.tutor-lesson-sidebar p,
-.tutor-lesson-sidebar div:not(.tutor-btn),
-.tutor-course-topics-sidebar span,
-.tutor-course-topics-sidebar p,
-.tutor-course-topics-sidebar div:not(.tutor-btn) {
-    color: #999eb2 !important;
-}
-
-/* Counts (e.g., 0/5, 2/18) */
-.tutor-course-topic-title .tutor-fs-7,
-.tutor-course-topic-title .tutor-color-muted,
-[class*="sidebar"] .tutor-fs-7,
-[class*="sidebar"] .tutor-color-muted {
-    color: #999eb2 !important;
-}
-
-/* ── 11. Spotlight Header ── */
-.tutor-course-spotlight-header,
-.tutor-course-spotlight-nav {
+/* Spotlight Header */
+.tutor-course-spotlight-header {
     background-color: #141924 !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-.tutor-course-spotlight-header .tutor-course-spotlight-title,
-.tutor-course-spotlight-header a,
-.tutor-course-spotlight-nav a {
-    color: #999eb2 !important;
-}
-
-.tutor-course-spotlight-header a:hover,
-.tutor-course-spotlight-nav a:hover {
-    color: #4077f3 !important;
-}
-
-/* ── 12. Mobile Menu Toggle ── */
-.tutor-spotlight-mobile-menu button {
+.tutor-course-spotlight-header .tutor-course-spotlight-title {
     color: #ffffff !important;
 }
 
-/* ── 13. Lesson Content Area ── */
+.tutor-course-spotlight-header a {
+    color: #999eb2 !important;
+}
+
+.tutor-course-spotlight-header a:hover {
+    color: #4077f3 !important;
+}
+
+/* Sidebar active state icons */
+.tutor-course-spotlight-sidebar .tutor-icon-angle-up,
+.tutor-course-spotlight-sidebar .tutor-icon-angle-down,
+.tutor-lesson-sidebar .tutor-icon-angle-up,
+.tutor-lesson-sidebar .tutor-icon-angle-down {
+    color: #ffffff !important;
+}
+
+/* General Text in Sidebar */
+.tutor-course-spotlight-sidebar,
+.tutor-lesson-sidebar {
+    color: #999eb2 !important;
+}
+
+/* Lesson Content Area Background */
 .tutor-course-spotlight-content,
-.tutor-lesson-content,
-.tutor-lesson-content-area {
+.tutor-lesson-content {
     background-color: #0a0f1a !important;
 }
 
+/* Main Content Typography */
 .tutor-course-spotlight-content h1,
 .tutor-course-spotlight-content h2,
 .tutor-course-spotlight-content h3,
@@ -303,16 +193,11 @@ div[class*="sidebar-wrapper"],
 .tutor-lesson-content h3,
 .tutor-lesson-content h4,
 .tutor-lesson-content h5,
-.tutor-lesson-content h6,
-.tutor-lesson-content-area h1,
-.tutor-lesson-content-area h2,
-.tutor-lesson-content-area h3,
-.tutor-lesson-content-area h4,
-.tutor-lesson-content-area h5,
-.tutor-lesson-content-area h6 {
+.tutor-lesson-content h6 {
     color: #ffffff !important;
 }
 
+/* Text elements inside content */
 .tutor-course-spotlight-content p,
 .tutor-course-spotlight-content span:not([class^="tutor-icon-"]):not(.tutor-btn-text),
 .tutor-course-spotlight-content div:not(.tutor-btn),
@@ -322,6 +207,7 @@ div[class*="sidebar-wrapper"],
     color: #999eb2;
 }
 
+/* Need to ensure text color doesn't override buttons or specific wrappers */
 .tutor-course-spotlight-content .tutor-btn,
 .tutor-course-spotlight-content .tutor-btn *,
 .tutor-lesson-content .tutor-btn,
@@ -329,12 +215,88 @@ div[class*="sidebar-wrapper"],
     color: #ffffff !important;
 }
 
-/* ── 14. Content Header / Tabs ── */
+/* Lesson Tabs (Overview, Q&A) */
+.tutor-tabs-btn-group a,
+.tutor-lesson-tabs a {
+    color: #999eb2 !important;
+}
+.tutor-tabs-btn-group a.active,
+.tutor-lesson-tabs a.active {
+    color: #ffffff !important;
+    border-bottom-color: #4077f3 !important;
+}
+
+/* Common Tutor Area Fixes */
+.tutor-wrap {
+    color: #999eb2;
+}
+
+/* Ensure Spotlight mode handles mobile menu toggle well */
+.tutor-spotlight-mobile-menu button {
+    color: #ffffff !important;
+}
+
+/* ==========================================================================
+   TUTOR LMS SINGLE LESSON (LIVE DOM CLASSES)
+   ========================================================================== */
+/* Sidebar Container */
+.tutor-lesson-sidebar,
+.tutor-course-single-sidebar-wrapper {
+    background-color: #141924 !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Sidebar Title (Course Content) */
+.tutor-course-single-sidebar-title {
+    color: #ffffff !important;
+    background-color: #141924 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Topic / Module Titles */
+.tutor-course-topic-title {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.tutor-course-topic-title:hover {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Lesson Items */
+.tutor-course-topic-item {
+    background-color: transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.tutor-course-topic-item:hover,
+.tutor-course-topic-item.is-active {
+    background-color: rgba(64, 119, 243, 0.1) !important;
+}
+
+.tutor-course-topic-item-title {
+    color: #999eb2 !important;
+}
+
+.tutor-course-topic-item:hover .tutor-course-topic-item-title,
+.tutor-course-topic-item.is-active .tutor-course-topic-item-title {
+    color: #ffffff !important;
+}
+
+/* Main Content Area */
+.tutor-lesson-content-area {
+    background-color: #0a0f1a !important;
+}
+
+/* Main Content Header (where the tabs are) */
 .tutor-lesson-content-header {
     background-color: #0a0f1a !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
+/* Fix Hardcoded Black Colors in Tutor */
 .tutor-lesson-content-area .tutor-color-black {
     color: #ffffff !important;
 }
@@ -345,212 +307,19 @@ div[class*="sidebar-wrapper"],
     color: #ffffff !important;
 }
 
+/* Content paragraphs */
 .tutor-lesson-content-area p,
 .tutor-lesson-content-area span:not([class^="tutor-icon-"]):not(.tutor-nav-link) {
     color: #999eb2;
 }
 
-/* Tab Links (Overview, Q&A, Exercise Files) */
-.tutor-tabs-btn-group a,
-.tutor-lesson-tabs a,
+/* Tabs */
 .tutor-nav-link {
     color: #999eb2 !important;
 }
 
-.tutor-tabs-btn-group a.active,
-.tutor-lesson-tabs a.active,
 .tutor-nav-link.is-active,
 .tutor-nav-link:hover {
     color: #ffffff !important;
     border-bottom-color: #4077f3 !important;
-}
-
-/* Common Tutor Wrap */
-.tutor-wrap {
-    color: #999eb2;
-}
-
-/* ── 15. Scrollbar Styling for Sidebar ── */
-.tutor-course-spotlight-sidebar::-webkit-scrollbar,
-.tutor-lesson-sidebar::-webkit-scrollbar,
-.tutor-course-topics-sidebar::-webkit-scrollbar {
-    width: 6px;
-}
-
-.tutor-course-spotlight-sidebar::-webkit-scrollbar-track,
-.tutor-lesson-sidebar::-webkit-scrollbar-track,
-.tutor-course-topics-sidebar::-webkit-scrollbar-track {
-    background: #0a0f1a;
-}
-
-.tutor-course-spotlight-sidebar::-webkit-scrollbar-thumb,
-.tutor-lesson-sidebar::-webkit-scrollbar-thumb,
-.tutor-course-topics-sidebar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 3px;
-}
-
-.tutor-course-spotlight-sidebar::-webkit-scrollbar-thumb:hover,
-.tutor-lesson-sidebar::-webkit-scrollbar-thumb:hover,
-.tutor-course-topics-sidebar::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.25);
-}
-
-/* ── 16. Nuclear Override – catch ANY remaining light backgrounds ── */
-.tutor-course-spotlight-sidebar *,
-.tutor-lesson-sidebar *,
-.tutor-course-topics-sidebar *,
-.tutor-course-single-sidebar-wrapper * {
-    border-color: rgba(255, 255, 255, 0.06) !important;
-}
-
-/* Override Tutor's utility background classes inside sidebar */
-[class*="sidebar"] .tutor-bg-white,
-[class*="sidebar"] .tutor-bg-light,
-[class*="sidebar"] [class*="bg-white"],
-[class*="sidebar"] [class*="bg-light"] {
-    background-color: #141924 !important;
-}
-
-/* Override Tutor's utility text color classes inside sidebar */
-[class*="sidebar"] .tutor-color-black,
-[class*="sidebar"] .tutor-color-dark,
-[class*="sidebar"] [class*="color-black"],
-[class*="sidebar"] [class*="color-dark"] {
-    color: #ffffff !important;
-}
-
-[class*="sidebar"] .tutor-color-secondary,
-[class*="sidebar"] .tutor-color-muted,
-[class*="sidebar"] [class*="color-secondary"],
-[class*="sidebar"] [class*="color-muted"] {
-    color: #999eb2 !important;
-}
-
-/* Info icons (ⓘ) in sidebar */
-[class*="sidebar"] .tutor-icon-circle-info,
-[class*="sidebar"] .tutor-icon-info-circle {
-    color: #4077f3 !important;
-}
-
-/* ==========================================================================
-   17. TUTOR LMS 3.9.x SPOTLIGHT – LIVE DOM CLASS OVERRIDES
-   These classes are the actual ones used in the the live DOM of the
-   Tutor LMS spotlight lesson page (verified March 2026).
-   ========================================================================== */
-
-/* ── Main Sidebar Wrapper (spotlight mode) ── */
-.tutor-course-spotlight-sidebar {
-    background-color: #141924 !important;
-    color: #999eb2 !important;
-}
-
-/* ── Topic / Module Container ── */
-.tutor-course-topic-single {
-    background-color: transparent !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
-}
-
-/* ── Topic / Module Header (e.g. الوحدة الاولي) ── */
-.tutor-course-topics-header,
-.tutor-course-topic-single > .tutor-course-topics-header,
-.tutor-course-spotlight-sidebar .tutor-course-topics-header {
-    background-color: rgba(255, 255, 255, 0.04) !important;
-    color: #ffffff !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
-    transition: background-color 0.2s ease;
-}
-
-.tutor-course-topics-header:hover {
-    background-color: rgba(255, 255, 255, 0.08) !important;
-}
-
-/* All text / spans inside topic headers */
-.tutor-course-topics-header *,
-.tutor-course-topics-header span,
-.tutor-course-topics-header div,
-.tutor-course-topics-header a,
-.tutor-course-topics-header h3,
-.tutor-course-topics-header h4 {
-    color: #ffffff !important;
-}
-
-/* ── Lessons List Container ── */
-.tutor-course-lessons-list,
-.tutor-course-spotlight-sidebar .tutor-course-lessons-list {
-    background-color: transparent !important;
-}
-
-/* ── Individual Lesson Item ── */
-.tutor-course-lesson-item,
-.tutor-course-spotlight-sidebar .tutor-course-lesson-item,
-a.tutor-course-lesson-item {
-    color: #999eb2 !important;
-    background-color: transparent !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
-    transition: all 0.2s ease;
-}
-
-.tutor-course-lesson-item:hover,
-.tutor-course-lesson-item.is-active,
-.tutor-course-lesson-item.tutor-active,
-.tutor-course-lesson-item[data-active="true"],
-.tutor-course-lesson-item.active {
-    background-color: rgba(64, 119, 243, 0.1) !important;
-    color: #ffffff !important;
-    border-radius: 6px;
-}
-
-/* Lesson item inner text and spans */
-.tutor-course-lesson-item span,
-.tutor-course-lesson-item div,
-.tutor-course-lesson-item p {
-    color: inherit !important;
-}
-
-/* ── 18. ABSOLUTE NUCLEAR: force dark BG on sidebar + all descendants ── */
-.tutor-course-spotlight-sidebar,
-.tutor-course-spotlight-sidebar > div,
-.tutor-course-spotlight-sidebar > div > div,
-.tutor-course-spotlight-sidebar > div > div > div {
-    background-color: #141924 !important;
-}
-
-/* Force ALL sidebar children to have NO light background */
-.tutor-course-spotlight-sidebar *:not(.tutor-btn):not([class*="icon"]):not(svg):not(path):not(i) {
-    background-color: transparent !important;
-}
-
-/* Re-apply sidebar container background (wildcard * above would kill it) */
-.tutor-course-spotlight-sidebar {
-    background-color: #141924 !important;
-}
-
-/* Re-apply topic header background */
-.tutor-course-topics-header {
-    background-color: rgba(255, 255, 255, 0.04) !important;
-}
-
-/* Re-apply hover/active backgrounds */
-.tutor-course-lesson-item:hover,
-.tutor-course-lesson-item.is-active,
-.tutor-course-lesson-item.tutor-active,
-.tutor-course-lesson-item.active,
-.tutor-course-topic-item:hover,
-.tutor-course-topic-item.is-active {
-    background-color: rgba(64, 119, 243, 0.1) !important;
-}
-
-/* Checked / completed lesson checkbox */
-.tutor-course-spotlight-sidebar .tutor-form-check-input:checked,
-.tutor-course-spotlight-sidebar input[type="checkbox"]:checked {
-    background-color: #4077f3 !important;
-    border-color: #4077f3 !important;
-}
-
-/* Progress text (e.g., "0/5", "2/18") */
-.tutor-course-spotlight-sidebar .tutor-fs-7,
-.tutor-course-spotlight-sidebar .tutor-fs-6,
-.tutor-course-spotlight-sidebar .tutor-color-muted {
-    color: #999eb2 !important;
 }
