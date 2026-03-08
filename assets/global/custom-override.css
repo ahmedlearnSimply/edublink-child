@@ -467,3 +467,32 @@ li[class*="course-lesson"] a {
 .page-id-28021 select.orderby * {
     color: #000000 !important;
 }
+
+/* Homepage Card Images Border Radius */
+#courses .elementor-widget-image img,
+#courses .tutor-course-thumbnail img,
+#courses .elementor-post__thumbnail img,
+#courses .wp-post-image,
+#books .elementor-widget-image img,
+#books .tutor-course-thumbnail img,
+#books .elementor-post__thumbnail img,
+#books .wp-post-image,
+#articles .elementor-widget-image img,
+#articles .tutor-course-thumbnail img,
+#articles .elementor-post__thumbnail img,
+#articles .wp-post-image {
+    border-radius: 15px !important;
+}
+
+#courses .elementor-widget-image,
+#courses .tutor-course-thumbnail,
+#courses .elementor-post__thumbnail__link,
+#books .elementor-widget-image,
+#books .tutor-course-thumbnail,
+#books .elementor-post__thumbnail__link,
+#articles .elementor-widget-image,
+#articles .tutor-course-thumbnail,
+#articles .elementor-post__thumbnail__link {
+    border-radius: 15px !important;
+    overflow: hidden !important;
+}
