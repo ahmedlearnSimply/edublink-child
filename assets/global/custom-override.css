@@ -459,3 +459,11 @@ li[class*="course-lesson"] a {
 .page-id-28021 .elementor-widget-text-editor {
     color: #ffffff !important;
 }
+
+/* Exception for WooCommerce Sorting Filter */
+.page-id-28021 .woocommerce-ordering select,
+.page-id-28021 .woocommerce-ordering select *,
+.page-id-28021 select.orderby,
+.page-id-28021 select.orderby * {
+    color: #000000 !important;
+}
