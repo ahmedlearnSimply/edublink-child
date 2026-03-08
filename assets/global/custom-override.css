@@ -444,16 +444,16 @@ li[class*="course-lesson"] a {
 }
 
 /* Page: كتب-برمجية (ID: 28021) -> Make all text white */
-.page-id-28021, 
-.page-id-28021 *, 
-.page-id-28021 p, 
-.page-id-28021 span, 
-.page-id-28021 h1, 
-.page-id-28021 h2, 
-.page-id-28021 h3, 
-.page-id-28021 h4, 
-.page-id-28021 h5, 
-.page-id-28021 h6, 
+.page-id-28021,
+.page-id-28021 *,
+.page-id-28021 p,
+.page-id-28021 span,
+.page-id-28021 h1,
+.page-id-28021 h2,
+.page-id-28021 h3,
+.page-id-28021 h4,
+.page-id-28021 h5,
+.page-id-28021 h6,
 .page-id-28021 a,
 .page-id-28021 div,
 .page-id-28021 .elementor-widget-text-editor {
@@ -495,4 +495,8 @@ li[class*="course-lesson"] a {
 #articles .elementor-post__thumbnail__link {
     border-radius: 15px !important;
     overflow: hidden !important;
+}
+
+.course-image {
+    border-radius: 15px !important;
 }
