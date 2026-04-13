@@ -300,7 +300,7 @@
             {# Paid course - show cart and buy buttons - direct link for add to cart #}
           {% if course.product_id %}
             <a 
-              href="{{ site.url }}/?add-to-cart={{ course.product_id }}"
+              href="{{ cart_url|default(site.url ~ '/cart-1/') }}?add-to-cart={{ course.product_id }}"
               class="cart-button" 
               aria-label="أضف إلى السلة"
             >

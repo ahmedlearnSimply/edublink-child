@@ -238,7 +238,7 @@
                             </a>
                         {% else %}
                             <a 
-                                href="{{ site.url }}/?add-to-cart={{ product.id }}"
+                                href="{{ cart_url|default(site.url ~ '/cart-1/') }}?add-to-cart={{ product.id }}"
                                 class="cart-button" 
                                 aria-label="أضف إلى السلة"
                             >
@@ -405,7 +405,7 @@
                         {% else %}
                             {# Paid product - show cart and buy buttons - direct link for add to cart #}
                             <a 
-                                href="{{ site.url }}/?add-to-cart={{ product.id }}"
+                                href="{{ cart_url|default(site.url ~ '/cart-1/') }}?add-to-cart={{ product.id }}"
                                 class="cart-button" 
                                 aria-label="أضف إلى السلة"
                             >
@@ -528,4 +528,3 @@
 {# Add to cart script - must be loaded for buttons to work #}
 <script src="{{ theme_uri }}/assets/home/script.js"></script>
 {% endblock %}
-

@@ -145,7 +145,7 @@
               </button>
               {% if is_in_stock %}
                 {# Direct link to add bundle to cart - same as other products #}
-                <a href="{{ site.url }}/?add-to-cart={{ product_id }}" class="buy-button">اشتر الآن</a>
+                <a href="{{ cart_url|default(site.url ~ '/cart-1/') }}?add-to-cart={{ product_id }}" class="buy-button">اشتر الآن</a>
               {% else %}
                 <button class="buy-button" disabled>غير متوفر</button>
               {% endif %}
@@ -511,34 +511,6 @@
         </svg>
     </button>
 
-    {# Cart URL for JavaScript redirects #}
-    {% if cart_url %}
-    <script>
-        window.learnsimplyCartUrl = '{{ cart_url }}';
-        
-        // Force redirect to cart if add-to-cart parameter is present
-        (function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const addToCart = urlParams.get('add-to-cart');
-            if (addToCart && window.learnsimplyCartUrl) {
-                // Check if we're not already on cart page
-                if (!window.location.pathname.includes('/cart')) {
-                    // Redirect to clean cart URL without query parameters
-                    const cleanCartUrl = window.learnsimplyCartUrl.split('?')[0];
-                    window.location.href = cleanCartUrl;
-                } else {
-                    // If already on cart page, remove add-to-cart parameter to prevent loops
-                    const cleanCartUrl = window.learnsimplyCartUrl.split('?')[0];
-                    if (window.location.href !== cleanCartUrl) {
-                        window.location.href = cleanCartUrl;
-                    }
-                }
-            }
-        })();
-    </script>
-    {% endif %}
-    
     {{ fn('wp_footer') }}
   </body>
 </html>
-

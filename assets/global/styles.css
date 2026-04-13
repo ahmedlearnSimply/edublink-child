@@ -133,6 +133,66 @@ table, th, td, tr,
   transform-origin: center;
 }
 
+.learnsimply-cart-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(10, 15, 26, 0.72);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.learnsimply-cart-loader.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.learnsimply-cart-loader-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: min(360px, 100%);
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(20, 25, 36, 0.96);
+  color: #ffffff;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
+}
+
+.learnsimply-cart-loader-spinner {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  border: 3px solid rgba(255, 255, 255, 0.22);
+  border-top-color: #00d5be;
+  border-radius: 50%;
+  animation: learnsimply-cart-loader-spin 0.75s linear infinite;
+}
+
+.learnsimply-cart-loader-text {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+@keyframes learnsimply-cart-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .learnsimply-homepage-body ul,
 .learnsimply-homepage-body ol {
   list-style: none;

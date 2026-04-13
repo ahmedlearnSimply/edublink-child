@@ -163,7 +163,7 @@
                                 {% else %}
                                     {# Paid book - show cart and buy buttons - direct link for add to cart #}
                                 <a 
-                                    href="{{ site.url }}/?add-to-cart={{ book.id }}"
+                                    href="{{ cart_url|default(site.url ~ '/cart-1/') }}?add-to-cart={{ book.id }}"
                                     class="cart-button" 
                                     aria-label="أضف إلى السلة"
                                 >

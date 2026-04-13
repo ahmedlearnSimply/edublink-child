@@ -213,7 +213,7 @@
                 {% else %}
                   {# Paid bundle - direct add to cart link #}
                   <a 
-                    href="{{ site.url }}/?add-to-cart={{ bundle.id }}"
+                    href="{{ cart_url|default(site.url ~ '/cart-1/') }}?add-to-cart={{ bundle.id }}"
                     class="cart-button" 
                     aria-label="أضف إلى السلة"
                   >
@@ -241,4 +241,3 @@
       </div>
     </section>
     <!-- ===== END: Bundles Section ===== -->
-

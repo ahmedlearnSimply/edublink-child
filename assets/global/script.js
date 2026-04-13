@@ -538,6 +538,39 @@
     });
   }
 
+  // ===== ADD TO CART LOADER =====
+
+  function showAddToCartLoader() {
+    var existingLoader = document.querySelector(".learnsimply-cart-loader");
+    if (existingLoader) {
+      existingLoader.classList.add("is-visible");
+      return;
+    }
+
+    var loader = document.createElement("div");
+    loader.className = "learnsimply-cart-loader is-visible";
+    loader.setAttribute("role", "status");
+    loader.setAttribute("aria-live", "polite");
+    loader.innerHTML =
+      '<div class="learnsimply-cart-loader-box">' +
+      '<span class="learnsimply-cart-loader-spinner" aria-hidden="true"></span>' +
+      '<span class="learnsimply-cart-loader-text">جاري إضافة المنتج إلى السلة...</span>' +
+      "</div>";
+
+    document.body.appendChild(loader);
+  }
+
+  function initAddToCartLoader() {
+    document.addEventListener("click", function (e) {
+      var link = e.target.closest('a[href*="add-to-cart="]');
+      if (!link) return;
+      if (e.defaultPrevented || link.target === "_blank" || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+      showAddToCartLoader();
+      link.setAttribute("aria-busy", "true");
+    });
+  }
+
   // ===== INITIALIZE ALL FUNCTIONALITY =====
 
   /**
@@ -559,6 +592,7 @@
     setupMarquee();
     initPromoCountdown();
     initReviewShowMore();
+    initAddToCartLoader();
   }
 
   // Start initialization
