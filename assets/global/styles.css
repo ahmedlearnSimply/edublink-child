@@ -12711,20 +12711,20 @@ background: linear-gradient(131deg, rgba(100, 84, 213, 0.20) -66.81%, rgba(100, 
   left: 30px;
   width: 56px;
   height: 56px;
-  background: none;
-  border-radius: 0;
+  background-color: #25d366;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: none;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5);
   z-index: 9999;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-decoration: none;
 }
 
 .whatsapp-float:hover {
   transform: scale(1.1);
-  box-shadow: none;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
 }
 
 @media (max-width: 768px) {
