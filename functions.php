@@ -1433,52 +1433,75 @@ function edublink_child_lesson_sidebar_dark_mode() {
 		color: #fff !important;
 	}
 
-	/* ── NUCLEAR: force ALL icon elements to light color ── */
-	/* Icon fonts (uses color) */
-	.tutor-course-spotlight-sidebar i,
-	.tutor-course-spotlight-sidebar [class*="tutor-icon"],
-	.tutor-course-spotlight-sidebar [class*="icon"],
-	.tutor-course-topics-sidebar i,
-	.tutor-course-topics-sidebar [class*="tutor-icon"],
-	.tutor-course-topics-sidebar [class*="icon"] {
+	/* ── Default state icons: high-specificity selectors to beat Tutor LMS ── */
+	/* Icon fonts – nested 3 classes deep to exceed Tutor's own specificity */
+	.tutor-course-spotlight-sidebar .tutor-course-topic-item i,
+	.tutor-course-spotlight-sidebar .tutor-course-topic-item [class^="tutor-icon-"],
+	.tutor-course-spotlight-sidebar .tutor-course-topic-item [class*=" tutor-icon-"],
+	.tutor-course-spotlight-sidebar .tutor-course-topic-item [class*="icon"],
+	.tutor-course-spotlight-sidebar .tutor-course-lesson-item i,
+	.tutor-course-spotlight-sidebar .tutor-course-lesson-item [class^="tutor-icon-"],
+	.tutor-course-spotlight-sidebar .tutor-course-lesson-item [class*=" tutor-icon-"],
+	.tutor-course-spotlight-sidebar .tutor-course-lesson-item [class*="icon"],
+	.tutor-course-topics-sidebar .tutor-course-topic-item i,
+	.tutor-course-topics-sidebar .tutor-course-topic-item [class^="tutor-icon-"],
+	.tutor-course-topics-sidebar .tutor-course-topic-item [class*=" tutor-icon-"],
+	.tutor-course-topics-sidebar .tutor-course-topic-item [class*="icon"],
+	.tutor-course-topics-sidebar li i,
+	.tutor-course-topics-sidebar li [class^="tutor-icon-"],
+	.tutor-course-topics-sidebar li [class*=" tutor-icon-"] {
 		color: #8893b0 !important;
 	}
-	.tutor-course-spotlight-sidebar i::before,
-	.tutor-course-spotlight-sidebar [class*="tutor-icon"]::before,
-	.tutor-course-topics-sidebar i::before,
-	.tutor-course-topics-sidebar [class*="tutor-icon"]::before {
+	.tutor-course-spotlight-sidebar .tutor-course-topic-item i::before,
+	.tutor-course-spotlight-sidebar .tutor-course-topic-item [class^="tutor-icon-"]::before,
+	.tutor-course-spotlight-sidebar .tutor-course-topic-item [class*=" tutor-icon-"]::before,
+	.tutor-course-spotlight-sidebar .tutor-course-lesson-item i::before,
+	.tutor-course-spotlight-sidebar .tutor-course-lesson-item [class^="tutor-icon-"]::before,
+	.tutor-course-topics-sidebar .tutor-course-topic-item i::before,
+	.tutor-course-topics-sidebar .tutor-course-topic-item [class^="tutor-icon-"]::before,
+	.tutor-course-topics-sidebar li i::before,
+	.tutor-course-topics-sidebar li [class^="tutor-icon-"]::before {
 		color: #8893b0 !important;
 	}
-	/* SVG icons: target fill AND stroke AND color */
-	.tutor-course-spotlight-sidebar svg,
-	.tutor-course-topics-sidebar svg {
-		color: #8893b0 !important;
+	/* SVG icons – nested for high specificity */
+	.tutor-course-spotlight-sidebar .tutor-course-topic-item svg,
+	.tutor-course-spotlight-sidebar .tutor-course-topic-item svg *,
+	.tutor-course-spotlight-sidebar .tutor-course-lesson-item svg,
+	.tutor-course-spotlight-sidebar .tutor-course-lesson-item svg *,
+	.tutor-course-topics-sidebar .tutor-course-topic-item svg,
+	.tutor-course-topics-sidebar .tutor-course-topic-item svg *,
+	.tutor-course-topics-sidebar li svg,
+	.tutor-course-topics-sidebar li svg * {
 		fill: #8893b0 !important;
+		color: #8893b0 !important;
 	}
-	.tutor-course-spotlight-sidebar svg *,
-	.tutor-course-topics-sidebar svg * {
-		fill: #8893b0 !important;
-		stroke: none !important;
-	}
-	/* SVGs that use stroke (outline style icons) */
-	.tutor-course-spotlight-sidebar svg [stroke]:not([stroke="none"]),
-	.tutor-course-topics-sidebar svg [stroke]:not([stroke="none"]) {
-		stroke: #8893b0 !important;
-		fill: none !important;
-	}
-	/* Active/hover → blue */
-	.tutor-course-topic-item:hover i,
-	.tutor-course-topic-item:hover [class*="icon"],
-	.tutor-course-topic-item.is-active i,
-	.tutor-course-topic-item.is-active [class*="icon"],
-	.tutor-course-lesson-item:hover i,
-	.tutor-course-lesson-item.is-active i {
+	/* Active/hover → blue (same depth, so equal specificity, comes later = wins) */
+	.tutor-course-spotlight-sidebar .tutor-course-topic-item:hover i,
+	.tutor-course-spotlight-sidebar .tutor-course-topic-item:hover [class*="icon"],
+	.tutor-course-spotlight-sidebar .tutor-course-topic-item.is-active i,
+	.tutor-course-spotlight-sidebar .tutor-course-topic-item.is-active [class*="icon"],
+	.tutor-course-spotlight-sidebar .tutor-course-lesson-item:hover i,
+	.tutor-course-spotlight-sidebar .tutor-course-lesson-item:hover [class*="icon"],
+	.tutor-course-spotlight-sidebar .tutor-course-lesson-item.is-active i,
+	.tutor-course-spotlight-sidebar .tutor-course-lesson-item.is-active [class*="icon"],
+	.tutor-course-topics-sidebar .tutor-course-topic-item:hover i,
+	.tutor-course-topics-sidebar .tutor-course-topic-item:hover [class*="icon"],
+	.tutor-course-topics-sidebar .tutor-course-topic-item.is-active i,
+	.tutor-course-topics-sidebar .tutor-course-topic-item.is-active [class*="icon"],
+	.tutor-course-topics-sidebar li:hover i,
+	.tutor-course-topics-sidebar li:hover [class*="icon"],
+	.tutor-course-topics-sidebar li.is-active i,
+	.tutor-course-topics-sidebar li.is-active [class*="icon"] {
 		color: #4077f3 !important;
 	}
-	.tutor-course-topic-item:hover svg *,
-	.tutor-course-topic-item.is-active svg *,
-	.tutor-course-lesson-item:hover svg *,
-	.tutor-course-lesson-item.is-active svg * {
+	.tutor-course-spotlight-sidebar .tutor-course-topic-item:hover svg *,
+	.tutor-course-spotlight-sidebar .tutor-course-topic-item.is-active svg *,
+	.tutor-course-spotlight-sidebar .tutor-course-lesson-item:hover svg *,
+	.tutor-course-spotlight-sidebar .tutor-course-lesson-item.is-active svg *,
+	.tutor-course-topics-sidebar .tutor-course-topic-item:hover svg *,
+	.tutor-course-topics-sidebar .tutor-course-topic-item.is-active svg *,
+	.tutor-course-topics-sidebar li:hover svg *,
+	.tutor-course-topics-sidebar li.is-active svg * {
 		fill: #4077f3 !important;
 	}
 
