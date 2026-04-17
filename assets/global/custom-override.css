@@ -24,6 +24,11 @@
     border-end-end-radius: 30px !important;
 }
 
+/* ── Article Intro Section ── */
+.article-intro {
+    background: antiquewhite !important;
+}
+
 #promo-bar {
     background: red !important;
 }
