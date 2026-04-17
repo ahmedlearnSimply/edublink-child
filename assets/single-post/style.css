@@ -551,6 +551,7 @@
 .sp-sidebar-author {
   flex-direction: row;
   align-items: center;
+  gap: 12px;
 }
 .sp-sidebar-author__avatar {
   width: 48px;
@@ -559,6 +560,13 @@
   object-fit: cover;
   border: 2px solid rgba(64, 119, 243, 0.3);
   flex-shrink: 0;
+  align-self: center;
+}
+.sp-sidebar-author > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
 }
 .sp-sidebar-author__name {
   font-size: 15px;
