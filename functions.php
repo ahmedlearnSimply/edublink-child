@@ -732,6 +732,11 @@ function edublink_child_force_custom_templates_via_filter( $template ) {
 add_action( 'template_redirect', 'edublink_child_force_custom_templates', 0 );
 
 function edublink_child_force_custom_templates() {
+    // CRITICAL: Never hijack 404 pages — this was causing terms/privacy to show shop
+    if ( is_404() ) {
+        return;
+    }
+
     // Check URL directly FIRST - most reliable method
     $request_uri = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '';
     
@@ -822,13 +827,15 @@ function edublink_child_force_custom_templates() {
     }
     
     // Check multiple ways to identify shop-2 page
+    // NOTE: Do NOT use ($woocommerce_shop_page_id == 22662) here — that checks whether
+    // the shop page ID equals 22662, which is TRUE on EVERY page and hijacks non-shop pages.
     $is_shop_2 = false;
     if ( 
         $is_shop_2_url ||
         is_page( 'shop-2' ) || 
         is_page( 22662 ) || 
         $queried_object_id == 22662 ||
-        $woocommerce_shop_page_id == 22662 ||
+        ( is_shop() && $woocommerce_shop_page_id == 22662 ) ||
         $current_page_slug === 'shop-2' ||
         ( isset( $wp_query->queried_object ) && isset( $wp_query->queried_object->post_name ) && $wp_query->queried_object->post_name === 'shop-2' ) ||
         ( isset( $wp_query->queried_object ) && isset( $wp_query->queried_object->ID ) && $wp_query->queried_object->ID == 22662 )
