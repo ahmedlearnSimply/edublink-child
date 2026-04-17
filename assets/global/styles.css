@@ -1280,10 +1280,9 @@ table, th, td, tr,
 .layer-image img {
   position: absolute;
   height: 100%;
-  left: -0.04%;
+  left: -3%;
   max-width: none;
   top: 0;
-  width: 100.08%;
 }
 
 /* Pink Shape */
