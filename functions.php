@@ -1862,7 +1862,66 @@ body.single-post [class*="entry-content"] {
 	background-color: transparent !important;
 	background: transparent !important;
 }
+
+/* Gutenberg named colour classes */
+body.single-post .sp-content .has-white-background-color,
+body.single-post .sp-content .has-light-gray-background-color,
+body.single-post .sp-content .has-pale-pink-background-color,
+body.single-post .sp-content .has-very-light-gray-background-color,
+body.single-post .sp-content [class*="has-"][class*="background-color"],
+body.single-post .sp-content [class*="has-background"] {
+	background-color: transparent !important;
+	background: transparent !important;
+}
 </style>
+<script id="learnsimply-kill-white-bg">
+/* Kill any white/light inline background-color set directly on Gutenberg blocks */
+(function () {
+  var LIGHT_THRESHOLD = 200; /* RGB channels above this = "light" */
+
+  function isLight(color) {
+    var m = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+    if (!m) return false;
+    return parseInt(m[1]) > LIGHT_THRESHOLD &&
+           parseInt(m[2]) > LIGHT_THRESHOLD &&
+           parseInt(m[3]) > LIGHT_THRESHOLD;
+  }
+
+  function killWhiteBg() {
+    var content = document.querySelector('.sp-content');
+    if (!content) return;
+
+    /* 1 — strip inline style background-color / background */
+    var all = content.querySelectorAll('*');
+    for (var i = 0; i < all.length; i++) {
+      var el = all[i];
+      var s  = el.style;
+      if (s.backgroundColor) {
+        if (isLight(s.backgroundColor) || s.backgroundColor === 'white' || s.backgroundColor === '#fff' || s.backgroundColor === '#ffffff') {
+          s.removeProperty('background-color');
+        }
+      }
+      if (s.background && (s.background.indexOf('white') !== -1 || s.background.indexOf('#fff') !== -1 || s.background.indexOf('rgb(255, 255, 255)') !== -1)) {
+        s.removeProperty('background');
+      }
+    }
+
+    /* 2 — check computed background-color for any remaining light element */
+    for (var j = 0; j < all.length; j++) {
+      var computed = window.getComputedStyle(all[j]).backgroundColor;
+      if (computed && computed !== 'rgba(0, 0, 0, 0)' && computed !== 'transparent' && isLight(computed)) {
+        all[j].style.setProperty('background-color', 'transparent', 'important');
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', killWhiteBg);
+  } else {
+    killWhiteBg();
+  }
+})();
+</script>
 	<?php
 }
 
