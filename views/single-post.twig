@@ -23,18 +23,6 @@
     {% endif %}
 
     <div class="sp-hero__content sp-container">
-      {# Breadcrumb #}
-      <nav class="sp-breadcrumb" aria-label="مسار التنقل">
-        <a href="{{ site_url }}">الرئيسية</a>
-        <span class="sp-breadcrumb__sep">›</span>
-        <a href="{{ site_url }}/blog/">المقالات</a>
-        {% if category %}
-          <span class="sp-breadcrumb__sep">›</span>
-          <a href="{{ category.url }}">{{ category.name }}</a>
-        {% endif %}
-        <span class="sp-breadcrumb__sep">›</span>
-        <span class="sp-breadcrumb__current">{{ post_title }}</span>
-      </nav>
 
       {# Category badge #}
       {% if category %}
