@@ -9,6 +9,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+add_action( 'wp_enqueue_scripts', 'learnsimply_enqueue_single_post_styles' );
+
+/**
+ * Enqueue single post page styles.
+ */
+function learnsimply_enqueue_single_post_styles() {
+	if ( ! is_single() || get_post_type() !== 'post' ) {
+		return;
+	}
+	$file = get_stylesheet_directory() . '/assets/single-post/style.css';
+	if ( file_exists( $file ) ) {
+		wp_enqueue_style(
+			'learnsimply-single-post',
+			get_stylesheet_directory_uri() . '/assets/single-post/style.css',
+			array(),
+			filemtime( $file )
+		);
+	}
+}
+
 add_action( 'wp_enqueue_scripts', 'learnsimply_enqueue_custom_overrides', 999 );
 
 /**
