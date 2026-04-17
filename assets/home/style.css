@@ -575,3 +575,13 @@
 	}
 }
 
+/* Certificate section title styling (home page) */
+@media (max-width: 400px) {
+	.certificate-section .certificate-title,
+	.learnsimply-certificate-title {
+		line-height: 2.1 !important;
+		margin-bottom: 18px !important;
+		word-break: break-word;
+	}
+}
+
