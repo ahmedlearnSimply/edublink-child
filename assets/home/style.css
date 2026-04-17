@@ -494,6 +494,25 @@
 	}
 }
 
+/* Hero buttons - force side by side on mobile */
+@media (max-width: 768px) {
+	.hero-wrapper .blue-card-content .buttons {
+		flex-direction: row !important;
+		flex-wrap: nowrap !important;
+		justify-content: center !important;
+		width: 100% !important;
+		gap: 10px !important;
+	}
+
+	.hero-wrapper .blue-card-content .buttons .button-dark,
+	.hero-wrapper .blue-card-content .buttons .button-light {
+		flex: 1 1 0;
+		min-width: 0;
+		justify-content: center;
+		padding: 10px 16px !important;
+	}
+}
+
 /* Tech logos row - horizontal scrollable strip on mobile (home page only) */
 @media (max-width: 768px) {
 	.about-main-container .about-logos-section {
