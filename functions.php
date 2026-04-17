@@ -1698,6 +1698,104 @@ function edublink_child_remove_promo_bar_enhanced() {
 add_action( 'wp_footer', 'edublink_child_remove_promo_bar_enhanced', 999 );
 
 /* ==========================================================================
+   SINGLE BLOG POST - INJECT ABSOLUTE DARK MODE (runs after ALL stylesheets)
+   ========================================================================== */
+
+add_action( 'wp_footer', 'learnsimply_inject_single_post_dark_mode', 10000 );
+
+function learnsimply_inject_single_post_dark_mode() {
+	if ( ! is_single() || get_post_type() !== 'post' ) {
+		return;
+	}
+	?>
+<style id="learnsimply-single-post-dark">
+/* === NUCLEAR SINGLE POST DARK MODE — injected last, beats everything === */
+
+/* 1. Universal reset: every element except images/SVG/video/iframe */
+body.single-post *:not(img):not(video):not(iframe):not(canvas):not(svg):not(path):not(circle):not(rect):not(polygon):not(line):not(polyline):not(use):not(defs):not(g):not(symbol):not(clipPath):not(linearGradient):not(stop) {
+	background-color: #0a0d14 !important;
+	border-color: rgba(255,255,255,0.07) !important;
+	color: #d0d5e8 !important;
+}
+
+/* 2. Headings → white */
+body.single-post h1, body.single-post h1 *,
+body.single-post h2, body.single-post h2 *,
+body.single-post h3, body.single-post h3 *,
+body.single-post h4, body.single-post h4 *,
+body.single-post h5, body.single-post h5 *,
+body.single-post h6, body.single-post h6 * {
+	color: #ffffff !important;
+	background-color: transparent !important;
+}
+
+/* 3. Transparent wrappers for media */
+body.single-post img,
+body.single-post figure,
+body.single-post .wp-block-image,
+body.single-post [class*="thumbnail"],
+body.single-post [class*="featured-image"] {
+	background-color: transparent !important;
+}
+
+/* 4. Promo banner - DO NOT TOUCH */
+body.single-post #learnsimply-promo-bar,
+body.single-post .learnsimply-promo-banner,
+body.single-post .learnsimply-promo-banner *,
+body.single-post .learnsimply-promo-banner-inner,
+body.single-post .learnsimply-promo-banner-inner * {
+	background-color: revert !important;
+	color: revert !important;
+	border-color: revert !important;
+}
+
+/* 5. Links */
+body.single-post a {
+	color: #4d85f5 !important;
+	background-color: transparent !important;
+}
+body.single-post a:hover {
+	color: #7aabff !important;
+}
+
+/* 6. Form fields */
+body.single-post input:not([type="submit"]):not([type="button"]),
+body.single-post textarea,
+body.single-post select {
+	background-color: #1b2133 !important;
+	color: #d0d5e8 !important;
+	border-color: rgba(255,255,255,0.15) !important;
+}
+
+/* 7. Submit buttons */
+body.single-post input[type="submit"],
+body.single-post button[type="submit"],
+body.single-post .edu-btn,
+body.single-post a.edu-btn,
+body.single-post .wp-block-button__link {
+	background-color: #4077f3 !important;
+	color: #ffffff !important;
+	border-color: #4077f3 !important;
+}
+
+/* 8. Code / pre */
+body.single-post code, body.single-post code *,
+body.single-post pre, body.single-post pre * {
+	background-color: #1b2133 !important;
+	color: #e2e8f0 !important;
+}
+
+/* 9. Blockquote */
+body.single-post blockquote, body.single-post blockquote * {
+	background-color: #111827 !important;
+	border-color: #4077f3 !important;
+	color: #c0c8de !important;
+}
+</style>
+	<?php
+}
+
+/* ==========================================================================
    BOOK PRODUCT METABOX
    ========================================================================== */
 

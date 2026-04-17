@@ -521,92 +521,17 @@ li[class*="course-lesson"] a {
 }
 
 /* ==========================================================================
-   SINGLE BLOG POST - ABSOLUTE NUCLEAR DARK THEME
-   Uses universal selector * to override everything including inline styles
+   SINGLE BLOG POST - DARK THEME (fallback layer — footer inject is primary)
    ========================================================================== */
 
-/* ── STEP 1: Every single element gets dark background ─────────────────── */
-body.single-post *:not(img):not(svg):not(path):not(circle):not(rect):not(line):not(polygon):not(polyline):not(video):not(iframe):not(canvas) {
-    background-color: #0a0d14 !important;
-    border-color: rgba(255, 255, 255, 0.07) !important;
+/* Promo bar should NEVER be touched by single-post dark mode */
+body.single-post #learnsimply-promo-bar,
+body.single-post .learnsimply-promo-banner,
+body.single-post .learnsimply-promo-banner *,
+body.single-post .learnsimply-promo-banner-inner,
+body.single-post .learnsimply-promo-banner-inner * {
+    all: revert !important;
 }
-
-/* ── STEP 2: Every text node gets light color ───────────────────────────── */
-body.single-post *:not(img):not(svg):not(path) {
-    color: #d0d5e8 !important;
-}
-
-/* ── STEP 3: Headings → bright white ────────────────────────────────────── */
-body.single-post h1, body.single-post h1 *,
-body.single-post h2, body.single-post h2 *,
-body.single-post h3, body.single-post h3 *,
-body.single-post h4, body.single-post h4 *,
-body.single-post h5, body.single-post h5 *,
-body.single-post h6, body.single-post h6 * {
-    color: #ffffff !important;
-}
-
-/* ── STEP 4: Images / media → transparent bg ────────────────────────────── */
-body.single-post img,
-body.single-post svg,
-body.single-post video,
-body.single-post iframe,
-body.single-post figure,
-body.single-post .wp-block-image {
-    background-color: transparent !important;
-}
-
-/* ── STEP 5: Restore blue buttons ───────────────────────────────────────── */
-body.single-post .edu-btn,
-body.single-post a.edu-btn,
-body.single-post button[type="submit"],
-body.single-post input[type="submit"],
-body.single-post .wp-block-button__link,
-body.single-post [class*="btn-primary"],
-body.single-post [class*="edu-btn"] {
-    background-color: #4077f3 !important;
-    color: #ffffff !important;
-    border-color: #4077f3 !important;
-}
-
-/* ── STEP 6: Form fields ────────────────────────────────────────────────── */
-body.single-post input:not([type="submit"]):not([type="button"]),
-body.single-post textarea,
-body.single-post select {
-    background-color: #1b2133 !important;
-    color: #d0d5e8 !important;
-    border-color: rgba(255, 255, 255, 0.15) !important;
-}
-
-/* ── STEP 7: Links ──────────────────────────────────────────────────────── */
-body.single-post a {
-    color: #4d85f5 !important;
-    background-color: transparent !important;
-}
-body.single-post a:hover {
-    color: #7aabff !important;
-}
-
-/* ── STEP 8: Code blocks ─────────────────────────────────────────────────── */
-body.single-post code,
-body.single-post pre,
-body.single-post pre * {
-    background-color: #1b2133 !important;
-    color: #e2e8f0 !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-/* ── STEP 9: Blockquote ──────────────────────────────────────────────────── */
-body.single-post blockquote,
-body.single-post blockquote * {
-    background-color: #111827 !important;
-    border-color: #4077f3 !important;
-    color: #c0c8de !important;
-}
-
-/* ── 14. Code blocks ────────────────────────────────────────────────────── */
-body.single-post code,
-body.single-post pre,
 body.single-post pre code {
     background-color: #1b2133 !important;
     color: #e2e8f0 !important;
