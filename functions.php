@@ -1785,45 +1785,9 @@ body.single-post blockquote, body.single-post blockquote * {
    PROMO BANNER RESTORE — exact values from promo-banner/style.css
    Must come AFTER the nuclear rule to win the specificity war
    ================================================================ */
-body.single-post .learnsimply-promo-banner {
-	background-color: #0a0d14 !important;
-}
-body.single-post .learnsimply-promo-banner-inner {
-	background-color: #141924 !important;
-	border-top: 1px solid rgba(255,255,255,0.08) !important;
-	border-bottom: 1px solid rgba(255,255,255,0.08) !important;
-}
-body.single-post .learnsimply-promo-content,
-body.single-post .learnsimply-promo-text-section,
-body.single-post .learnsimply-promo-text-line,
-body.single-post .learnsimply-promo-countdown,
-body.single-post .learnsimply-promo-timer-unit {
-	background-color: transparent !important;
-	border-color: transparent !important;
-}
-body.single-post .learnsimply-promo-text-primary {
-	color: #ffffff !important;
-}
-body.single-post .learnsimply-promo-text-secondary,
-body.single-post .learnsimply-promo-timer-number,
-body.single-post .learnsimply-promo-timer-separator,
-body.single-post .learnsimply-promo-highlight {
-	color: #4077f3 !important;
-}
-body.single-post .learnsimply-promo-timer-label {
-	color: #8893b0 !important;
-}
-body.single-post .learnsimply-promo-timer-box {
-	background-color: #0a0d14 !important;
-	border: 1px solid rgba(255,255,255,0.08) !important;
-}
-body.single-post .learnsimply-promo-cta-btn,
-body.single-post .learnsimply-promo-cta-btn * {
-	background-color: #4077f3 !important;
-	border-color: #4077f3 !important;
-}
-body.single-post .learnsimply-promo-cta-text {
-	color: #ffffff !important;
+body.single-post .learnsimply-promo-banner,
+body.single-post .learnsimply-promo-banner * {
+	display: none !important;
 }
 </style>
 	<?php
