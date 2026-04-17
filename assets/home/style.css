@@ -480,5 +480,10 @@
 		width: 20px;
 		height: 20px;
 	}
+
+	/* Hide hero side image on mobile */
+	.hero-wrapper .side-image-container {
+		display: none !important;
+	}
 }
 
