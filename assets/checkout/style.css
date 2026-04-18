@@ -817,3 +817,22 @@ body.woocommerce-checkout body,
         font-size: 14px !important;
     }
 }
+
+/* Force payment method label to break into two lines for credit card */
+.woocommerce-checkout #payment ul.payment_methods li label {
+    /* Allow breaking anywhere for long Arabic text */
+    white-space: normal !important;
+    /* Optional: set max-width for better wrapping */
+    max-width: 200px;
+    /* Optional: center text if needed */
+    text-align: center;
+}
+
+/* If you want to target only the credit card method, add a more specific selector if you know its class or id */
+/* Example (uncomment and adjust if you know the class):
+.woocommerce-checkout #payment ul.payment_methods li.payment_method_card label {
+    white-space: normal !important;
+    max-width: 200px;
+    text-align: center;
+}
+*/
