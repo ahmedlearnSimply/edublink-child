@@ -5537,7 +5537,7 @@ width: 100%;
   object-fit: contain;
 }
 
-/* Facebook icon - official Facebook branding */
+/* Facebook icon - صورة فقط بدون خلفية */
 .learnsimply-social-facebook {
   width: 47px;
   height: 48px;
@@ -5546,8 +5546,9 @@ width: 100%;
   align-items: center;
   justify-content: center;
   border: none;
-  background: #1877F2;
-  transition: background 0.2s ease;
+  background: transparent !important;
+  transition: none;
+  padding: 0;
 }
 
 .learnsimply-social-facebook:hover {
@@ -5556,6 +5557,9 @@ width: 100%;
 
 .learnsimply-social-facebook .learnsimply-social-image {
   display: block;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
 }
 
 .learnsimply-social-facebook .learnsimply-facebook-svg {
