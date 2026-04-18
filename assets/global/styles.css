@@ -5618,18 +5618,18 @@ width: 100%;
 .learnsimply-footer-bottom {
   display: flex;
   flex-direction: column;
-  gap: 23px;
-  align-items: center; /* center the bottom content */
-  padding-top: 23px;
+  gap: 13px;
+  align-items: center;
+  padding-top: 16px;
   border-top: 1px solid rgba(153, 158, 178, 0.1);
 }
 
 .learnsimply-footer-legal {
   display: flex;
-  gap: 15px;
+  gap: 10px;
   font-size: 14px;
   letter-spacing: -0.28px;
-  justify-content: center; /* center links horizontally */
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -5657,12 +5657,12 @@ width: 100%;
 }
 
 .learnsimply-payment-methods {
-  text-align: center; /* center payment section */
+  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
   direction: rtl;
-  align-items: center; /* center children */
+  align-items: center;
 }
 
 .learnsimply-payment-title {
@@ -5674,7 +5674,7 @@ width: 100%;
 
 .learnsimply-payment-logos {
   display: flex;
-  gap: 20px; /* center logos */
+  gap: 14px;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
