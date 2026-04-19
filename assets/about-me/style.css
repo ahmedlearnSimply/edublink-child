@@ -5999,6 +5999,8 @@ width: 100%;
   margin-left: -10px;
   border: 2px solid #1a1d24;
   object-fit: cover;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
 }
 
 .avatar:first-child {
@@ -6019,6 +6021,8 @@ width: 100%;
   font-weight: bold;
   color: #000 !important;
   margin-left: -10px;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
 }
 
 /* التقييم */
