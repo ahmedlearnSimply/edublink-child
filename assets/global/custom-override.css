@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Global Custom Override CSS
  * 
  * This file is loaded last on all pages and can override any CSS.
@@ -724,10 +724,14 @@ body.blog #secondary.widget-area {
     margin-top: 50px !important;
 }
 
+body.archive .eb-sidebar-widget,
+body.blog .eb-sidebar-widget,
 body.archive .eb-sidebar-widget .widget-area-wrapper,
 body.blog .eb-sidebar-widget .widget-area-wrapper {
     background-color: transparent !important;
     padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 body.archive .widget-area .widget,
