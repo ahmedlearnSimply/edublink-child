@@ -5986,21 +5986,23 @@ width: 100%;
 
 /* صور الطلاب */
 .students-avatars {
-  display: flex;
-  align-items: center;
-  position: relative;
-  direction: ltr;
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+  direction: ltr !important;
+  flex-shrink: 0 !important;
+  min-width: max-content !important;
 }
 
 .avatar {
-  width: 37px;
-  height: 37px;
-  border-radius: 50%;
+  width: 37px !important;
+  height: 37px !important;
+  border-radius: 50% !important;
   margin-left: -10px;
   border: 2px solid #1a1d24;
-  object-fit: cover;
-  flex-shrink: 0;
-  aspect-ratio: 1 / 1;
+  object-fit: cover !important;
+  flex-shrink: 0 !important;
+  aspect-ratio: 1 / 1 !important;
 }
 
 .avatar:first-child {
@@ -6008,21 +6010,21 @@ width: 100%;
 }
 
 .avatar-badge {
-  width: 37px;
-  height: 37px;
-  border-radius: 50%;
-  background: #ffce31;
+  width: 37px !important;
+  height: 37px !important;
+  border-radius: 50% !important;
+  background: #ffce31 !important;
   border: 2px solid #26292e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   font-size: 12px;
   transform: scale(0.65);
   font-weight: bold;
   color: #000 !important;
   margin-left: -10px;
-  flex-shrink: 0;
-  aspect-ratio: 1 / 1;
+  flex-shrink: 0 !important;
+  aspect-ratio: 1 / 1 !important;
 }
 
 /* التقييم */
@@ -6059,11 +6061,12 @@ width: 100%;
 /* وصف الكورس */
 .course-description {
   font-size: 18px;
-  line-height: 2;
+  line-height: 1.8;
   text-align: right;
   width: 100%;
   color: #ffffff;
   font-weight: 400;
+  white-space: pre-line;
 }
 
 /* استجابة للشاشات الصغيرة */

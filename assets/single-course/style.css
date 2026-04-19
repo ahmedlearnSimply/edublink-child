@@ -88,6 +88,8 @@
   align-items: center;
   position: relative;
   direction: ltr;
+  flex-shrink: 0 !important;
+  min-width: max-content !important;
 }
 
 .avatar {
@@ -159,11 +161,12 @@
 /* وصف الكورس */
 .course-description {
   font-size: 18px;
-  line-height: 2;
+  line-height: 1.8;
   text-align: right;
   width: 100%;
   color: #ffffff;
   font-weight: 400;
+  white-space: pre-line;
 }
 
 /* استجابة للشاشات الصغيرة */

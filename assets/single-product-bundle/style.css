@@ -3087,9 +3087,11 @@
 }
 
 .learnsimply-students-avatars {
-  display: flex;
-  align-items: center;
-  position: relative;
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+  min-width: max-content !important;
 }
 
 .learnsimply-student-avatar {
@@ -9539,10 +9541,12 @@ width: 100%;
 
 /* صور الطلاب */
 .students-avatars {
-  display: flex;
-  align-items: center;
-  position: relative;
-  direction: ltr;
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+  direction: ltr !important;
+  flex-shrink: 0 !important;
+  min-width: max-content !important;
 }
 
 .avatar {
@@ -9612,11 +9616,12 @@ width: 100%;
 /* وصف الكورس */
 .course-description {
   font-size: 18px;
-  line-height: 2;
+  line-height: 1.8;
   text-align: right;
   width: 100%;
   color: #ffffff;
   font-weight: 400;
+  white-space: pre-line;
 }
 
 /* عناوين وعناصر داخل وصف الكورس */

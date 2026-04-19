@@ -191,7 +191,9 @@
 
             <!-- Product description -->
             <div class="course-description">
-              {{ product_excerpt ?: product_content|striptags|slice(0, 200) ~ '...' }}
+              {% set descText = product_excerpt ?: product_content|striptags %}
+              {# Inject newlines before emojis if not already there #}
+              {{ descText|replace({'1️⃣': '\n1️⃣', '2️⃣': '\n2️⃣', '3️⃣': '\n3️⃣', '4️⃣': '\n4️⃣', '5️⃣': '\n5️⃣', '6️⃣': '\n6️⃣', '7️⃣': '\n7️⃣', '8️⃣': '\n8️⃣', '9️⃣': '\n9️⃣', '🔟': '\n🔟'})|raw }}
             </div>
           </div>
         </div>
