@@ -770,3 +770,15 @@ body.blog .widget_categories ul li a {
     color: #ffffff !important;
 }
 
+
+/* Reverse order of category name and count in sidebar */
+body.archive .widget_categories ul li,
+body.blog .widget_categories ul li {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    text-align: right !important;
+    width: 100% !important;
+    direction: rtl !important;
+}
+
