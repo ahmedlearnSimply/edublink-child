@@ -1,4 +1,4 @@
-﻿/* ===== ROOT VARIABLES ===== */
+/* ===== ROOT VARIABLES ===== */
 :root {
   --learnsimply-primary-blue: #4077f3;
   --primary: #4077f3;
@@ -6468,9 +6468,10 @@ width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff !important;
-  font-family: "IBM Plex Sans Arabic";
-  font-size: 7px;
+  color: #000 !important;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-size: 12px;
+  transform: scale(0.65);
   font-style: normal;
   font-weight: 600;
   line-height: normal;

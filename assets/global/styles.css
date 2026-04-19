@@ -1,4 +1,4 @@
-﻿/* ===== Google Fonts Import ===== */
+/* ===== Google Fonts Import ===== */
 /* IBM Plex Sans Arabic loaded via wp_enqueue_style in functions.php (edublink_child_enqueue_fonts) */
 
 /* ===== ROOT VARIABLES ===== */
@@ -6551,9 +6551,10 @@ width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff !important;
-  font-family: "IBM Plex Sans Arabic";
-  font-size: 7px;
+  color: #000 !important;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-size: 12px;
+  transform: scale(0.65);
   font-style: normal;
   font-weight: 600;
   line-height: normal;
