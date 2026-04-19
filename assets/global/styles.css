@@ -9881,14 +9881,14 @@ width: 100%;
   }
 
   .avatar {
-    width: 32px;
-    height: 32px;
+    width: 32px !important;
+    height: 32px !important;
   }
 
   .avatar-badge {
-    width: 32px;
-    height: 32px;
-    font-size: 8px;
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 11px;
   }
 }
 

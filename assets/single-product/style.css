@@ -91,14 +91,14 @@
 }
 
 .avatar {
-  width: 37px;
-  height: 37px;
-  border-radius: 50%;
+  width: 37px !important;
+  height: 37px !important;
+  border-radius: 50% !important;
   margin-left: -10px;
   border: 2px solid #1a1d24;
-  object-fit: cover;
-  flex-shrink: 0;
-  aspect-ratio: 1 / 1;
+  object-fit: cover !important;
+  flex-shrink: 0 !important;
+  aspect-ratio: 1 / 1 !important;
 }
 
 .avatar:first-child {
@@ -106,21 +106,21 @@
 }
 
 .avatar-badge {
-  width: 37px;
-  height: 37px;
-  border-radius: 50%;
-  background: #ffce31;
+  width: 37px !important;
+  height: 37px !important;
+  border-radius: 50% !important;
+  background: #ffce31 !important;
   border: 2px solid #26292e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   font-size: 12px;
   transform: scale(0.65);
   font-weight: bold;
   color: #000 !important;
   margin-left: -10px;
-  flex-shrink: 0;
-  aspect-ratio: 1 / 1;
+  flex-shrink: 0 !important;
+  aspect-ratio: 1 / 1 !important;
 }
 
 /* Rating */
@@ -589,14 +589,14 @@
   }
 
   .avatar {
-    width: 32px;
-    height: 32px;
+    width: 32px !important;
+    height: 32px !important;
   }
 
   .avatar-badge {
-    width: 32px;
-    height: 32px;
-    font-size: 8px;
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 11px;
   }
 }
 

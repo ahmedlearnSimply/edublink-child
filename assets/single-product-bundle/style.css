@@ -3093,12 +3093,14 @@
 }
 
 .learnsimply-student-avatar {
-  width: 37px;
-  height: 37px;
-  border-radius: 50%;
+  width: 37px !important;
+  height: 37px !important;
+  border-radius: 50% !important;
   border: 1px solid white;
   margin-left: -10px;
-  object-fit: cover;
+  object-fit: cover !important;
+  flex-shrink: 0 !important;
+  aspect-ratio: 1 / 1 !important;
 }
 
 .learnsimply-student-avatar:first-child {
@@ -3106,18 +3108,20 @@
 }
 
 .learnsimply-students-count {
-  background: #ffce31;
-  color: white;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 9px;
+  background: #ffce31 !important;
+  color: #000 !important;
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 11px;
   font-weight: 600;
   border: 2px solid white;
   margin-left: -10px;
+  flex-shrink: 0 !important;
+  aspect-ratio: 1 / 1 !important;
 }
 
 .learnsimply-students-label {
@@ -6427,20 +6431,24 @@ width: 100%;
 
 .student-avatar {
   position: absolute;
-  width: 37px;
-  height: 37px;
+  width: 37px !important;
+  height: 37px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
   transform: scaleY(-1) rotate(180deg);
 }
 
 .student-avatar-1 {
   left: 65.05px;
   top: 0;
-  width: 38px;
+  width: 38px !important;
+  height: 38px !important;
 }
 .student-avatar-2 {
   left: 45.05px;
   top: 0;
-  width: 38px;
+  width: 38px !important;
+  height: 38px !important;
 }
 .student-avatar-3 {
   left: 25.05px;
@@ -9538,14 +9546,14 @@ width: 100%;
 }
 
 .avatar {
-  width: 37px;
-  height: 37px;
-  border-radius: 50%;
+  width: 37px !important;
+  height: 37px !important;
+  border-radius: 50% !important;
   margin-left: -10px;
   border: 2px solid #1a1d24;
-  object-fit: cover;
-  flex-shrink: 0;
-  aspect-ratio: 1 / 1;
+  object-fit: cover !important;
+  flex-shrink: 0 !important;
+  aspect-ratio: 1 / 1 !important;
 }
 
 .avatar:first-child {
@@ -9553,21 +9561,21 @@ width: 100%;
 }
 
 .avatar-badge {
-  width: 37px;
-  height: 37px;
-  border-radius: 50%;
-  background: #ffce31;
+  width: 37px !important;
+  height: 37px !important;
+  border-radius: 50% !important;
+  background: #ffce31 !important;
   border: 2px solid #26292e;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   font-size: 12px;
   transform: scale(0.65);
   font-weight: bold;
   color: #000 !important;
   margin-left: -10px;
-  flex-shrink: 0;
-  aspect-ratio: 1 / 1;
+  flex-shrink: 0 !important;
+  aspect-ratio: 1 / 1 !important;
 }
 
 /* التقييم */
@@ -9866,14 +9874,14 @@ width: 100%;
   }
 
   .avatar {
-    width: 32px;
-    height: 32px;
+    width: 32px !important;
+    height: 32px !important;
   }
 
   .avatar-badge {
-    width: 32px;
-    height: 32px;
-    font-size: 8px;
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 11px;
   }
 }
 
