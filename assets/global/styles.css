@@ -1275,6 +1275,7 @@ table, th, td, tr,
   left: 60px;
   top: 56px;
   width: 634px;
+  transform: translateY(40px);
 }
 
 .layer-image img {

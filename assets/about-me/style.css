@@ -4564,6 +4564,7 @@ width: 100%;
     aspect-ratio: 634/786;
     left: 0;
     top: 0;
+    transform: translateY(40px);
   }
 
   .layer-image img {
