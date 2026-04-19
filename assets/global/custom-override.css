@@ -739,3 +739,10 @@ body.blog .widget-area .widget {
     margin-bottom: 30px !important;
 }
 
+
+/* Fix for broken icon fonts due to IBM Plex global override */
+i[class^="icon-"], i[class*=" icon-"],
+i[class^="icon-"]::before, i[class*=" icon-"]::before {
+    font-family: 'edublink', 'icomoon', 'FontAwesome', 'tutor' !important;
+}
+
