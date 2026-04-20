@@ -861,4 +861,47 @@ body.blog .post-meta {
     }
 }
 
+/* ==========================================================================
+   CERTIFICATE SECTION - MOBILE RESPONSIVENESS OVERRIDES
+   ========================================================================== */
+
+/* Optimization for the certificate section title to fix overlapping text on mobile */
+@media (max-width: 480px) {
+    .learnsimply-certificate-title {
+        font-size: 32px !important;
+        line-height: 1.4 !important; /* Fixed overlapping by increasing line-height */
+        letter-spacing: normal !important;
+        margin-bottom: 20px !important;
+        text-align: center !important; /* Centered for a cleaner mobile layout */
+        word-break: break-word !important;
+    }
+    
+    .learnsimply-certificate-description {
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        text-align: center !important;
+        margin-bottom: 25px !important;
+    }
+
+    .learnsimply-certificate-cta-button {
+        margin-inline: auto !important;
+        display: block !important;
+        width: 100% !important;
+        max-width: 320px !important;
+        text-align: center !important;
+    }
+
+    .learnsimply-certificate-features {
+        margin-top: 30px !important;
+    }
+}
+
+/* Further reduction for very small screens */
+@media (max-width: 380px) {
+    .learnsimply-certificate-title {
+        font-size: 26px !important;
+    }
+}
+
+
 
