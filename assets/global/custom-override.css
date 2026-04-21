@@ -904,4 +904,15 @@ body.blog .post-meta {
 }
 
 
+/* ==========================================================================
+   LESSON ATTACHMENT CARD - BACKGROUND COLOR OVERRIDE
+   ========================================================================== */
+
+/* ملفات التمرين (tutor-course-attachment) - تغيير خلفية الكارد من الأبيض إلى الأزرق */
+.tutor-course-attachment.tutor-card.tutor-card-sm,
+.tutor-course-attachment.tutor-card,
+.tutor-card.tutor-course-attachment {
+    background-color: #4077f3 !important;
+    border-color: #4077f3 !important;
+}
 
