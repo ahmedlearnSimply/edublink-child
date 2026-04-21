@@ -10,7 +10,7 @@
 /* ============================================
    Home Page Styles
    ============================================ */
-@import url('./cta-section.css');
+
 .home-page-greeting {
 	color: red;
 }
