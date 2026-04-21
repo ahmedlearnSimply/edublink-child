@@ -225,8 +225,9 @@
 .learnsimply-cta-card-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
+  background: #1b2133;
 }
 
 .learnsimply-cta-card-body {
