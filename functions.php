@@ -1715,8 +1715,64 @@ function edublink_child_lesson_sidebar_dark_mode() {
 	.tutor-course-spotlight-sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
 	.tutor-course-spotlight-sidebar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
 	</style>
+<script>
+	(function(){
+		var DC = '#8893b0';
+		var AC = '#4077f3';
+		var SELS = '.tutor-course-spotlight-sidebar, .tutor-course-topics-sidebar, .tutor-lesson-sidebar';
+		var isRunning = false;
 
-	<script>
+		function fixIcons(){
+			if(isRunning) return;
+			isRunning = true;
+			var sidebars = document.querySelectorAll(SELS);
+			sidebars.forEach(function(sb){
+				sb.querySelectorAll('svg').forEach(function(svg){
+					var isActive = svg.closest('.is-active, .tutor-active, .active');
+					var c = isActive ? AC : DC;
+					svg.style.fill = c;
+					svg.style.color = c;
+					svg.querySelectorAll('path, rect, circle').forEach(function(s){
+						s.style.fill = c;
+					});
+				});
+				sb.querySelectorAll('i, [class^="tutor-icon-"]').forEach(function(el){
+					var isActive = el.closest('.is-active, .tutor-active, .active');
+					el.style.color = isActive ? AC : DC;
+				});
+			});
+			isRunning = false;
+		}
+
+		document.addEventListener('DOMContentLoaded', fixIcons);
+		window.addEventListener('load', function(){
+			fixIcons();
+			setTimeout(fixIcons, 1000);
+		});
+
+		var timeout;
+		var obs = new MutationObserver(function(mutations){
+			var dominated = mutations.some(function(m){
+				return m.type === 'childList' ||
+					(m.type === 'attributes' && m.attributeName === 'class');
+			});
+			if(!dominated) return;
+			clearTimeout(timeout);
+			timeout = setTimeout(fixIcons, 100);
+		});
+		if(document.body){
+			obs.observe(document.body, {
+				childList: true, subtree: true, attributes: true,
+				attributeFilter: ['class']
+			});
+		}
+
+		document.addEventListener('click', function(){
+			setTimeout(fixIcons, 100);
+		});
+	})();
+	</script>
+	<!-- <script>
 	(function(){
 		var DC = '#8893b0';
 		var AC = '#4077f3';
@@ -1789,7 +1845,7 @@ function edublink_child_lesson_sidebar_dark_mode() {
 			setTimeout(fixIcons, 800);
 		});
 	})();
-	</script>
+	</script> -->
 	<?php
 }
 add_action( 'wp_footer', 'edublink_child_lesson_sidebar_dark_mode', 99999 );

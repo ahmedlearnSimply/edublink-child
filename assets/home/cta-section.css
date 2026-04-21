@@ -1,0 +1,436 @@
+/* ==========================================================
+   CTA SECTION — هياكل البيانات
+   Location: /assets/home/cta-section.css
+   ========================================================== */
+
+/* ── Section wrapper ── */
+.learnsimply-cta-section {
+  padding: 0;
+}
+
+.learnsimply-cta-section .learnsimply-section-container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* ── Main wrapper (the dark card) ── */
+.learnsimply-cta-wrapper {
+  position: relative;
+  background: #0d1220;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 48px 40px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  direction: rtl;
+}
+
+/* ── Glow effects ── */
+.learnsimply-cta-glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.learnsimply-cta-glow-1 {
+  background: #4077f3;
+  top: -100px;
+  right: -50px;
+}
+
+.learnsimply-cta-glow-2 {
+  background: #f34077;
+  bottom: -150px;
+  left: -50px;
+  opacity: 0.08;
+}
+
+/* ── Content (right side in RTL) ── */
+.learnsimply-cta-content {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Badge ── */
+.learnsimply-cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(64, 119, 243, 0.12);
+  border: 1px solid rgba(64, 119, 243, 0.3);
+  border-radius: 100px;
+  padding: 6px 16px;
+  margin-bottom: 12px;
+}
+
+.learnsimply-cta-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4077f3;
+  animation: learnsimply-cta-pulse 2s infinite;
+}
+
+@keyframes learnsimply-cta-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.learnsimply-cta-badge-text {
+  color: #4077f3;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+/* ── Title ── */
+.learnsimply-cta-title {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0 0 12px;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+.learnsimply-cta-title span {
+  color: #4077f3;
+}
+
+/* ── Description ── */
+.learnsimply-cta-desc {
+  color: #8893b0;
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 0 0 24px;
+  max-width: 480px;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+/* ── Features grid ── */
+.learnsimply-cta-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.learnsimply-cta-feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 8px 14px;
+}
+
+.learnsimply-cta-feature-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.learnsimply-cta-feature span {
+  color: #c8cfe0;
+  font-size: 13px;
+  font-weight: 400;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+/* ── Buttons ── */
+.learnsimply-cta-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.learnsimply-cta-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #4077f3, #2563eb);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+.learnsimply-cta-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(64, 119, 243, 0.3);
+  color: #fff;
+  text-decoration: none;
+}
+
+.learnsimply-cta-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: #8893b0;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 14px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+.learnsimply-cta-btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ── Course card (left side in RTL) ── */
+.learnsimply-cta-card-wrapper {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 300px;
+}
+
+.learnsimply-cta-card {
+  background: #141924;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.learnsimply-cta-card-img {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: #1b2133;
+}
+
+.learnsimply-cta-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: #1b2133;
+}
+
+.learnsimply-cta-card-body {
+  padding: 16px;
+}
+
+.learnsimply-cta-card-title {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 12px;
+  line-height: 1.5;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+.learnsimply-cta-price-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.learnsimply-cta-discount-badge {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+.learnsimply-cta-price-new {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+.learnsimply-cta-price-old {
+  color: #6b7394;
+  font-size: 14px;
+  text-decoration: line-through;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+.learnsimply-cta-card-stats {
+  display: flex;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.learnsimply-cta-stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.learnsimply-cta-stat span {
+  color: #6b7394;
+  font-size: 12px;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+/* ── Tablet (1024px and below) ── */
+@media (max-width: 1024px) {
+  .learnsimply-cta-wrapper {
+    padding: 40px 32px;
+    gap: 32px;
+  }
+
+  .learnsimply-cta-title {
+    font-size: 24px;
+  }
+
+  .learnsimply-cta-card-wrapper {
+    width: 260px;
+  }
+
+  .learnsimply-cta-card-img {
+    height: 150px;
+  }
+}
+
+/* ── Small tablet / large mobile (768px and below) ── */
+@media (max-width: 768px) {
+  .learnsimply-cta-wrapper {
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 28px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .learnsimply-cta-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .learnsimply-cta-title {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .learnsimply-cta-desc {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .learnsimply-cta-features {
+    justify-content: center;
+  }
+
+  .learnsimply-cta-buttons {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .learnsimply-cta-btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .learnsimply-cta-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .learnsimply-cta-card-wrapper {
+    width: 100%;
+    max-width: 340px;
+    order: -1;
+  }
+
+  .learnsimply-cta-card-img {
+    height: 180px;
+  }
+}
+
+/* ── Mobile (480px and below) ── */
+@media (max-width: 480px) {
+  .learnsimply-cta-section .learnsimply-section-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .learnsimply-cta-wrapper {
+    padding: 24px 18px;
+    border-radius: 16px;
+    gap: 20px;
+  }
+
+  .learnsimply-cta-title {
+    font-size: 20px;
+  }
+
+  .learnsimply-cta-desc {
+    font-size: 14px;
+  }
+
+  .learnsimply-cta-features {
+    gap: 8px;
+  }
+
+  .learnsimply-cta-feature {
+    padding: 6px 10px;
+  }
+
+  .learnsimply-cta-feature span {
+    font-size: 12px;
+  }
+
+  .learnsimply-cta-btn-primary {
+    font-size: 14px;
+    padding: 12px 24px;
+  }
+
+  .learnsimply-cta-btn-secondary {
+    font-size: 13px;
+    padding: 12px 16px;
+  }
+
+  .learnsimply-cta-card-wrapper {
+    max-width: 100%;
+  }
+
+  .learnsimply-cta-card-img {
+    height: 160px;
+  }
+
+  .learnsimply-cta-price-new {
+    font-size: 18px;
+  }
+
+  .learnsimply-cta-glow {
+    width: 250px;
+    height: 250px;
+  }
+}
