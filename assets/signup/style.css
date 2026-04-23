@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    SIGNUP / REGISTRATION PAGE — Premium Dark Theme v2
    LearnSimply (beta.learrnsimply.com)
 
@@ -579,28 +579,44 @@ body .page-content {
 
 
 /* ==========================================================================
-   14. CHECKBOX & AGREEMENT
+   14. CHECKBOX & AGREEMENT — Refined premium checkbox
    ========================================================================== */
 #tutor-registration-form input[type="checkbox"],
 .tutor-login-wrap input[type="checkbox"],
 .tutor-login-wrap input[type="radio"] {
-    width: 16px !important;
-    height: 16px !important;
+    -webkit-appearance: checkbox !important;
+    -moz-appearance: checkbox !important;
+    appearance: checkbox !important;
+    width: 18px !important;
+    height: 18px !important;
     accent-color: var(--sp-blue) !important;
-    border-radius: 4px !important;
     cursor: pointer !important;
-    margin-left: 8px !important;
+    margin-left: 10px !important;
+    margin-right: 0 !important;
     padding: 0 !important;
-    background: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    vertical-align: middle !important;
+    position: relative !important;
+    z-index: 5 !important;
 }
 
+/* Ensure the container for checkbox and label is well-spaced and clickable */
 .tutor-login-wrap .tutor-form-check,
-.tutor-login-wrap .tutor-d-flex.tutor-align-center {
+.tutor-login-wrap .tutor-d-flex.tutor-align-center,
+.tutor-login-wrap .tutor-login-remember-me {
     display: flex !important;
     align-items: center !important;
-    gap: 8px !important;
-    margin-bottom: 14px !important;
+    gap: 0 !important;
+    margin-bottom: 18px !important;
+    cursor: pointer !important;
+    user-select: none !important;
+}
+
+.tutor-login-wrap .tutor-form-check label,
+.tutor-login-wrap .tutor-login-remember-me label {
+    margin-bottom: 0 !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    color: var(--sp-white-soft) !important;
 }
 
 
