@@ -790,15 +790,21 @@ body.tutor-screen-frontend-dashboard .entry-content {
 }
 
 /* Tertiary buttons (like Details in Quiz Attempts) */
-.tutor-wrap.tutor-dashboard .tutor-btn-tertiary {
-    background: var(--db-blue) !important;
-    color: var(--db-white) !important;
+.tutor-wrap.tutor-dashboard .tutor-btn.tutor-btn-tertiary,
+.tutor-wrap.tutor-dashboard a.tutor-btn-tertiary,
+.tutor-wrap.tutor-dashboard button.tutor-btn-tertiary,
+.tutor-wrap.tutor-dashboard .tutor-btn-tertiary span,
+.tutor-wrap.tutor-dashboard .tutor-btn-tertiary i {
+    background-color: var(--db-blue) !important;
+    color: #ffffff !important;
     border: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .tutor-wrap.tutor-dashboard .tutor-btn-tertiary:hover {
-    background: #3366d9 !important;
-    color: var(--db-white) !important;
+    background-color: #3366d9 !important;
+    color: #ffffff !important;
 }
 
 /* Danger / delete buttons */
