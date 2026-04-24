@@ -2261,3 +2261,23 @@ function edublink_child_redirect_to_cart_after_add( $url ) {
     // Redirect to cart page after adding product
     return wc_get_cart_url();
 }
+
+/**
+ * Change 'Proceed to PayPal' button text to just 'Proceed'
+ */
+add_filter( 'woocommerce_order_button_text', 'learnsimply_change_checkout_button_text', 99 );
+function learnsimply_change_checkout_button_text( $button_text ) {
+    // Check for common variations
+    if ( strpos( $button_text, 'PayPal' ) !== false ) {
+        return 'Proceed';
+    }
+    return $button_text;
+}
+
+add_filter( 'gettext', 'learnsimply_change_paypal_text', 20, 3 );
+function learnsimply_change_paypal_text( $translated_text, $text, $domain ) {
+    if ( $text === 'Proceed to PayPal' ) {
+        return 'Proceed';
+    }
+    return $translated_text;
+}
