@@ -1470,3 +1470,77 @@ body.tutor-screen-frontend-dashboard .entry-content {
     background-color: #1a2232 !important;
     color: #ffffff !important;
 }
+
+/* ==========================================================
+   RETRIEVE PASSWORD PAGE - DARK THEME
+   ========================================================== */
+.tutor-dashboard-content-inner .woocommerce-ResetPassword,
+.tutor-dashboard-content-inner form.lost_password,
+.tutor-dashboard-content-inner .tutor-dashboard-content-inner > div:first-child:has(form),
+.tutor-dashboard-content-inner > div:has(form) {
+    background: #1a2232 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 20px !important;
+    padding: 40px !important;
+    color: #ffffff !important;
+    max-width: 650px !important;
+    margin: 40px auto !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+}
+
+.tutor-dashboard-content-inner .woocommerce-ResetPassword p,
+.tutor-dashboard-content-inner form.lost_password p,
+.tutor-dashboard-content-inner .woocommerce-ResetPassword label,
+.tutor-dashboard-content-inner form.lost_password label {
+    color: #d0d4e0 !important;
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+    margin-bottom: 12px !important;
+}
+
+.tutor-dashboard-content-inner .woocommerce-ResetPassword input.input-text,
+.tutor-dashboard-content-inner form.lost_password input.input-text {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border-radius: 12px !important;
+    padding: 14px 20px !important;
+    width: 100% !important;
+    outline: none !important;
+}
+
+.tutor-dashboard-content-inner .woocommerce-ResetPassword .button,
+.tutor-dashboard-content-inner form.lost_password .button,
+.tutor-dashboard-content-inner .woocommerce-ResetPassword button[type="submit"] {
+    background: #4077f3 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 14px 32px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.tutor-dashboard-content-inner .woocommerce-ResetPassword .button:hover {
+    background: #3568d4 !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Success/Info notices in password page */
+.tutor-dashboard-content-inner .woocommerce-message,
+.tutor-dashboard-content-inner .woocommerce-info {
+    background: rgba(24, 169, 99, 0.08) !important;
+    border: 1px solid rgba(24, 169, 99, 0.2) !important;
+    color: #ffffff !important;
+    border-radius: 14px !important;
+    padding: 20px 24px !important;
+    margin-bottom: 24px !important;
+    line-height: 1.6 !important;
+    text-align: right !important;
+}
+
+.tutor-dashboard-content-inner .woocommerce-message::before,
+.tutor-dashboard-content-inner .woocommerce-info::before {
+    color: #18a963 !important;
+}
