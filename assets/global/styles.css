@@ -13527,12 +13527,31 @@ button[name="reset_password"],
 .archive-header,
 .page-header,
 .woocommerce-products-header,
-.tutor-dashboard-header {
+.tutor-dashboard-header,
+.learnsimply-archive-section {
     margin-top: 65px !important; /* Minimal offset to clear fixed header */
     padding-top: 0 !important;   /* No internal top padding */
-    padding-bottom: 10px !important;
+    padding-bottom: 5px !important;
     min-height: 0 !important;
-    margin-bottom: 15px !important;
+    margin-bottom: 10px !important;
+}
+
+/* Drastically reduce internal container padding specifically for archives */
+.learnsimply-archive-section .learnsimply-section-container,
+.learnsimply-archive-section .learnsimply-section-header,
+.learnsimply-section-container[style*="margin-top"] {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+}
+
+/* Reduce gaps between title and search/filter boxes */
+.courses-filter-section,
+.shop-search-box,
+.unified-search-box {
+    margin-top: 10px !important;
+    margin-bottom: 20px !important;
 }
 
 /* Ensure the inner containers of breadcrumb areas don't add padding */
