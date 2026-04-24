@@ -151,7 +151,7 @@
 .course-title {
   font-size: 30px;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.6;
   text-align: right;
   width: 100%;
 }
@@ -159,7 +159,7 @@
 /* Course description */
 .course-description {
   font-size: 18px;
-  line-height: 1.8;
+  line-height: 2.2;
   text-align: right;
   width: 100%;
   color: #ffffff;
@@ -910,7 +910,7 @@
 .features-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .feature-item {
@@ -929,7 +929,7 @@
 .feature-text {
   color: #c8ccd8;
   font-size: 15px;
-  line-height: 2.0;
+  line-height: 2.4;
   flex: 1;
   text-align: right;
   margin: 0;
