@@ -13403,3 +13403,83 @@ iframe[id*="profile_ifr"],
   }
 }
 /* ===== END: UNIFIED SEARCH BOX ===== */
+
+/* ──────────────────────────────────────────────────────────
+   GLOBAL RETRIEVE PASSWORD / LOST PASSWORD DARK THEME
+   ────────────────────────────────────────────────────────── */
+body.woocommerce-lost-password .woocommerce,
+body[class*="retrieve-password"] .woocommerce,
+body[class*="lost-password"] .woocommerce {
+    background: transparent !important;
+}
+
+/* Target the card specifically across different possible structures */
+.woocommerce-ResetPassword,
+form.lost_password,
+form.woocommerce-ResetPassword,
+.tutor-reset-password-form,
+body .tutor-dashboard-content-inner > div:has(form),
+body .tutor-wrap div:has(> form) {
+    background: #1a2232 !important;
+    background-color: #1a2232 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important;
+    padding: 60px 40px !important;
+    color: #ffffff !important;
+    max-width: 600px !important;
+    margin: 100px auto !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4) !important;
+    display: block !important;
+}
+
+.woocommerce-ResetPassword p,
+form.lost_password p,
+.woocommerce-ResetPassword label,
+form.lost_password label {
+    color: #d0d4e0 !important;
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+}
+
+.woocommerce-ResetPassword input.input-text,
+form.lost_password input.input-text {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important;
+    border-radius: 12px !important;
+    padding: 14px 20px !important;
+    width: 100% !important;
+    margin-top: 10px !important;
+    outline: none !important;
+}
+
+.woocommerce-ResetPassword .button,
+form.lost_password .button,
+button[name="reset_password"] {
+    background: #4077f3 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 15px 32px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    margin-top: 20px !important;
+}
+
+.woocommerce-ResetPassword .button:hover {
+    background: #3568d4 !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Notices/Messages */
+.woocommerce-message,
+.woocommerce-info {
+    background: rgba(24, 169, 99, 0.08) !important;
+    border: 1px solid rgba(24, 169, 99, 0.2) !important;
+    color: #ffffff !important;
+    border-radius: 14px !important;
+    padding: 20px 24px !important;
+    margin-bottom: 30px !important;
+    text-align: right !important;
+}
