@@ -954,8 +954,9 @@
 
 .main-product-image img {
   width: 100%;
-  height: 420px;
-  object-fit: cover;
+  height: 450px;
+  object-fit: contain;
+  background-color: rgba(255, 255, 255, 0.03);
   display: block;
   transition: transform 0.4s ease;
 }
@@ -994,7 +995,8 @@
 .gallery-image-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.02);
 }
 
 /* Product Badges */
@@ -3718,8 +3720,9 @@ background: linear-gradient(131deg, rgba(100, 84, 213, 0.20) -66.81%, rgba(100, 
 
 .main-product-image img {
   width: 100%;
-  height: 420px;
-  object-fit: cover;
+  height: 450px;
+  object-fit: contain;
+  background-color: rgba(255, 255, 255, 0.03);
   display: block;
   transition: transform 0.4s ease;
   border-radius: 20px;
@@ -3762,7 +3765,8 @@ background: linear-gradient(131deg, rgba(100, 84, 213, 0.20) -66.81%, rgba(100, 
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.02);
   border-radius: 10px;
   cursor: pointer;
   transition: opacity 0.3s ease;
@@ -3841,7 +3845,8 @@ background: linear-gradient(131deg, rgba(100, 84, 213, 0.20) -66.81%, rgba(100, 
 /* Responsive */
 @media (max-width: 768px) {
   .main-product-image img {
-    height: 280px;
+    height: 320px;
+    object-fit: contain;
   }
   
   .gallery-images {
