@@ -17,7 +17,36 @@
 		
 		// FAQ Accordion (if exists on page)
 		initFAQAccordion();
+		
+		// Smooth Scroll for anchor links
+		initSmoothScroll();
 	});
+
+	/**
+	 * Smooth Scroll for Anchor Links
+	 */
+	function initSmoothScroll() {
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function (e) {
+				e.preventDefault();
+				const targetId = this.getAttribute('href');
+				if (targetId === '#') return;
+				
+				const targetElement = document.querySelector(targetId);
+				if (targetElement) {
+					// Check if there is a sticky header to offset
+					const headerOffset = 90; 
+					const elementPosition = targetElement.getBoundingClientRect().top;
+					const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+					window.scrollTo({
+						top: offsetPosition,
+						behavior: 'smooth'
+					});
+				}
+			});
+		});
+	}
 
 	/**
 	 * Initialize Testimonials Slider
