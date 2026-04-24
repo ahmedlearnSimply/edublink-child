@@ -1004,10 +1004,12 @@ body.tutor-screen-frontend-dashboard .entry-content {
    17. EMPTY STATES
    ========================================================================== */
 .tutor-wrap.tutor-dashboard .tutor-empty-state,
-.tutor-wrap.tutor-dashboard .tutor-no-data-found {
+.tutor-wrap.tutor-dashboard .tutor-no-data-found,
+.tutor-wrap.tutor-dashboard .tutor-no-data-found *,
+.tutor-wrap.tutor-dashboard .tutor-empty-state * {
     text-align: center !important;
     padding: 60px 24px !important;
-    color: var(--db-gray) !important;
+    color: var(--db-white) !important;
 }
 
 .tutor-wrap.tutor-dashboard .tutor-empty-state img,
@@ -1033,8 +1035,10 @@ body.tutor-screen-frontend-dashboard .entry-content {
     text-align: center !important;
 }
 
-.tutor-wrap.tutor-dashboard .tutor-empty-state p {
-    color: var(--db-gray) !important;
+.tutor-wrap.tutor-dashboard .tutor-empty-state p,
+.tutor-wrap.tutor-dashboard .tutor-no-data-found .tutor-fs-6,
+.tutor-wrap.tutor-dashboard .tutor-empty-state .tutor-fs-6 {
+    color: var(--db-white) !important;
     font-size: 15px !important;
 }
 
