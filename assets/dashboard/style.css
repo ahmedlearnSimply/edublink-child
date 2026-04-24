@@ -1425,3 +1425,35 @@ body.tutor-screen-frontend-dashboard .entry-content {
 .tutor-wrap.tutor-dashboard .tutor-empty-state p {
     color: #ffffff !important;
 }
+
+/* WP Editor (About You) - Dark Theme Fix */
+.tutor-wrap.tutor-dashboard .wp-editor-wrap,
+.tutor-wrap.tutor-dashboard .wp-editor-container,
+.tutor-wrap.tutor-dashboard .wp-editor-tools {
+    background: var(--db-card-alt) !important;
+    border: 1px solid var(--db-border) !important;
+    border-radius: var(--db-radius-sm) !important;
+}
+
+.tutor-wrap.tutor-dashboard .wp-editor-area {
+    background: var(--db-card-alt) !important;
+    color: #ffffff !important;
+}
+
+.tutor-wrap.tutor-dashboard .quicktags-toolbar {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-bottom: 1px solid var(--db-border) !important;
+}
+
+.tutor-wrap.tutor-dashboard .quicktags-toolbar input {
+    background: transparent !important;
+    color: #ffffff !important;
+    border: 1px solid transparent !important;
+}
+
+/* Force dropdown options to be dark */
+.tutor-wrap.tutor-dashboard select,
+.tutor-wrap.tutor-dashboard select option {
+    background-color: #1a2232 !important; /* var(--db-card-alt) */
+    color: #ffffff !important;
+}
