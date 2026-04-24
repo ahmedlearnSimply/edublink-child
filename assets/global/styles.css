@@ -13131,19 +13131,30 @@ background: linear-gradient(131deg, rgba(100, 84, 213, 0.20) -66.81%, rgba(100, 
     color: #ffffff !important;
 }
 
-.quicktags-toolbar input,
-.wp-core-ui .button,
-.wp-core-ui .button-secondary {
+/* Ensure editor icons (Dashicons) are visible */
+.wp-core-ui .dashicons, 
+.wp-core-ui .dashicons-before:before,
+.mce-ico,
+.mce-i-dot {
+    font-family: dashicons !important;
+    color: #ffffff !important;
+    display: inline-block !important;
+}
+
+/* Force dark mode on editor iframe using filter */
+iframe[id*="bio_ifr"],
+iframe[id*="profile_ifr"],
+.mce-edit-area iframe {
+    filter: invert(1) hue-rotate(180deg) brightness(0.9);
+}
+
+.quicktags-toolbar input {
     background: rgba(255,255,255,0.1) !important;
     color: #ffffff !important;
     border: 1px solid rgba(255,255,255,0.1) !important;
     box-shadow: none !important;
     text-shadow: none !important;
-}
-
-body .wp-core-ui .dashicons, 
-body .wp-core-ui .dashicons-before:before {
-    color: #ffffff !important;
+    min-width: 30px !important;
 }
 
 @media (max-width: 768px) {
