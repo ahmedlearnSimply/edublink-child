@@ -736,6 +736,12 @@ body.tutor-screen-frontend-dashboard .entry-content {
     background: var(--db-blue-soft) !important;
 }
 
+/* Specific fix for image dimensions text in settings */
+.tutor-dashboard .tutor-dashboard-content #tutor_profile_cover_photo_editor #tutor_photo_meta_area > span > span,
+.tutor-dashboard .tutor-dashboard-content #tutor_profile_photo_editor #tutor_photo_meta_area > span > span {
+    color: white !important;
+}
+
 /* Checkboxes, radios */
 .tutor-wrap.tutor-dashboard input[type="checkbox"],
 .tutor-wrap.tutor-dashboard input[type="radio"] {
