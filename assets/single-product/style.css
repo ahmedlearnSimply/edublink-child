@@ -814,15 +814,15 @@
 .price-section {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
 .current-price {
   color: #4f8aff;
-  font-size: 26px;
-  font-weight: 700;
-  line-height: 1;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.4;
   margin: 0;
 }
 
@@ -846,7 +846,7 @@
 /* Action buttons */
 .action-buttons {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 .buy-button {
@@ -910,12 +910,12 @@
 .features-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .feature-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
 }
 
@@ -929,10 +929,11 @@
 .feature-text {
   color: #c8ccd8;
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.7;
   flex: 1;
   text-align: right;
   margin: 0;
+  padding-top: 1px;
 }
 
 /* Right-hand section */
