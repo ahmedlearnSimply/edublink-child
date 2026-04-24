@@ -925,10 +925,13 @@ body.tutor-screen-frontend-dashboard .entry-content {
 }
 
 /* Reviews page text color fixes */
-.tutor-wrap.tutor-dashboard .tutor-review-item,
-.tutor-wrap.tutor-dashboard .tutor-review-item .tutor-review-item-course,
-.tutor-wrap.tutor-dashboard .tutor-review-item .tutor-color-secondary,
-.tutor-wrap.tutor-dashboard .tutor-review-item-content {
+.tutor-wrap.tutor-dashboard .tutor-reviews-list .tutor-review-item,
+.tutor-wrap.tutor-dashboard .tutor-reviews-list .tutor-review-item-course,
+.tutor-wrap.tutor-dashboard .tutor-reviews-list .tutor-review-item-course *,
+.tutor-wrap.tutor-dashboard .tutor-reviews-list .tutor-review-item-content,
+.tutor-wrap.tutor-dashboard .tutor-reviews-list .tutor-review-item h4,
+.tutor-wrap.tutor-dashboard .tutor-reviews-list .tutor-review-item h4 a,
+.tutor-wrap.tutor-dashboard .tutor-reviews-list .tutor-color-secondary {
     color: var(--db-white) !important;
 }
 
