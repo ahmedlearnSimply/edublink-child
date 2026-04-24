@@ -915,8 +915,8 @@
 
 .feature-item {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  align-items: flex-start !important;
+  gap: 12px;
 }
 
 .feature-icon {
@@ -924,16 +924,17 @@
   height: 22px;
   flex-shrink: 0;
   display: block;
+  margin-top: 4px; /* Align icon better with first line of text */
 }
 
 .feature-text {
   color: #c8ccd8;
   font-size: 15px;
-  line-height: 2.4;
+  line-height: 2.8 !important;
   flex: 1;
   text-align: right;
-  margin: 0;
-  padding-top: 1px;
+  margin: 0 !important;
+  padding-top: 0;
 }
 
 /* Right-hand section */
