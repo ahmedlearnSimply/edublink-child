@@ -13149,30 +13149,37 @@ background: linear-gradient(131deg, rgba(100, 84, 213, 0.20) -66.81%, rgba(100, 
     border-color: rgba(255,255,255,0.1) !important;
 }
 
-/* Force dark mode on editor iframe to match site theme (#1a2232) */
+/* Force exact site color (#1a2232) on editor iframe using precise filter */
 iframe[id*="bio_ifr"],
 iframe[id*="profile_ifr"],
 .mce-edit-area iframe {
-    filter: invert(1) hue-rotate(190deg) brightness(0.6) contrast(1.1) !important;
+    filter: brightness(0) saturate(100%) invert(9%) sepia(18%) saturate(1814%) hue-rotate(185deg) brightness(91%) contrast(92%) !important;
 }
 
-/* Fix broken icons by using the site font for button text */
+/* Fix broken icons by forcing site font and resetting text properties */
 .wp-core-ui .button,
 .wp-core-ui .button-secondary,
 .quicktags-toolbar input,
+.quicktags-toolbar button,
 .mce-ico,
-.mce-btn button {
+.mce-btn button,
+.mce-btn i {
     font-family: "IBM Plex Sans Arabic", sans-serif !important;
     color: #ffffff !important;
     background: rgba(255,255,255,0.08) !important;
     border: 1px solid rgba(255,255,255,0.1) !important;
     text-shadow: none !important;
     font-weight: 600 !important;
+    text-indent: 0 !important;
+    text-transform: none !important;
+    font-size: 14px !important;
+    line-height: 1.2 !important;
 }
 
 .quicktags-toolbar input {
     min-width: 36px !important;
-    padding: 4px 8px !important;
+    padding: 6px 10px !important;
+    margin: 2px !important;
 }
 
 @media (max-width: 768px) {
