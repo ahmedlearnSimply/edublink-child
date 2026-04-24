@@ -1472,20 +1472,23 @@ body.tutor-screen-frontend-dashboard .entry-content {
 }
 
 /* ==========================================================
-   RETRIEVE PASSWORD PAGE - DARK THEME
+   RETRIEVE PASSWORD PAGE - DARK THEME (Aggressive)
    ========================================================== */
-.tutor-dashboard-content-inner .woocommerce-ResetPassword,
-.tutor-dashboard-content-inner form.lost_password,
-.tutor-dashboard-content-inner .tutor-dashboard-content-inner > div:first-child:has(form),
-.tutor-dashboard-content-inner > div:has(form) {
+body .tutor-dashboard-content-inner .woocommerce-ResetPassword,
+body .tutor-dashboard-content-inner form.lost_password,
+body .tutor-dashboard-content-inner > div:has(form),
+body .tutor-wrap form.lost_password,
+body .tutor-wrap .woocommerce-ResetPassword {
     background: #1a2232 !important;
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background-color: #1a2232 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
     border-radius: 20px !important;
-    padding: 40px !important;
+    padding: 50px 40px !important;
     color: #ffffff !important;
-    max-width: 650px !important;
-    margin: 40px auto !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+    max-width: 600px !important;
+    margin: 100px auto !important; /* Added more space from top and bottom */
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3) !important;
+    display: block !important;
 }
 
 .tutor-dashboard-content-inner .woocommerce-ResetPassword p,
