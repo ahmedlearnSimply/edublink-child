@@ -924,6 +924,14 @@ body.tutor-screen-frontend-dashboard .entry-content {
     background: var(--db-blue-soft) !important;
 }
 
+/* Reviews page text color fixes */
+.tutor-wrap.tutor-dashboard .tutor-review-item,
+.tutor-wrap.tutor-dashboard .tutor-review-item .tutor-review-item-course,
+.tutor-wrap.tutor-dashboard .tutor-review-item .tutor-color-secondary,
+.tutor-wrap.tutor-dashboard .tutor-review-item-content {
+    color: var(--db-white) !important;
+}
+
 .tutor-wrap.tutor-dashboard .tutor-ratings-stars .tutor-icon-star-line,
 .tutor-wrap.tutor-dashboard .tutor-ratings-stars .tutor-icon-star-bold,
 .tutor-wrap.tutor-dashboard .tutor-ratings-stars i {
