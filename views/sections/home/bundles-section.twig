@@ -138,18 +138,7 @@
 
             <div class="ls-bundle-visual">
               <div class="ls-bundle-covers">
-                {% if bundles is defined and bundles|length > 0 and bundles[0].thumbnail %}
-                  <div class="ls-bundle-cover ls-bundle-cover-1">
-                    <img src="{{ bundles[0].thumbnail }}" alt="Java Bundle">
-                  </div>
-                  <div class="ls-bundle-cover ls-bundle-cover-2">
-                    <img src="{{ bundles[0].thumbnail }}" alt="Java Bundle">
-                  </div>
-                  <div class="ls-bundle-cover ls-bundle-cover-3">
-                    <img src="{{ bundles[0].thumbnail }}" alt="Java Bundle">
-                  </div>
-                {% else %}
-                  <div class="ls-bundle-cover ls-bundle-cover-1">
+            <div class="ls-bundle-cover ls-bundle-cover-1">
                     <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a2744,#0d1832);display:flex;align-items:center;justify-content:center;font-size:13px;color:#4077f3;font-weight:600;text-align:center;padding:12px;font-family:'IBM Plex Sans Arabic',sans-serif">Java Basics<br><span style="font-size:11px;color:#6b7394;font-weight:400">Level One</span></div>
                   </div>
                   <div class="ls-bundle-cover ls-bundle-cover-2">
@@ -158,7 +147,6 @@
                   <div class="ls-bundle-cover ls-bundle-cover-3">
                     <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a2744,#0d1832);display:flex;align-items:center;justify-content:center;font-size:13px;color:#f0a030;font-weight:600;text-align:center;padding:12px;font-family:'IBM Plex Sans Arabic',sans-serif">PDF Book<br><span style="font-size:11px;color:#6b7394;font-weight:400">ملخصات</span></div>
                   </div>
-                {% endif %}
               </div>
 
               <div class="ls-bundle-stat ls-bundle-stat-1">
