@@ -8,14 +8,13 @@
     .ls-cta-glow-1{width:350px;height:350px;background:#4077f3;opacity:0.12;top:-80px;right:-40px}
     .ls-cta-glow-2{width:300px;height:300px;background:#f0a030;opacity:0.06;bottom:-120px;left:-60px}
     .ls-cta-top{position:relative;z-index:1;text-align:center;margin-bottom:32px}
-    .ls-cta-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);border-radius:100px;padding:6px 18px;margin-bottom:16px}
+    .ls-cta-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.25);border-radius:100px;padding:6px 18px;margin-bottom:16px;animation:ls-badge-pulse 2s ease-in-out infinite}
     .ls-cta-badge-fire{font-size:14px}
     .ls-cta-badge-text{color:#ef4444;font-size:13px;font-weight:600;font-family:"IBM Plex Sans Arabic",sans-serif}
     .ls-cta-title{color:#fff;font-size:30px;font-weight:700;line-height:1.6;margin:0 0 10px;font-family:"IBM Plex Sans Arabic",sans-serif}
     .ls-cta-title span{background:linear-gradient(135deg,#4077f3,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .ls-cta-subtitle{color:#8893b0;font-size:15px;line-height:1.7;margin:0 auto 28px;max-width:600px;font-family:"IBM Plex Sans Arabic",sans-serif}
     .ls-cta-timer{display:flex;justify-content:center;gap:12px;margin-bottom:32px}
-    {# FOMO: added transition to timer-box and timer-num for smooth urgency color change #}
     .ls-cta-timer-box{background:rgba(64,119,243,0.08);border:1px solid rgba(64,119,243,0.2);border-radius:14px;padding:16px 8px;min-width:80px;text-align:center;transition:background 0.4s,border-color 0.4s}
     .ls-cta-timer-num{color:#fff;font-size:32px;font-weight:700;line-height:1;margin-bottom:4px;font-variant-numeric:tabular-nums;font-family:"IBM Plex Sans Arabic",sans-serif;transition:transform 0.3s,color 0.3s}
     .ls-cta-timer-label{color:#6b7394;font-size:12px;font-weight:400;font-family:"IBM Plex Sans Arabic",sans-serif}
@@ -28,13 +27,12 @@
     .ls-cta-item-text{font-size:14px;color:#c8cfe0;font-weight:500;font-family:"IBM Plex Sans Arabic",sans-serif}
     .ls-cta-item-sub{font-size:11px;color:#6b7394;font-weight:400;font-family:"IBM Plex Sans Arabic",sans-serif}
     .ls-cta-price-row{position:relative;z-index:1;display:flex;justify-content:center;align-items:center;gap:16px;margin-bottom:10px;flex-wrap:wrap}
-    .ls-cta-price-save{background:rgba(24,169,99,0.12);color:#18A963;font-size:13px;font-weight:600;padding:6px 14px;border-radius:8px;font-family:"IBM Plex Sans Arabic",sans-serif}
+    .ls-cta-price-save{background:rgba(24,169,99,0.12);color:#18A963;font-size:13px;font-weight:600;padding:6px 14px;border-radius:8px;font-family:"IBM Plex Sans Arabic",sans-serif;animation:ls-save-pulse 2s ease-in-out infinite 0.5s}
     .ls-cta-price-new{color:#fff;font-size:28px;font-weight:700;font-family:"IBM Plex Sans Arabic",sans-serif}
     .ls-cta-price-old{color:#6b7394;font-size:16px;text-decoration:line-through;font-family:"IBM Plex Sans Arabic",sans-serif}
     .ls-cta-price-note{color:#6b7394;font-size:12px;text-align:center;margin:0 0 24px;position:relative;z-index:1;font-family:"IBM Plex Sans Arabic",sans-serif}
     .ls-cta-buttons{position:relative;z-index:1;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-    {# FOMO: added position:relative;overflow:hidden to btn-primary for the shine sweep effect #}
-    .ls-cta-btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#4077f3,#2563eb);color:#fff;font-size:16px;font-weight:600;padding:16px 36px;border-radius:12px;text-decoration:none;border:none;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;font-family:"IBM Plex Sans Arabic",sans-serif;position:relative;overflow:hidden}
+    .ls-cta-btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#4077f3,#2563eb);color:#fff;font-size:16px;font-weight:600;padding:16px 36px;border-radius:12px;text-decoration:none;border:none;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;font-family:"IBM Plex Sans Arabic",sans-serif;position:relative;overflow:hidden;animation:ls-btn-glow 2.5s ease-in-out infinite}
     .ls-cta-btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(64,119,243,0.35);color:#fff;text-decoration:none}
     .ls-cta-btn-secondary{display:inline-flex;align-items:center;gap:6px;background:transparent;color:#8893b0;font-size:14px;font-weight:400;padding:16px 24px;border-radius:12px;text-decoration:none;border:1px solid rgba(255,255,255,0.1);transition:border-color 0.2s,color 0.2s;font-family:"IBM Plex Sans Arabic",sans-serif}
     .ls-cta-btn-secondary:hover{border-color:rgba(255,255,255,0.25);color:#fff;text-decoration:none}
@@ -43,35 +41,35 @@
     .ls-cta-trust-item svg{flex-shrink:0}
     .ls-cta-trust-text{color:#6b7394;font-size:12px;font-family:"IBM Plex Sans Arabic",sans-serif}
 
-    {# ═══════════════════════════════════════════════════════════
-       FOMO: ALL NEW — animations, toast, spots indicator
-       ═══════════════════════════════════════════════════════════ #}
-
-    {# FOMO 1: Badge red glow pulse #}
-    .ls-cta-badge{animation:ls-badge-pulse 2s ease-in-out infinite}
+    /* FOMO: badge pulse */
     @keyframes ls-badge-pulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.3)}50%{box-shadow:0 0 0 10px rgba(239,68,68,0)}}
 
-    {# FOMO 2: Timer number flip-in animation on value change #}
+    /* FOMO: timer number flip */
     .ls-cta-timer-num.ls-flip{animation:ls-num-flip 0.4s ease-out}
     @keyframes ls-num-flip{0%{transform:translateY(-8px);opacity:0.3}50%{transform:translateY(2px)}100%{transform:translateY(0);opacity:1}}
 
-    {# FOMO 3: Timer turns red when under 1 day + shake when under 1 hour #}
+    /* FOMO: timer urgency red + shake */
     .ls-cta-timer-box.ls-urgent{background:rgba(239,68,68,0.08);border-color:rgba(239,68,68,0.3)}
     .ls-cta-timer-box.ls-urgent .ls-cta-timer-num{color:#ef4444}
     .ls-cta-timer.ls-shake{animation:ls-timer-shake 0.6s ease-in-out}
     @keyframes ls-timer-shake{0%,100%{transform:translateX(0)}15%{transform:translateX(-3px)}30%{transform:translateX(3px)}45%{transform:translateX(-2px)}60%{transform:translateX(2px)}75%{transform:translateX(-1px)}90%{transform:translateX(1px)}}
 
-    {# FOMO 4: CTA button breathing blue glow + white shine sweep #}
-    .ls-cta-btn-primary{animation:ls-btn-glow 2.5s ease-in-out infinite}
+    /* FOMO: CTA button glow + shine */
     @keyframes ls-btn-glow{0%,100%{box-shadow:0 0 0 0 rgba(64,119,243,0)}50%{box-shadow:0 0 20px 4px rgba(64,119,243,0.3)}}
     .ls-cta-btn-primary::after{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);animation:ls-btn-shine 3s ease-in-out infinite}
     @keyframes ls-btn-shine{0%{left:-100%}50%{left:120%}100%{left:120%}}
 
-    {# FOMO 5: "وفّر" save badge gentle scale pulse #}
-    .ls-cta-price-save{animation:ls-save-pulse 2s ease-in-out infinite 0.5s}
+    /* FOMO: save badge pulse */
     @keyframes ls-save-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 
-    {# FOMO 6: Social proof toast — slides in from bottom-right #}
+    /* FOMO: spots left */
+    .ls-cta-spots{position:relative;z-index:1;text-align:center;margin-bottom:16px}
+    .ls-cta-spots-inner{display:inline-flex;align-items:center;gap:8px;padding:0;background:none;border:none}
+    .ls-cta-spots-dot{width:6px;height:6px;border-radius:50%;background:#ef4444;animation:ls-dot-blink 1.5s ease-in-out infinite}
+    .ls-cta-spots-text{color:#ef4444;font-size:13px;font-weight:500;font-family:"IBM Plex Sans Arabic",sans-serif}
+    @keyframes ls-dot-blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+    /* FOMO: social proof toast */
     .ls-cta-toast{position:fixed;bottom:24px;right:24px;z-index:9999;background:#1b2133;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:12px 18px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,0.4);transform:translateX(120%);opacity:0;transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1),opacity 0.4s;direction:rtl;font-family:"IBM Plex Sans Arabic",sans-serif;max-width:320px}
     .ls-cta-toast.ls-show{transform:translateX(0);opacity:1}
     .ls-cta-toast-icon{width:32px;height:32px;border-radius:50%;background:rgba(24,169,99,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -79,19 +77,7 @@
     .ls-cta-toast-text strong{color:#fff;font-weight:600}
     .ls-cta-toast-time{font-size:11px;color:#6b7394;margin-top:2px}
 
-    {# FOMO 7: "باقي X مكان" spots-left indicator with blinking red dot #}
-    .ls-cta-spots{position:relative;z-index:1;text-align:center;margin-top:12px;margin-bottom:-8px}
-    .ls-cta-spots-inner{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:8px;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.12)}
-    .ls-cta-spots-dot{width:6px;height:6px;border-radius:50%;background:#ef4444;animation:ls-dot-blink 1.5s ease-in-out infinite}
-    .ls-cta-spots-text{color:#ef4444;font-size:12px;font-weight:500;font-family:"IBM Plex Sans Arabic",sans-serif}
-    @keyframes ls-dot-blink{0%,100%{opacity:1}50%{opacity:0.3}}
-
-    {# ═══════════════════════════════════════════════════════════
-       END FOMO ADDITIONS
-       ═══════════════════════════════════════════════════════════ #}
-
     @media(max-width:1024px){.ls-cta{padding:40px 32px}.ls-cta-title{font-size:26px}.ls-cta-timer-box{min-width:70px;padding:14px 6px}.ls-cta-timer-num{font-size:28px}.ls-cta-item{padding:10px 14px}}
-    {# FOMO: added toast responsive rule at end of 768px query #}
     @media(max-width:768px){.ls-cta{padding:32px 20px}.ls-cta-title{font-size:22px}.ls-cta-subtitle{font-size:14px}.ls-cta-timer{gap:8px}.ls-cta-timer-box{min-width:60px;padding:12px 4px;border-radius:10px}.ls-cta-timer-num{font-size:24px}.ls-cta-middle{flex-direction:column;align-items:center;gap:12px}.ls-cta-item{width:100%;max-width:320px}.ls-cta-price-new{font-size:24px}.ls-cta-buttons{flex-direction:column;align-items:center}.ls-cta-btn-primary{width:100%;max-width:340px;justify-content:center;font-size:15px;padding:14px 28px}.ls-cta-btn-secondary{width:100%;max-width:340px;justify-content:center}.ls-cta-trust{gap:16px}.ls-cta-toast{right:12px;left:12px;bottom:16px;max-width:none}}
     @media(max-width:480px){.ls-cta-section .learnsimply-section-container{padding-left:12px;padding-right:12px}.ls-cta{padding:24px 16px;border-radius:16px}.ls-cta-badge{padding:5px 12px}.ls-cta-badge-text{font-size:11px}.ls-cta-title{font-size:19px;line-height:1.5}.ls-cta-subtitle{font-size:13px;margin-bottom:20px}.ls-cta-timer{gap:6px;margin-bottom:24px}.ls-cta-timer-box{min-width:52px;padding:10px 4px;border-radius:8px}.ls-cta-timer-num{font-size:20px}.ls-cta-timer-label{font-size:10px}.ls-cta-item{padding:10px 12px;max-width:100%}.ls-cta-item-text{font-size:13px}.ls-cta-price-row{gap:10px}.ls-cta-price-save{font-size:11px;padding:4px 10px}.ls-cta-price-new{font-size:22px}.ls-cta-price-old{font-size:14px}.ls-cta-btn-primary{font-size:14px;padding:12px 20px;max-width:100%}.ls-cta-btn-secondary{font-size:13px;padding:12px 16px;max-width:100%}.ls-cta-trust{gap:12px;flex-direction:column;align-items:center}.ls-cta-glow{width:200px;height:200px}}
     </style>
@@ -103,14 +89,14 @@
 
           <div class="ls-cta-top">
             <div class="ls-cta-badge">
-              <span class="ls-cta-badge-fire"></span>
+              <span class="ls-cta-badge-fire">🔥</span>
               <span class="ls-cta-badge-text">عرض محدود — وفّر أكتر من 1,300 جنيه</span>
             </div>
 
             <h2 class="ls-cta-title">حزمة <span>Java الكاملة</span> — من الصفر للاحتراف</h2>
             <p class="ls-cta-subtitle">كورس أساسيات جافا + كورس OOP المتقدم + كتاب PDF مجاني — كل اللي محتاجه عشان تبدأ صح وتبني أساس قوي في البرمجة.</p>
 
-            {# FOMO: added id="ls-cta-timer" for shake animation targeting #}
+            <!-- FOMO: added id for shake targeting -->
             <div class="ls-cta-timer" id="ls-cta-timer">
               <div class="ls-cta-timer-box">
                 <div class="ls-cta-timer-num" id="ls-cta-days">00</div>
@@ -161,11 +147,11 @@
             </div>
           </div>
 
-          {# FOMO: NEW — "باقي X مكان" spots-left scarcity indicator #}
+          <!-- FOMO: spots left — no border, just text + blinking dot -->
           <div class="ls-cta-spots">
             <div class="ls-cta-spots-inner">
               <span class="ls-cta-spots-dot"></span>
-              <span class="ls-cta-spots-text" id="ls-cta-spots-text">باقي 12 مكان بس بالسعر ده</span>
+              <span class="ls-cta-spots-text">باقي 12 مكان بس بالسعر ده</span>
             </div>
           </div>
 
@@ -203,7 +189,7 @@
         </div>
       </div>
 
-      {# FOMO: NEW — social proof toast element (hidden by default, JS shows it) #}
+      <!-- FOMO: social proof toast -->
       <div class="ls-cta-toast" id="ls-cta-toast">
         <div class="ls-cta-toast-icon">
           <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167 3.333 10" stroke="#18A963" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -214,7 +200,6 @@
         </div>
       </div>
 
-      {# FOMO: REPLACED entire script — added flip animation, urgency mode, shake, and social proof toasts #}
       <script>
       (function(){
         var deadlineMs = typeof learnsimplyPromoDeadline !== 'undefined' ? parseInt(learnsimplyPromoDeadline) : 0;
@@ -226,7 +211,6 @@
         }
         function pad(n){ return String(n).padStart(2,'0'); }
 
-        /* FOMO: track previous values so we only animate on change */
         var prevVals = {d:'',h:'',m:'',s:''};
 
         function tick(){
@@ -244,7 +228,6 @@
           var m = pad(Math.floor((diff%(1000*60*60))/(1000*60)));
           var s = pad(Math.floor((diff%(1000*60))/1000));
 
-          /* FOMO: flip animation — only triggers when value actually changes */
           function updateEl(id, val, key){
             var el = document.getElementById(id);
             if(prevVals[key] !== val){
@@ -260,7 +243,6 @@
           updateEl('ls-cta-mins',m,'m');
           updateEl('ls-cta-secs',s,'s');
 
-          /* FOMO: urgency — all timer boxes turn red when under 1 day */
           var underOneDay = parseInt(d) === 0;
           var boxes = document.querySelectorAll('.ls-cta-timer-box');
           boxes.forEach(function(b){ b.classList.toggle('ls-urgent', underOneDay); });
@@ -268,7 +250,6 @@
         tick();
         setInterval(tick, 1000);
 
-        /* FOMO: shake timer every 30 seconds when under 1 hour */
         setInterval(function(){
           var d = document.getElementById('ls-cta-days').textContent;
           var h = document.getElementById('ls-cta-hours').textContent;
@@ -280,7 +261,6 @@
           }
         }, 30000);
 
-        /* FOMO: social proof toasts — fake purchase notifications */
         var names = ['أحمد م.','سارة ك.','محمد ع.','نور الدين','فاطمة ح.','عمر ي.','مريم ت.','خالد ج.','ريم س.','يوسف ب.','هدى ن.','إبراهيم ل.','لينا ز.','كريم ف.','دينا ش.'];
         var times = ['منذ دقيقتين','منذ 5 دقائق','منذ 8 دقائق','منذ 12 دقيقة','منذ 15 دقيقة','منذ نصف ساعة','منذ ساعة'];
         var toast = document.getElementById('ls-cta-toast');
@@ -303,7 +283,6 @@
           setTimeout(function(){ toast.classList.remove('ls-show'); }, 4000);
         }
 
-        /* First toast after 8s, then every 25-45s (randomized so it feels real) */
         setTimeout(function(){
           showToast();
           (function scheduleNext(){
