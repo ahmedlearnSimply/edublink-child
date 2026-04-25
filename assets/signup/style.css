@@ -84,7 +84,7 @@ body .page-content {
     align-items: center !important;
     justify-content: center !important;
     min-height: calc(100vh - 160px) !important;
-    padding: 80px 20px 80px !important;
+    padding: 10px 20px 10px !important;
     background: transparent !important;
     position: relative !important;
 }
@@ -119,7 +119,7 @@ body .page-content {
     border: 1px solid rgba(255, 255, 255, 0.06) !important;
     border-radius: var(--sp-radius-lg) !important;
     padding: 36px 32px 32px !important;
-    margin: 60px auto !important;
+    margin: 10px auto !important;
     box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.03),
         0 4px 24px rgba(0, 0, 0, 0.3),
