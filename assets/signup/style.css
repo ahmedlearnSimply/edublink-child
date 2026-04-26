@@ -56,7 +56,8 @@ body .eb-container,
 body .site-content-inner,
 body #page,
 body .learnsimply-homepage-body,
-body .page-content {
+body .page-content,
+body #content {
     background-color: var(--sp-bg) !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
@@ -83,12 +84,14 @@ body .page-content {
 .entry-content,
 .page-content,
 .site-main>article,
-.site-main>.type-page {
+.site-main>.type-page,
+#main .entry-content {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    min-height: auto !important;
+    min-height: 0 !important;
+    height: auto !important;
     padding: 0 !important;
     margin: 0 !important;
     background: transparent !important;
@@ -1033,3 +1036,32 @@ body .page-content {
 .tutor-course-topic-single-body * {
     color: white;
 }
+
+/* ==========================================================================
+   FINAL OVERRIDE FOR SPACING — Force compact layout
+   ========================================================================== */
+.entry-content,
+.page-content,
+.site-main,
+#main,
+#content,
+.site-content,
+.edublink-main-wrapper {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+}
+
+#tutor-registration-wrap,
+.tutor-login-wrap {
+    margin-top: 10px !important;
+    margin-bottom: 40px !important;
+}
+
+.learnsimply-promo-banner {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
