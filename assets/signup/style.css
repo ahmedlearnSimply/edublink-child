@@ -84,8 +84,8 @@ body .page-content {
     align-items: center !important;
     justify-content: flex-start !important;
     min-height: auto !important;
-    padding: 20px 20px 40px !important;
-    margin-top: 100px !important;
+    padding: 0px 20px 20px !important;
+    margin-top: 60px !important;
     background: transparent !important;
     position: relative !important;
 }
@@ -119,8 +119,8 @@ body .page-content {
             rgba(15, 23, 42, 0.98) 100%) !important;
     border: 1px solid rgba(255, 255, 255, 0.06) !important;
     border-radius: var(--sp-radius-lg) !important;
-    padding: 36px 32px 32px !important;
-    margin: 10px auto !important;
+    padding: 24px 32px 28px !important;
+    margin: 0 auto !important;
     box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.03),
         0 4px 24px rgba(0, 0, 0, 0.3),
@@ -461,7 +461,7 @@ body .page-content {
     display: flex !important;
     align-items: center !important;
     gap: 12px !important;
-    margin: 20px 0 16px !important;
+    margin: 14px 0 10px !important;
     color: var(--sp-gray-dim) !important;
     font-size: 12px !important;
 }
@@ -573,8 +573,8 @@ body .page-content {
     text-align: center !important;
     color: var(--sp-gray) !important;
     font-size: 13px !important;
-    margin-top: 20px !important;
-    padding-top: 16px !important;
+    margin-top: 12px !important;
+    padding-top: 12px !important;
     border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
 
