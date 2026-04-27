@@ -1104,116 +1104,102 @@ background: linear-gradient(131deg, rgba(100, 84, 213, 0.20) -66.81%, rgba(100, 
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-self: center;
   text-align: right;
 }
 
 /* صورة المدرب */
 .instructor-avatar {
-  width: 50.25px;
-  height: 50.25px;
-  border-radius: 57.07px;
-  background: linear-gradient(to bottom, #fdf6f0, white);
-  border: 1px solid white;
-  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.15);
 }
 
-.instructor-avatar-inner {
-  position: relative;
+.instructor-avatar img {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: inherit;
-}
-
-/* دوائر التأثير الخلفية */
-.blur-circle {
-  position: absolute;
-  width: 33.34px;
-  height: 33.34px;
-  pointer-events: none;
-}
-
-.blur-circle-1 {
-  left: -8.86px;
-  top: 4.07px;
-}
-
-.blur-circle-2 {
-  right: -6px;
-  top: 16.73px;
-}
-
-/* الصورة */
-.instructor-avatar img {
-  position: relative;
-  width: 58px;
-  height: 51px;
   object-fit: cover;
-  z-index: 1;
 }
 
 .instructor-name {
   font-size: 16px;
   color: white;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 500;
+  margin: 0;
 }
 
 .instructor-title {
   font-size: 14px;
   color: #9c9ca4;
   line-height: 1.5;
+  margin: 0;
+}
+
+/* الجانب الأيسر - الخبرة والزر */
+.instructor-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
 /* شارة الخبرة */
 .experience-badge {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
-  padding: 6px 15px;
-  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.05);
+  padding: 8px 15px;
   flex-shrink: 0;
   height: fit-content;
-  width: fit-content;
-  white-space: nowrap;
-  align-self: center;
 }
 
 .experience-text {
-  font-size: 16px;
+  font-size: 14px;
   color: white;
   font-weight: 500;
   white-space: nowrap;
+  margin: 0;
+}
+
+/* زر تعرف عليّا أكثر */
+.instructor-about-btn {
+  background: rgba(64, 119, 243, 0.1);
+  border: 1px solid rgba(64, 119, 243, 0.2);
+  border-radius: 10px;
+  padding: 8px 18px;
+  color: #4077f3;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+}
+
+.instructor-about-btn:hover {
+  background: rgba(64, 119, 243, 0.18);
+  color: #5a8eff;
 }
 
 /* استجابة للشاشات الصغيرة */
 @media (max-width: 768px) {
   .instructor-card {
-    
+    flex-direction: column;
     gap: 15px;
-    margin: 30px auto 0;
+    align-items: flex-end;
   }
 
-  .experience-badge {
-    
-    text-align: center;
-  }
-
-  .instructor-info {
+  .instructor-actions {
     width: 100%;
-    justify-content: flex-end;
+    justify-content: space-between;
   }
 }
 
 @media (max-width: 480px) {
   .instructor-info {
-    flex-direction: row;
-    gap: 8px;
+    gap: 10px;
   }
 
   .instructor-name {
@@ -1225,7 +1211,17 @@ background: linear-gradient(131deg, rgba(100, 84, 213, 0.20) -66.81%, rgba(100, 
   }
 
   .experience-text {
-    font-size: 14px;
+    font-size: 13px;
+  }
+
+  .instructor-about-btn {
+    font-size: 13px;
+    padding: 7px 14px;
+  }
+
+  .instructor-avatar {
+    width: 44px;
+    height: 44px;
   }
 }
 
