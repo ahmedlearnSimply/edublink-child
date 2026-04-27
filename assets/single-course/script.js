@@ -45,19 +45,37 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	// Replace all lecture-icon SVGs with the Subtract image from the project
-	document.querySelectorAll("svg.lecture-icon").forEach((svg) => {
-		try {
-			const img = document.createElement("img");
-			img.className = "lecture-icon";
-			img.src = window.learnsimplyThemeUri
-				? window.learnsimplyThemeUri + "/assets/img/Subtract.png"
-				: "/wp-content/themes/edublink-child/assets/img/Subtract.png";
-			img.alt = "أيقونة فيديو";
-			svg.parentNode.replaceChild(img, svg);
-		} catch (e) {
-			console.warn("Failed to replace lecture svg icon", e);
-		}
-	});
+	// Replace lecture-icon SVGs with the Subtract image - ONLY for enrolled users (skip lock icons)
+document.querySelectorAll("svg.lecture-icon").forEach((svg) => {
+    try {
+        // Skip lock icons (they have a rect element for the padlock)
+        if (svg.querySelector('rect[x="3"][y="11"]') || svg.querySelector('path[d*="M6 10V8"]')) {
+            return;
+        }
+        const img = document.createElement("img");
+        img.className = "lecture-icon";
+        img.src = window.learnsimplyThemeUri
+            ? window.learnsimplyThemeUri + "/assets/img/Subtract.png"
+            : "/wp-content/themes/edublink-child/assets/img/Subtract.png";
+        img.alt = "أيقونة فيديو";
+        svg.parentNode.replaceChild(img, svg);
+    } catch (e) {
+        console.warn("Failed to replace lecture svg icon", e);
+    }
+});
+	// document.querySelectorAll("svg.lecture-icon").forEach((svg) => {
+	// 	try {
+	// 		const img = document.createElement("img");
+	// 		img.className = "lecture-icon";
+	// 		img.src = window.learnsimplyThemeUri
+	// 			? window.learnsimplyThemeUri + "/assets/img/Subtract.png"
+	// 			: "/wp-content/themes/edublink-child/assets/img/Subtract.png";
+	// 		img.alt = "أيقونة فيديو";
+	// 		svg.parentNode.replaceChild(img, svg);
+	// 	} catch (e) {
+	// 		console.warn("Failed to replace lecture svg icon", e);
+	// 	}
+	// });
 
 	// Add to Cart functionality for WooCommerce products
 	// No AJAX - let the link work naturally, PHP redirect will handle it
