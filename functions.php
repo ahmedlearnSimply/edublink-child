@@ -2291,10 +2291,29 @@ function edublink_child_book_metabox_callback( $post ) {
 	</div>
 	
 	<?php
+	
 }
 
 
+/**
+ * Add pledge checkbox to checkout - must agree before purchasing
+ */
+add_action( 'woocommerce_review_order_before_submit', 'learnsimply_add_pledge_checkbox' );
+function learnsimply_add_pledge_checkbox() {
+    echo '<div class="pledge-checkbox-wrapper">
+        <label class="pledge-label">
+            <input type="checkbox" name="pledge_checkbox" id="pledge_checkbox" class="pledge-input" />
+            <span class="pledge-text">أتعهد أن هذا الكورس مخصص لشخص واحد فقط ولن أشاركه مع أي شخص آخر.</span>
+        </label>
+    </div>';
+}
 
+add_action( 'woocommerce_checkout_process', 'learnsimply_validate_pledge_checkbox' );
+function learnsimply_validate_pledge_checkbox() {
+    if ( ! isset( $_POST['pledge_checkbox'] ) ) {
+        wc_add_notice( 'يجب الموافقة على التعهد قبل إتمام الطلب.', 'error' );
+    }
+}
 
 
 
