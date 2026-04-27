@@ -1059,10 +1059,26 @@ body .tutor-container {
     height: auto !important;
 }
 
+/* Strip padding/margin from Elementor wrappers on signup/login pages */
+.elementor-section,
+.elementor-top-section,
+.elementor-inner-section,
+.elementor-column,
+.elementor-col-100,
+.elementor-widget-wrap,
+.elementor-element,
+.elementor-widget-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    min-height: 0 !important;
+}
+
 #tutor-registration-wrap,
 .tutor-login-wrap {
-    margin-top: -120px !important; /* Force move up to counter any invisible wrappers */
-    margin-bottom: 20px !important;
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
     position: relative !important;
     z-index: 10 !important;
 }
@@ -1074,20 +1090,15 @@ body .tutor-container {
     display: none !important;
 }
 
-
 .learnsimply-promo-banner {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
     height: auto !important;
+    min-height: 0 !important;
 }
 
 .learnsimply-promo-banner-inner,
 .learnsimply-promo-content {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
-}
-
-section, article, main, .container, .tutor-wrap, .tutor-container {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
 }
