@@ -1059,26 +1059,40 @@ body .tutor-container {
     height: auto !important;
 }
 
-/* Strip padding/margin from Elementor wrappers on signup/login pages */
+/* Strip padding/margin/height from Elementor wrappers */
 .elementor-section,
 .elementor-top-section,
 .elementor-inner-section,
 .elementor-column,
 .elementor-col-100,
+.elementor-col-50,
+.elementor-col-33,
 .elementor-widget-wrap,
 .elementor-element,
-.elementor-widget-container {
+.elementor-widget-container,
+.elementor-container,
+.elementor-row {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
     min-height: 0 !important;
+    height: auto !important;
+}
+
+/* Override Elementor full-height / custom-height section classes */
+.elementor-section-height-full,
+.elementor-section-height-min-height,
+[data-element_type="section"],
+[data-element_type="container"] {
+    min-height: 0 !important;
+    height: auto !important;
 }
 
 #tutor-registration-wrap,
 .tutor-login-wrap {
-    margin-top: 40px !important;
-    margin-bottom: 40px !important;
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
     position: relative !important;
     z-index: 10 !important;
 }
