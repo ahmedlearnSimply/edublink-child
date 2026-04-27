@@ -1646,6 +1646,45 @@ background: linear-gradient(131deg, rgba(100, 84, 213, 0.20) -66.81%, rgba(100, 
   line-height: 1.2;
 }
 
+/* تنبيه المحتوى - اضغط ابدأ التعلم */
+.curriculum-hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(64, 119, 243, 0.08);
+  border: 1px solid rgba(64, 119, 243, 0.15);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+  direction: rtl;
+}
+
+.curriculum-hint svg {
+  flex-shrink: 0;
+}
+
+.curriculum-hint span {
+  font-size: 15px;
+  color: #b0bfe6;
+  line-height: 1.6;
+}
+
+.curriculum-hint strong {
+  color: #4077f3;
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .curriculum-hint {
+    padding: 12px 14px;
+    gap: 8px;
+  }
+
+  .curriculum-hint span {
+    font-size: 13px;
+  }
+}
+
 /* قائمة الأسابيع */
 .weeks-list {
   display: flex;

@@ -454,6 +454,15 @@
             <h2 class="section-title">محتوي الكورس</h2>
           </div>
 
+          {% if not is_enrolled %}
+          <div class="curriculum-hint">
+            <svg width="20" height="20" fill="none" viewBox="0 0 24 24">
+              <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16zm-1-5h2v2h-2v-2zm0-8h2v6h-2V7z" fill="#4077f3"/>
+            </svg>
+            <span>اضغط على <strong>"ابدأ التعلم"</strong> بعد الشراء للدخول إلى محتوى الكورس</span>
+          </div>
+          {% endif %}
+
           <!-- قائمة الأسابيع -->
           <div class="weeks-list">
             {% for topic in topics %}
