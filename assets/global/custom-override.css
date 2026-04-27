@@ -1830,3 +1830,287 @@ div[class*="quiz-wrap"] {
     --tutor-color-surface: #1b2133 !important;
     --tutor-color-surface-2: #232d45 !important;
 }
+
+/* ==========================================================================
+   QUIZ DARK MODE — EXACT SELECTORS FROM LIVE DOM INSPECTION
+   Based on inspecting learnsimply.com/courses/.../quizzes/...
+   Tutor LMS classes confirmed: tutor-quiz-question-item, tutor-card,
+   tutor-quiz-wrap, tutor-quiz-single-entry-wrap, quiz-question,
+   quiz-question-ans-choice-area, tutor-quiz-answer-single, etc.
+   ========================================================================== */
+
+/* --- Root quiz page: body has class single-tutor_quiz --- */
+body.single-tutor_quiz,
+body.single-tutor_quiz .tutor-page-wrap,
+body.single-tutor_quiz .site-content,
+body.single-tutor_quiz .entry-content {
+    background-color: #0a0f1a !important;
+}
+
+/* --- Main quiz content wrapper --- */
+.tutor-quiz-single-entry-wrap,
+.tutor-course-single-content-wrapper.tutor-quiz-single-entry-wrap,
+#tutor-quiz-single-entry-wrap {
+    background-color: #0a0f1a !important;
+    color: #e2e6f0 !important;
+}
+
+/* --- Quiz top bar (الأسئلة لـ | مجموع المحاولات | الوقت المتبقي) --- */
+.tutor-course-topic-single-header,
+.tutor-single-page-top-bar,
+.tutor-course-topic-single-header.tutor-single-page-top-bar {
+    background-color: #0e1422 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #999eb2 !important;
+}
+
+.tutor-course-topic-single-header *,
+.tutor-single-page-top-bar * {
+    color: #999eb2 !important;
+}
+
+/* --- Quiz info meta bar --- */
+.quiz-meta-info,
+div.quiz-meta-info,
+.tutor-quiz-meta-info {
+    color: #999eb2 !important;
+}
+
+/* --- Quiz wrapper --- */
+.tutor-quiz-wrap,
+div.tutor-quiz-wrap,
+.tutor-quiz-wrapper,
+.tutor-quiz-single-multiple-choice,
+#tutor-quiz-image-matching-choice {
+    background-color: transparent !important;
+    color: #e2e6f0 !important;
+}
+
+/* --- Quiz question block --- */
+.quiz-question,
+div.quiz-question,
+.tutor-quiz-question {
+    background-color: transparent !important;
+    color: #e2e6f0 !important;
+}
+
+.quiz-question *,
+.tutor-quiz-question * {
+    color: #e2e6f0 !important;
+}
+
+.quiz-question strong,
+.tutor-quiz-question strong,
+.quiz-question h3,
+.quiz-question h4 {
+    color: #ffffff !important;
+}
+
+/* --- Quiz question title (the blue highlighted question text) --- */
+.tutor-quiz-question-title,
+.quiz-question-title {
+    color: #ffffff !important;
+}
+
+/* --- الدرجات (grades) text --- */
+.quiz-question .tutor-fs-7,
+.quiz-question .tutor-color-muted {
+    color: #999eb2 !important;
+}
+
+/* --- Answer choice area --- */
+.quiz-question-ans-choice-area,
+div.quiz-question-ans-choice-area,
+.question-type_multiple_choice,
+.question-type_single_choice {
+    background-color: transparent !important;
+}
+
+/* --- Answer row container --- */
+.tutor-row,
+.tutor-quiz-wrap .tutor-row {
+    background-color: transparent !important;
+}
+
+/* =====================================================
+   THE KEY FIX: Answer option cards (.tutor-card inside 
+   label.tutor-quiz-question-item)
+   ===================================================== */
+label.tutor-quiz-question-item,
+.tutor-quiz-question-item,
+.tutor-quiz-answer-single label,
+.tutor-quiz-answer-single .tutor-quiz-question-item {
+    background-color: transparent !important;
+    color: #e2e6f0 !important;
+    cursor: pointer !important;
+}
+
+/* The actual white card INSIDE the label */
+label.tutor-quiz-question-item .tutor-card,
+.tutor-quiz-question-item .tutor-card,
+.tutor-quiz-answer-single .tutor-card,
+.tutor-quiz-wrap .tutor-quiz-question-item .tutor-card,
+.tutor-quiz-single-multiple-choice .tutor-card,
+.quiz-question-ans-choice-area .tutor-card {
+    background-color: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 10px !important;
+    color: #e2e6f0 !important;
+    transition: all 0.25s ease !important;
+}
+
+/* Hover state */
+label.tutor-quiz-question-item:hover .tutor-card,
+.tutor-quiz-question-item:hover .tutor-card,
+.tutor-quiz-answer-single:hover .tutor-card,
+.quiz-question-ans-choice-area .tutor-card:hover {
+    background-color: rgba(64, 119, 243, 0.08) !important;
+    border-color: rgba(64, 119, 243, 0.3) !important;
+}
+
+/* Selected / checked state */
+label.tutor-quiz-question-item.is-selected .tutor-card,
+label.tutor-quiz-question-item.selected .tutor-card,
+label.tutor-quiz-question-item.active .tutor-card,
+.tutor-quiz-question-item.is-selected .tutor-card,
+.tutor-quiz-answer-single.is-selected .tutor-card,
+input[type="radio"]:checked + .tutor-card,
+input[type="checkbox"]:checked + .tutor-card,
+input[type="radio"]:checked ~ .tutor-card,
+input[type="checkbox"]:checked ~ .tutor-card {
+    background-color: rgba(64, 119, 243, 0.15) !important;
+    border-color: #4077f3 !important;
+}
+
+/* All text inside answer cards */
+label.tutor-quiz-question-item .tutor-card *,
+.tutor-quiz-question-item .tutor-card *,
+.tutor-quiz-answer-single .tutor-card *,
+.quiz-question-ans-choice-area .tutor-card * {
+    color: #e2e6f0 !important;
+}
+
+/* --- Also target .tutor-card globally inside quiz entry wrap --- */
+.tutor-quiz-single-entry-wrap .tutor-card,
+.tutor-quiz-wrap .tutor-card {
+    background-color: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #e2e6f0 !important;
+}
+
+.tutor-quiz-single-entry-wrap .tutor-card *,
+.tutor-quiz-wrap .tutor-card * {
+    color: #e2e6f0 !important;
+}
+
+/* --- Flash message / notification area --- */
+.quiz-flash-message,
+div.quiz-flash-message {
+    color: #999eb2 !important;
+}
+
+/* --- Quiz attempt questions wrap --- */
+.tutor-quiz-attempt-questions-wrap,
+#tutor-quiz-attempt-questions-wrap,
+div[id*="quiz-attempt"] {
+    background-color: transparent !important;
+    color: #e2e6f0 !important;
+}
+
+/* --- Quiz attempt single question block --- */
+.quiz-attempt-single-question,
+div[class*="quiz-attempt-single-question"] {
+    background-color: #141924 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 14px !important;
+    color: #e2e6f0 !important;
+}
+
+/* --- Answer help block --- */
+.answer-help-block {
+    color: #999eb2 !important;
+    background-color: transparent !important;
+}
+
+/* --- Quiz button group (إرسال & التالي / تخطي السؤال) --- */
+.answer-quiz-btn-group,
+div.answer-quiz-btn-group,
+.tutor-quiz-btn-group {
+    background-color: transparent !important;
+}
+
+/* --- Code blocks inside quiz questions --- */
+.tutor-quiz-single-entry-wrap pre,
+.tutor-quiz-single-entry-wrap code,
+.tutor-quiz-single-entry-wrap pre code,
+.tutor-quiz-wrap pre,
+.tutor-quiz-wrap code,
+.quiz-question pre,
+.quiz-question code {
+    background-color: #1b2133 !important;
+    color: #e2e8f0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 10px !important;
+}
+
+/* --- Tutor utility overrides inside quiz --- */
+.tutor-quiz-single-entry-wrap .tutor-bg-white,
+.tutor-quiz-single-entry-wrap [class*="bg-white"],
+.tutor-quiz-wrap .tutor-bg-white,
+.tutor-quiz-wrap [class*="bg-white"] {
+    background-color: transparent !important;
+}
+
+.tutor-quiz-single-entry-wrap .tutor-color-black,
+.tutor-quiz-single-entry-wrap .tutor-color-dark,
+.tutor-quiz-wrap .tutor-color-black,
+.tutor-quiz-wrap .tutor-color-dark {
+    color: #ffffff !important;
+}
+
+.tutor-quiz-single-entry-wrap .tutor-color-secondary,
+.tutor-quiz-single-entry-wrap .tutor-color-muted,
+.tutor-quiz-wrap .tutor-color-secondary,
+.tutor-quiz-wrap .tutor-color-muted {
+    color: #999eb2 !important;
+}
+
+/* --- Tutor CSS variables scoped to quiz entry wrap --- */
+.tutor-quiz-single-entry-wrap,
+.tutor-quiz-single-entry-wrap .tutor-quiz-wrap {
+    --tutor-color-black: #e2e6f0 !important;
+    --tutor-color-text: #e2e6f0 !important;
+    --tutor-color-text-primary: #e2e6f0 !important;
+    --tutor-color-text-secondary: #999eb2 !important;
+    --tutor-color-text-hints: #6b7394 !important;
+    --tutor-color-secondary: #999eb2 !important;
+    --tutor-color-muted: #999eb2 !important;
+    --tutor-color-design-system-dark: #e2e6f0 !important;
+    --tutor-color-design-system-light: #141924 !important;
+    --tutor-color-background-primary: #0a0f1a !important;
+    --tutor-color-background-secondary: #141924 !important;
+    --tutor-color-surface: #1b2133 !important;
+    --tutor-color-surface-2: #232d45 !important;
+}
+
+/* --- Override .tutor-card:not(.tutor-no-border) border --- */
+.tutor-quiz-single-entry-wrap .tutor-card:not(.tutor-no-border),
+.tutor-quiz-wrap .tutor-card:not(.tutor-no-border) {
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* --- The .tutor-card background override with HIGH specificity --- */
+body.single-tutor_quiz .tutor-quiz-wrap .tutor-card,
+body.single-tutor_quiz label.tutor-quiz-question-item .tutor-card,
+body.single-tutor_quiz .quiz-question-ans-choice-area .tutor-card,
+body.single-tutor_quiz .tutor-quiz-single-multiple-choice .tutor-card,
+body.single-tutor_quiz .tutor-quiz-answer-single .tutor-card {
+    background-color: rgba(255, 255, 255, 0.04) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.single-tutor_quiz .tutor-quiz-wrap .tutor-card *,
+body.single-tutor_quiz label.tutor-quiz-question-item .tutor-card *,
+body.single-tutor_quiz .quiz-question-ans-choice-area .tutor-card * {
+    color: #e2e6f0 !important;
+}
