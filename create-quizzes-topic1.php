@@ -403,26 +403,6 @@ function learnsimply_create_quizzes_topic1() {
 		echo '</head><body>';
 		echo '<h2>إنشاء الاختبارات — Topic ID ' . esc_html( $topic_id ) . '</h2>';
 
-		// Print actual columns of tutor_quiz_questions so we know what exists.
-		$columns = $wpdb->get_results( 'DESCRIBE ' . $wpdb->prefix . 'tutor_quiz_questions' );
-		echo '<h3>أعمدة جدول tutor_quiz_questions</h3>';
-		if ( $columns ) {
-			echo '<table><tr><th>Field</th><th>Type</th><th>Null</th><th>Key</th><th>Default</th><th>Extra</th></tr>';
-			foreach ( $columns as $col ) {
-				echo '<tr>';
-				echo '<td>' . esc_html( $col->Field ) . '</td>';
-				echo '<td>' . esc_html( $col->Type ) . '</td>';
-				echo '<td>' . esc_html( $col->Null ) . '</td>';
-				echo '<td>' . esc_html( $col->Key ) . '</td>';
-				echo '<td>' . esc_html( (string) $col->Default ) . '</td>';
-				echo '<td>' . esc_html( $col->Extra ) . '</td>';
-				echo '</tr>';
-			}
-			echo '</table>';
-		} else {
-			echo '<p class="err">تعذّر قراءة أعمدة الجدول — ' . esc_html( $wpdb->last_error ) . '</p>';
-		}
-
 		$created_ids = array();
 		$now         = current_time( 'mysql' );
 		$now_gmt     = current_time( 'mysql', true );
