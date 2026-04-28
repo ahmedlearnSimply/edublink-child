@@ -34,7 +34,7 @@ body.woocommerce-checkout body,
 .woocommerce-checkout .entry-content,
 .woocommerce-checkout .page-content {
     background: transparent !important;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 65px auto 0 !important; /* Extremely tight to fixed header */
     padding: 0 28px 20px !important; /* Top padding removed */
     direction: rtl;
@@ -118,21 +118,30 @@ body.woocommerce-checkout body,
 .woocommerce-checkout .woocommerce-error li {
     color: #f96a7b !important;
 }
-
 /* ─── 4. LAYOUT WRAPPERS ─── */
 .woocommerce-checkout form.checkout {
     background: transparent !important;
     border: none !important;
     padding: 0 !important;
-    display: grid !important;
-grid-template-columns: 1fr 320px !important;
-    gap: 24px !important;
-    align-items: start !important;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
 .woocommerce-checkout .wpr-customer-details-wrapper {
-    grid-column: 1 !important;
-    grid-row: 1 / span 3 !important;
+    order: 2 !important;
+}
+
+.woocommerce-checkout .wpr-checkout-order-review-table {
+    order: 1 !important;
+}
+
+.woocommerce-checkout .wpr-checkout-order-review {
+    order: 3 !important;
+    position: sticky !important;
+    bottom: 0 !important;
+    z-index: 99 !important;
+    padding-bottom: 12px !important;
+    background: var(--db-bg) !important;
 }
 
 .woocommerce-checkout .col2-set {
@@ -141,18 +150,6 @@ grid-template-columns: 1fr 320px !important;
     padding: 0 !important;
 }
 
-.woocommerce-checkout .wpr-checkout-order-review-table {
-    grid-column: 2 !important;
-    grid-row: 1 !important;
-}
-
-.woocommerce-checkout .wpr-checkout-order-review {
-    grid-column: 2 !important;
-    grid-row: 2 !important;
-    position: sticky !important;
-    top: 80px !important;
-    align-self: start !important;
-}
 .woocommerce-checkout .col2-set .col-1,
 .woocommerce-checkout .col2-set .col-2,
 .woocommerce-checkout .col-1,
@@ -161,7 +158,6 @@ grid-template-columns: 1fr 320px !important;
     border: none !important;
     box-shadow: none !important;
 }
-
 /* ─── 5. CHECKOUT CARDS ─── */
 .woocommerce-checkout .woocommerce-billing-fields,
 .woocommerce-checkout .woocommerce-additional-fields,
@@ -839,17 +835,6 @@ grid-template-columns: 1fr 320px !important;
 
 /* ─── 18. RESPONSIVE — Tablet ─── */
 @media (max-width: 1024px) {
-    .woocommerce-checkout form.checkout {
-        grid-template-columns: 1fr !important;
-    }
-
-    .woocommerce-checkout .wpr-customer-details-wrapper,
-    .woocommerce-checkout .wpr-checkout-order-review-table,
-    .woocommerce-checkout .wpr-checkout-order-review {
-        grid-column: 1 !important;
-        grid-row: auto !important;
-        position: static !important;
-    }
 
     .woocommerce-checkout .col2-set .col-1,
     .woocommerce-checkout .col2-set .col-2 {
