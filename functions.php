@@ -10,8 +10,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-require_once get_stylesheet_directory() . '/create-test-quiz.php';
-
 /**
  * Enqueue IBM Plex Sans Arabic from Google Fonts (site-wide font)
  */
