@@ -34,7 +34,7 @@ body.woocommerce-checkout body,
 .woocommerce-checkout .entry-content,
 .woocommerce-checkout .page-content {
     background: transparent !important;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 65px auto 0 !important; /* Extremely tight to fixed header */
     padding: 0 28px 20px !important; /* Top padding removed */
     direction: rtl;
@@ -125,7 +125,7 @@ body.woocommerce-checkout body,
     border: none !important;
     padding: 0 !important;
     display: grid !important;
-    grid-template-columns: 1fr 400px !important;
+grid-template-columns: 1fr 320px !important;
     gap: 24px !important;
     align-items: start !important;
 }
