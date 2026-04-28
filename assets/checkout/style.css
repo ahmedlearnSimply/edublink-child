@@ -137,15 +137,11 @@ body.woocommerce-checkout body,
 
 .woocommerce-checkout .wpr-checkout-order-review {
     order: 3 !important;
-    position: fixed !important;
+    position: sticky !important;
     bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    z-index: 999 !important;
-    padding: 16px 28px !important;
-    background: var(--db-card) !important;
-    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.4) !important;
-    border-top: 1px solid rgba(64, 119, 243, 0.1) !important;
+    z-index: 99 !important;
+    padding-bottom: 12px !important;
+    background: var(--db-bg) !important;
 }
 
 .woocommerce-checkout .col2-set {
