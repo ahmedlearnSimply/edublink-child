@@ -135,3 +135,67 @@ function learnsimply_create_test_quiz() {
 	echo '</pre>';
 	die();
 }
+
+add_action( 'init', 'learnsimply_delete_test_quiz' );
+function learnsimply_delete_test_quiz() {
+	if ( ! isset( $_GET['delete_test_quiz'] ) || $_GET['delete_test_quiz'] !== '1' ) {
+		return;
+	}
+
+	global $wpdb;
+
+	$quiz_id         = 38670;
+	$topic_id        = 24444;
+	$questions_table = $wpdb->prefix . 'tutor_quiz_questions';
+	$answers_table   = $wpdb->prefix . 'tutor_quiz_question_answers';
+
+	// --- Step 1: Collect question IDs belonging to this quiz ---
+	$question_ids = $wpdb->get_col( $wpdb->prepare(
+		"SELECT question_id FROM {$questions_table} WHERE quiz_id = %d",
+		$quiz_id
+	) );
+
+	// --- Step 2: Delete answers for those questions ---
+	$answers_deleted = 0;
+	if ( ! empty( $question_ids ) ) {
+		$placeholders    = implode( ',', array_fill( 0, count( $question_ids ), '%d' ) );
+		$answers_deleted = $wpdb->query(
+			$wpdb->prepare(
+				"DELETE FROM {$answers_table} WHERE belongs_question_id IN ({$placeholders})",
+				...$question_ids
+			)
+		);
+	}
+
+	// --- Step 3: Delete questions ---
+	$questions_deleted = $wpdb->delete( $questions_table, [ 'quiz_id' => $quiz_id ], [ '%d' ] );
+
+	// --- Step 4: Get the quiz's menu_order before deleting ---
+	$quiz_order = (int) $wpdb->get_var( $wpdb->prepare(
+		"SELECT menu_order FROM {$wpdb->posts} WHERE ID = %d",
+		$quiz_id
+	) );
+
+	// --- Step 5: Delete the quiz post and its meta ---
+	wp_delete_post( $quiz_id, true );
+
+	// --- Step 6: Shift siblings with menu_order > quiz's old order back down by 1 ---
+	$wpdb->query( $wpdb->prepare(
+		"UPDATE {$wpdb->posts}
+		 SET menu_order = menu_order - 1
+		 WHERE post_parent = %d
+		 AND post_status = 'publish'
+		 AND menu_order > %d",
+		$topic_id,
+		$quiz_order
+	) );
+
+	echo '<pre>';
+	echo "Quiz deleted successfully!\n\n";
+	echo "Quiz ID         : {$quiz_id}\n";
+	echo "Questions deleted: " . count( $question_ids ) . "\n";
+	echo "Answers deleted  : {$answers_deleted}\n";
+	echo "Siblings shifted : menu_order > {$quiz_order} decremented by 1\n";
+	echo '</pre>';
+	die();
+}
