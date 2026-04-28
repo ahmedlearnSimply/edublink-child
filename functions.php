@@ -10,6 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+require_once get_stylesheet_directory() . '/list-lessons.php';
+
 /**
  * Enqueue IBM Plex Sans Arabic from Google Fonts (site-wide font)
  */
