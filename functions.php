@@ -165,6 +165,168 @@ function learnsimply_enqueue_custom_overrides() {
 }
 
 /**
+ * Inject checkout-page mobile fix as inline <style> in <head>.
+ * This is loaded AFTER all external CSS and guaranteed to override everything.
+ */
+add_action( 'wp_head', 'learnsimply_checkout_mobile_inline_fix', 999 );
+function learnsimply_checkout_mobile_inline_fix() {
+	if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) {
+		return;
+	}
+	?>
+	<style id="checkout-mobile-fix">
+	/* ============================================================
+	   CHECKOUT PAGE — MOBILE FIX (Inline / highest priority)
+	   ============================================================ */
+
+	/* 1. Remove the huge empty space above the page title */
+	body.woocommerce-checkout .woocommerce,
+	body.woocommerce-checkout .entry-content,
+	body.woocommerce-checkout .page-content {
+		padding-top: 10px !important;
+		padding-bottom: 20px !important;
+		margin-top: 65px !important;
+	}
+
+	/* Hide breadcrumb areas that create empty vertical space */
+	body.woocommerce-checkout .edublink-breadcrumb-area,
+	body.woocommerce-checkout .edu-breadcrumb-area,
+	body.woocommerce-checkout .breadcrumb-area,
+	body.woocommerce-checkout .page-title-area,
+	body.woocommerce-checkout .sp-hero,
+	body.woocommerce-checkout .entry-header {
+		display: none !important;
+		height: 0 !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	/* Compact the h1 title margins */
+	body.woocommerce-checkout h1 {
+		margin: 0 0 18px 0 !important;
+		padding: 0 !important;
+		font-size: 24px !important;
+		text-align: center !important;
+		line-height: 1.3 !important;
+	}
+
+	/* 2. GUEST LOGIN FORM — Mobile responsive */
+	@media screen and (max-width: 767px) {
+
+		/* Prevent horizontal overflow */
+		body.woocommerce-checkout {
+			overflow-x: hidden !important;
+		}
+
+		/* Login form container */
+		.woocommerce-checkout .woocommerce-form-login {
+			display: block !important;
+			width: 100% !important;
+			box-sizing: border-box !important;
+			padding: 20px 16px !important;
+			margin: 0 0 16px 0 !important;
+			overflow: hidden !important;
+		}
+
+		/* The two field rows — force full width & stack vertically */
+		.woocommerce-checkout .woocommerce-form-login .form-row-first,
+		.woocommerce-checkout .woocommerce-form-login .form-row-last,
+		.woocommerce-checkout .woocommerce-form-login .form-row {
+			display: block !important;
+			width: 100% !important;
+			float: none !important;
+			clear: both !important;
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+			margin-bottom: 14px !important;
+			box-sizing: border-box !important;
+		}
+
+		/* Labels — full width block */
+		.woocommerce-checkout .woocommerce-form-login label:not(.woocommerce-form__label-for-checkbox) {
+			display: block !important;
+			width: 100% !important;
+			margin-bottom: 6px !important;
+			float: none !important;
+			font-size: 13px !important;
+		}
+
+		/* Text inputs — full width */
+		.woocommerce-checkout .woocommerce-form-login input[type="text"],
+		.woocommerce-checkout .woocommerce-form-login input[type="email"],
+		.woocommerce-checkout .woocommerce-form-login input[type="password"],
+		.woocommerce-checkout .woocommerce-form-login input.input-text {
+			display: block !important;
+			width: 100% !important;
+			box-sizing: border-box !important;
+			font-size: 16px !important; /* Prevent iOS zoom */
+			padding: 12px 14px !important;
+			float: none !important;
+		}
+
+		/* Remember me row — flex so checkbox + label are inline */
+		.woocommerce-checkout .woocommerce-form-login .woocommerce-form__label-for-checkbox {
+			display: inline-flex !important;
+			align-items: center !important;
+			gap: 8px !important;
+			width: auto !important;
+			float: none !important;
+			margin-bottom: 14px !important;
+		}
+
+		/* Checkbox itself — small fixed size */
+		.woocommerce-checkout .woocommerce-form-login input[type="checkbox"] {
+			display: inline-block !important;
+			width: 18px !important;
+			height: 18px !important;
+			flex-shrink: 0 !important;
+		}
+
+		/* Login button — full width */
+		.woocommerce-checkout .woocommerce-form-login button[type="submit"],
+		.woocommerce-checkout .woocommerce-form-login .woocommerce-button,
+		.woocommerce-checkout .woocommerce-form-login input[type="submit"] {
+			display: block !important;
+			width: 100% !important;
+			box-sizing: border-box !important;
+			padding: 14px !important;
+			margin-top: 6px !important;
+			float: none !important;
+			clear: both !important;
+			font-size: 15px !important;
+			font-weight: 700 !important;
+			text-align: center !important;
+		}
+
+		/* Description paragraph */
+		.woocommerce-checkout .woocommerce-form-login > p:not(.form-row) {
+			width: 100% !important;
+			float: none !important;
+			display: block !important;
+			font-size: 13px !important;
+			line-height: 1.7 !important;
+			margin-bottom: 14px !important;
+			word-break: break-word !important;
+			overflow-wrap: break-word !important;
+		}
+
+		/* Cart notice (متابعة التسوق) */
+		.woocommerce-checkout .woocommerce-message {
+			display: flex !important;
+			flex-wrap: wrap !important;
+			gap: 10px !important;
+			align-items: center !important;
+			padding: 12px 14px !important;
+			font-size: 13px !important;
+		}
+
+	} /* end @media 767px */
+	</style>
+	<?php
+}
+
+
+/**
  * Strip blank/nbsp paragraphs and extra <br> tags from signup and login page content
  * so Elementor-injected whitespace doesn't create a visible gap above the form.
  */
