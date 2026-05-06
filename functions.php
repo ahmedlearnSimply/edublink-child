@@ -194,7 +194,7 @@ function learnsimply_checkout_mobile_inline_fix() {
 	body.woocommerce-checkout .eb-container,
 	body.woocommerce-checkout .site-content-inner {
 		padding-top: 10px !important;
-		padding-bottom: 10px !important;
+		padding-bottom: 0 !important;
 		margin-top: 0 !important;
 		margin-bottom: 0 !important;
 		min-height: 0 !important;

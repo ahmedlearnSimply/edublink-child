@@ -76,7 +76,7 @@ body.woocommerce-checkout body,
 
 /* ─── 3. WC NOTICES ─── */
 .woocommerce-checkout .woocommerce-notices-wrapper {
-    margin-bottom: 24px;
+    margin-bottom: 10px;
 }
 
 .woocommerce-checkout .woocommerce-info,
@@ -706,9 +706,12 @@ body.woocommerce-checkout body,
     background: rgba(64, 119, 243, 0.06) !important;
     border: 1px solid rgba(64, 119, 243, 0.12) !important;
     border-right: 4px solid #4077f3 !important;
-    border-radius: 14px !important;
+    border: none !important;
+    background: var(--db-card) !important;
+    color: var(--db-white) !important;
+    border-radius: var(--db-radius) !important;
     padding: 16px 24px !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 10px !important;
 }
 
 .woocommerce-checkout .woocommerce-form-coupon,
@@ -717,7 +720,7 @@ body.woocommerce-checkout body,
     border: none !important;
     border-radius: var(--db-radius) !important;
     padding: 24px 28px !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 10px !important; /* Reduced from 24px */
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.15) !important;
     display: flex !important;
     flex-direction: row !important;
