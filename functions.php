@@ -255,35 +255,31 @@ function learnsimply_checkout_mobile_inline_fix()
 			padding-bottom: 0 !important;
 		}
 
-		/* 2. CHECKOUT LOGIN FORM — Professional Grid Design */
+		/* 2. CHECKOUT LOGIN FORM — Compact Block Design */
 		body.woocommerce-checkout .woocommerce-form-login {
-			display: grid !important;
-			grid-template-columns: 1.2fr 1fr !important; /* Form on right (1.2fr), Text on left (1fr) */
-			gap: 10px 40px !important;
+			display: block !important;
 			background: #1b2133 !important;
-			padding: 40px !important;
-			border-radius: 20px !important;
+			padding: 30px !important;
+			border-radius: 15px !important;
 			border: 1px solid rgba(255, 255, 255, 0.08) !important;
-			margin: 0 0 20px 0 !important;
-			align-items: start !important;
-			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+			margin: 0 auto 25px auto !important;
+			max-width: 480px !important; /* Small, compact form */
+			box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
 			direction: rtl !important;
 		}
 
-		/* Description Text Section - Span across all form rows on the left */
+		/* Description Text Section - At the top */
 		body.woocommerce-checkout .woocommerce-form-login > p:not(.form-row):not(.lost_password) {
-			grid-column: 2 / 3 !important;
-			grid-row: 1 / 10 !important; /* Large span to cover all form rows */
-			margin: 0 !important;
-			font-size: 16px !important;
-			line-height: 1.8 !important;
-			color: #afb1b9 !important;
-			background: rgba(255, 255, 255, 0.03) !important;
-			padding: 25px !important;
-			border-radius: 12px !important;
-			border-right: 4px solid #4077f3 !important;
-			height: 100% !important;
-			box-sizing: border-box !important;
+			display: block !important;
+			margin: 0 0 20px 0 !important;
+			font-size: 14px !important;
+			line-height: 1.6 !important;
+			color: #c8cfe0 !important;
+			background: rgba(64, 119, 243, 0.05) !important;
+			padding: 15px !important;
+			border-radius: 8px !important;
+			border: 1px solid rgba(64, 119, 243, 0.1) !important;
+			text-align: center !important;
 		}
 
 		/* ─── NUCLEAR RESET FOR FORM ROWS (Force Vertical Stacking) ─── */
@@ -291,12 +287,10 @@ function learnsimply_checkout_mobile_inline_fix()
 		body.woocommerce-checkout .woocommerce-form-login p.form-row,
 		body.woocommerce-checkout .woocommerce-form-login .form-group,
 		body.woocommerce-checkout .woocommerce-form-login .lost_password {
-			grid-column: 1 / 2 !important;
 			width: 100% !important;
-			margin: 0 0 20px 0 !important;
+			margin: 0 0 15px 0 !important;
 			display: block !important;
 			clear: both !important;
-			flex-wrap: wrap !important;
 		}
 
 		/* Break any inner flex containers that might hold label and input */
@@ -310,7 +304,6 @@ function learnsimply_checkout_mobile_inline_fix()
 			position: relative !important;
 			clear: both !important;
 			float: none !important;
-			flex-direction: column !important;
 		}
 
 		/* ─── LABELS: STRICT TOP-RIGHT ALIGNMENT ─── */
@@ -319,14 +312,13 @@ function learnsimply_checkout_mobile_inline_fix()
 		body.woocommerce-checkout .woocommerce-form-login label[for="username"] {
 			display: block !important;
 			width: 100% !important;
-			margin: 0 0 10px 0 !important;
+			margin: 0 0 8px 0 !important;
 			font-size: 14px !important;
 			font-weight: 500 !important;
 			color: #ffffff !important;
 			text-align: right !important;
 			float: none !important;
 			line-height: 1.5 !important;
-			flex: 0 0 100% !important; /* Force wrap if in flex parent */
 			box-sizing: border-box !important;
 		}
 
@@ -347,7 +339,6 @@ function learnsimply_checkout_mobile_inline_fix()
 			box-sizing: border-box !important;
 			margin: 0 !important;
 			float: none !important;
-			flex: 0 0 100% !important; /* Force wrap if in flex parent */
 		}
 
 		body.woocommerce-checkout .woocommerce-form-login input.input-text:focus {
@@ -362,9 +353,8 @@ function learnsimply_checkout_mobile_inline_fix()
 			flex-direction: row-reverse !important; /* Button then checkbox in RTL flow */
 			align-items: center !important;
 			justify-content: flex-end !important;
-			gap: 20px !important;
-			margin-top: 10px !important;
-			grid-column: 1 / 2 !important;
+			gap: 15px !important;
+			margin-top: 5px !important;
 		}
 
 		body.woocommerce-checkout .woocommerce-form-login .woocommerce-form__label-for-checkbox {
@@ -374,11 +364,9 @@ function learnsimply_checkout_mobile_inline_fix()
 			margin: 0 !important;
 			cursor: pointer !important;
 			color: #afb1b9 !important;
-			order: 1 !important; /* Move checkbox to the side of button */
 		}
 
 		body.woocommerce-checkout .woocommerce-form-login .button {
-			order: 2 !important;
 			background: #4077f3 !important;
 			color: #ffffff !important;
 			padding: 12px 30px !important;
@@ -397,7 +385,7 @@ function learnsimply_checkout_mobile_inline_fix()
 
 		/* Forgot Password link */
 		body.woocommerce-checkout .woocommerce-form-login .lost_password {
-			margin-top: 5px !important;
+			margin-top: 10px !important;
 			font-size: 14px !important;
 			text-align: right !important;
 			display: block !important;
@@ -411,21 +399,14 @@ function learnsimply_checkout_mobile_inline_fix()
 		/* 3. GUEST LOGIN FORM — Mobile responsive */
 		@media screen and (max-width: 991px) {
 			body.woocommerce-checkout .woocommerce-form-login {
-				grid-template-columns: 1fr !important;
-				padding: 25px 20px !important;
-				gap: 20px !important;
+				padding: 20px !important;
+				margin: 0 10px 20px 10px !important;
+				max-width: 100% !important;
 			}
 
 			body.woocommerce-checkout .woocommerce-form-login > p:not(.form-row):not(.lost_password) {
-				grid-column: 1 / 2 !important;
-				grid-row: auto !important;
-				width: 100% !important;
-				padding: 20px !important;
-			}
-
-			body.woocommerce-checkout .woocommerce-form-login .form-row,
-			body.woocommerce-checkout .woocommerce-form-login .lost_password {
-				grid-column: 1 / 2 !important;
+				padding: 15px !important;
+				font-size: 13px !important;
 			}
 			
 			body.woocommerce-checkout .woocommerce-form-login .form-row:has(button) {
@@ -437,7 +418,6 @@ function learnsimply_checkout_mobile_inline_fix()
 				width: 100% !important;
 			}
 		}
-
 		/* end @media 767px */
 	</style>
 
