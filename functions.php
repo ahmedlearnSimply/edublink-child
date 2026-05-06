@@ -418,8 +418,10 @@ function learnsimply_fix_signup_elementor_height() {
 	$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : '';
 	$is_signup_page = is_page( 'signup' )
 		|| is_page( 'dashboard' )
+		|| is_checkout()
 		|| strpos( $request_uri, '/signup' ) !== false
-		|| strpos( $request_uri, '/dashboard' ) !== false;
+		|| strpos( $request_uri, '/dashboard' ) !== false
+		|| strpos( $request_uri, '/checkout' ) !== false;
 
 	if ( ! $is_signup_page ) {
 		return;
