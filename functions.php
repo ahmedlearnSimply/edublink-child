@@ -383,37 +383,37 @@ function learnsimply_checkout_mobile_inline_fix() {
 	<script id="checkout-gap-nuke">
 	(function() {
 		function nukeCheckoutGaps() {
-			var titles = document.querySelectorAll('h1, h2, h3, .elementor-heading-title');
-			var checkoutTitle = null;
-			for (var i = 0; i < titles.length; i++) {
-				var txt = titles[i].textContent || '';
-				if (txt.indexOf('إكمال الطلب') > -1 || txt.indexOf('اكمال الطلب') > -1) {
-					checkoutTitle = titles[i];
-					break;
-				}
-			}
-
-			if (checkoutTitle) {
-				checkoutTitle.style.setProperty('margin-top', '10px', 'important');
-				checkoutTitle.style.setProperty('margin-bottom', '10px', 'important');
-				checkoutTitle.style.setProperty('padding', '0', 'important');
-
-				var p = checkoutTitle.parentElement;
-				while (p && p.tagName !== 'BODY') {
-					if (p.classList.contains('learnsimply-promo-banner')) break;
-					p.style.setProperty('padding-top', '0', 'important');
-					p.style.setProperty('margin-top', '0', 'important');
-					p.style.setProperty('min-height', '0', 'important');
-					p.style.setProperty('padding-bottom', '0', 'important');
-					p.style.setProperty('margin-bottom', '0', 'important');
-					p = p.parentElement;
-				}
-			}
-			
 			var wc = document.querySelector('.woocommerce');
 			if (wc) {
 				wc.style.setProperty('margin-top', '0', 'important');
 				wc.style.setProperty('padding-top', '10px', 'important');
+				var children = wc.children;
+				for (var i = 0; i < children.length; i++) {
+					var child = children[i];
+					if (window.getComputedStyle(child).display === 'none') continue;
+					child.style.setProperty('margin-top', '0', 'important');
+					child.style.setProperty('margin-bottom', '10px', 'important');
+					child.style.setProperty('padding-top', '0', 'important');
+				}
+			}
+
+			var titles = document.querySelectorAll('h1, h2, h3, .elementor-heading-title, .page-title');
+			for (var i = 0; i < titles.length; i++) {
+				var txt = titles[i].textContent || '';
+				if (txt.indexOf('الطلب') > -1) {
+					titles[i].style.setProperty('margin-top', '0', 'important');
+					titles[i].style.setProperty('margin-bottom', '10px', 'important');
+					var p = titles[i].parentElement;
+					while (p && p.tagName !== 'BODY') {
+						if (p.classList.contains('learnsimply-promo-banner')) break;
+						p.style.setProperty('padding-top', '0', 'important');
+						p.style.setProperty('margin-top', '0', 'important');
+						p.style.setProperty('padding-bottom', '0', 'important');
+						p.style.setProperty('margin-bottom', '0', 'important');
+						p.style.setProperty('min-height', '0', 'important');
+						p = p.parentElement;
+					}
+				}
 			}
 		}
 
