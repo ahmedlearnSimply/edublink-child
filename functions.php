@@ -2683,3 +2683,52 @@ function learnsimply_change_paypal_text( $translated_text, $text, $domain ) {
     return $translated_text;
 }
 
+/**
+ * Redirect non-logged-in users to the login/signup page when clicking enroll or add to cart buttons.
+ */
+add_action( 'wp_footer', 'learnsimply_redirect_guests_on_action_clicks', 999 );
+function learnsimply_redirect_guests_on_action_clicks() {
+    if ( is_user_logged_in() ) {
+        return;
+    }
+    ?>
+    <script id="guest-action-redirect">
+    document.addEventListener('DOMContentLoaded', function() {
+        var guestActionSelectors = [
+            '.tutor-btn-enroll',
+            '.single_add_to_cart_button',
+            '.add_to_cart_button',
+            '.checkout-button',
+            '.ajax_add_to_cart',
+            'a[href*="add-to-cart="]',
+            'button[name="add-to-cart"]'
+        ];
+        
+        var buttons = document.querySelectorAll(guestActionSelectors.join(', '));
+        
+        buttons.forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                // Redirect to login page
+                window.location.href = '/signup/';
+            }, true); // Use capture phase to intercept before form submission or AJAX handlers
+        });
+    });
+    </script>
+    <?php
+}
+
+/**
+ * Server-side fallback: prevent guests from adding to cart
+ */
+add_filter( 'woocommerce_add_to_cart_validation', 'learnsimply_prevent_guest_cart', 99, 3 );
+function learnsimply_prevent_guest_cart( $passed, $product_id, $quantity ) {
+    if ( ! is_user_logged_in() ) {
+        wc_add_notice( 'يرجى تسجيل الدخول أولاً لتتمكن من المتابعة.', 'error' );
+        return false;
+    }
+    return $passed;
+}
+
