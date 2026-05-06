@@ -170,49 +170,64 @@ function learnsimply_enqueue_custom_overrides() {
  */
 add_action( 'wp_head', 'learnsimply_checkout_mobile_inline_fix', 999 );
 function learnsimply_checkout_mobile_inline_fix() {
-	if ( ! function_exists( 'is_checkout' ) || ! is_checkout() ) {
+	// We use the body class body.woocommerce-checkout in CSS so it's safe to inject everywhere,
+	// but we'll still check is_checkout() just to be clean, but adding is_page('checkout') as fallback.
+	if ( ! function_exists( 'is_checkout' ) ) {
 		return;
 	}
 	?>
 	<style id="checkout-mobile-fix">
 	/* ============================================================
-	   CHECKOUT PAGE — MOBILE FIX (Inline / highest priority)
+	   CHECKOUT PAGE — AGGRESSIVE GAP FIX
 	   ============================================================ */
 
-	/* 1. Tight spacing — breadcrumb is hidden so no need for big offset */
+	/* 1. Kill all potential top/bottom gaps from wrappers */
 	body.woocommerce-checkout .woocommerce,
 	body.woocommerce-checkout .entry-content,
 	body.woocommerce-checkout .page-content,
 	body.woocommerce-checkout .site-content,
-	body.woocommerce-checkout .edublink-main-wrapper {
+	body.woocommerce-checkout .edublink-main-wrapper,
+	body.woocommerce-checkout #primary,
+	body.woocommerce-checkout #content,
+	body.woocommerce-checkout main,
+	body.woocommerce-checkout .site-main,
+	body.woocommerce-checkout .eb-container,
+	body.woocommerce-checkout .site-content-inner {
 		padding-top: 10px !important;
 		padding-bottom: 10px !important;
 		margin-top: 0 !important;
 		margin-bottom: 0 !important;
+		min-height: 0 !important;
 	}
 
-	/* Hide breadcrumb areas that create empty vertical space */
+	/* Hide ALL breadcrumb/title areas that create empty vertical space */
 	body.woocommerce-checkout .edublink-breadcrumb-area,
 	body.woocommerce-checkout .edu-breadcrumb-area,
 	body.woocommerce-checkout .breadcrumb-area,
 	body.woocommerce-checkout .page-title-area,
 	body.woocommerce-checkout .sp-hero,
-	body.woocommerce-checkout .entry-header {
+	body.woocommerce-checkout .entry-header,
+	body.woocommerce-checkout .header-breadcrumb,
+	body.woocommerce-checkout .breadcrumb {
 		display: none !important;
 		height: 0 !important;
 		margin: 0 !important;
 		padding: 0 !important;
+		visibility: hidden !important;
 	}
 
 	/* h1/h2 title — compact margins (10px gap to element below) */
 	body.woocommerce-checkout h1,
 	body.woocommerce-checkout h2.entry-title,
-	body.woocommerce-checkout .woocommerce > h2 {
+	body.woocommerce-checkout .woocommerce > h2,
+	body.woocommerce-checkout .woocommerce-checkout h2,
+	body.woocommerce-checkout .elementor-widget-heading,
+	body.woocommerce-checkout .elementor-heading-title {
 		margin: 0 0 10px 0 !important;
 		padding: 0 !important;
-		font-size: 22px !important;
+		font-size: 24px !important;
 		text-align: center !important;
-		line-height: 1.3 !important;
+		line-height: 1.2 !important;
 		color: #ffffff !important;
 	}
 
@@ -222,8 +237,14 @@ function learnsimply_checkout_mobile_inline_fix() {
 	body.woocommerce-checkout .woocommerce-info {
 		margin-top: 0 !important;
 		margin-bottom: 10px !important;
-		padding-top: 12px !important;
-		padding-bottom: 12px !important;
+		padding-top: 10px !important;
+		padding-bottom: 10px !important;
+	}
+
+	/* Force Promo Banner to have NO bottom spacing */
+	body.woocommerce-checkout .learnsimply-promo-banner {
+		margin-bottom: 0 !important;
+		padding-bottom: 0 !important;
 	}
 
 	/* Reduce gap between title and login form/notice */

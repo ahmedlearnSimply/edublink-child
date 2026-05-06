@@ -18,6 +18,24 @@
    }
 */
 
+/* ── Checkout Page Gap Fixes ── */
+.woocommerce-checkout .woocommerce,
+.woocommerce-checkout .entry-content,
+.woocommerce-checkout .page-content,
+.woocommerce-checkout #primary,
+.woocommerce-checkout main,
+.woocommerce-checkout .site-main {
+    padding-top: 5px !important;
+    margin-top: 0 !important;
+}
+
+.woocommerce-checkout h1,
+.woocommerce-checkout h2.entry-title,
+.woocommerce-checkout .woocommerce > h2 {
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+}
+
 .coupon-col-end {
     background: transparent !important;
     /* removed blue accent which conflicted with button styling */
