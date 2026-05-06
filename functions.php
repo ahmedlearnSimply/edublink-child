@@ -286,18 +286,37 @@ function learnsimply_checkout_mobile_inline_fix()
 			box-sizing: border-box !important;
 		}
 
-		/* All Form Rows (Username, Password, Button) on the right column */
+		/* ─── NUCLEAR RESET FOR FORM ROWS (Force Vertical Stacking) ─── */
 		body.woocommerce-checkout .woocommerce-form-login .form-row,
+		body.woocommerce-checkout .woocommerce-form-login p.form-row,
+		body.woocommerce-checkout .woocommerce-form-login .form-group,
 		body.woocommerce-checkout .woocommerce-form-login .lost_password {
 			grid-column: 1 / 2 !important;
 			width: 100% !important;
 			margin: 0 0 20px 0 !important;
 			display: block !important;
 			clear: both !important;
+			flex-wrap: wrap !important;
 		}
 
-		/* Labels styling - Always on top-right */
-		body.woocommerce-checkout .woocommerce-form-login label:not(.woocommerce-form__label-for-checkbox) {
+		/* Break any inner flex containers that might hold label and input */
+		body.woocommerce-checkout .woocommerce-form-login .form-row > span,
+		body.woocommerce-checkout .woocommerce-form-login .form-row > div,
+		body.woocommerce-checkout .woocommerce-form-login .password-input,
+		body.woocommerce-checkout .woocommerce-form-login span.password-input,
+		body.woocommerce-checkout .woocommerce-form-login .woocommerce-input-wrapper {
+			display: block !important;
+			width: 100% !important;
+			position: relative !important;
+			clear: both !important;
+			float: none !important;
+			flex-direction: column !important;
+		}
+
+		/* ─── LABELS: STRICT TOP-RIGHT ALIGNMENT ─── */
+		body.woocommerce-checkout .woocommerce-form-login label:not(.woocommerce-form__label-for-checkbox),
+		body.woocommerce-checkout .woocommerce-form-login label[for="password"],
+		body.woocommerce-checkout .woocommerce-form-login label[for="username"] {
 			display: block !important;
 			width: 100% !important;
 			margin: 0 0 10px 0 !important;
@@ -307,22 +326,15 @@ function learnsimply_checkout_mobile_inline_fix()
 			text-align: right !important;
 			float: none !important;
 			line-height: 1.5 !important;
+			flex: 0 0 100% !important; /* Force wrap if in flex parent */
+			box-sizing: border-box !important;
 		}
 
-		/* Fix for password visibility toggle wrapper and any inner wrappers */
-		body.woocommerce-checkout .woocommerce-form-login .password-input,
-		body.woocommerce-checkout .woocommerce-form-login span.password-input,
-		body.woocommerce-checkout .woocommerce-form-login .woocommerce-input-wrapper {
-			display: block !important;
-			width: 100% !important;
-			position: relative !important;
-			clear: both !important;
-			float: none !important;
-		}
-
-		/* Input styling - Always below label */
+		/* ─── INPUTS: STRICT FULL WIDTH BELOW LABEL ─── */
 		body.woocommerce-checkout .woocommerce-form-login input.input-text,
-		body.woocommerce-checkout .woocommerce-form-login .woocommerce-Input {
+		body.woocommerce-checkout .woocommerce-form-login .woocommerce-Input,
+		body.woocommerce-checkout .woocommerce-form-login input#password,
+		body.woocommerce-checkout .woocommerce-form-login input#username {
 			display: block !important;
 			background: #141924 !important;
 			border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -335,6 +347,7 @@ function learnsimply_checkout_mobile_inline_fix()
 			box-sizing: border-box !important;
 			margin: 0 !important;
 			float: none !important;
+			flex: 0 0 100% !important; /* Force wrap if in flex parent */
 		}
 
 		body.woocommerce-checkout .woocommerce-form-login input.input-text:focus {
