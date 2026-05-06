@@ -291,21 +291,28 @@ function learnsimply_checkout_mobile_inline_fix()
 		body.woocommerce-checkout .woocommerce-form-login .lost_password {
 			grid-column: 1 / 2 !important;
 			width: 100% !important;
-			margin: 0 0 15px 0 !important;
+			margin: 0 0 20px 0 !important;
+			display: flex !important;
+			flex-direction: column !important; /* Force label on top of input */
+			align-items: flex-start !important;
 		}
 
-		/* Labels styling */
-		body.woocommerce-checkout .woocommerce-form-login label {
+		/* Labels styling - Always on top-right */
+		body.woocommerce-checkout .woocommerce-form-login label:not(.woocommerce-form__label-for-checkbox) {
 			display: block !important;
-			margin-bottom: 8px !important;
+			width: 100% !important;
+			margin-bottom: 10px !important;
 			font-size: 14px !important;
 			font-weight: 500 !important;
 			color: #ffffff !important;
 			text-align: right !important;
+			order: 1 !important; /* Ensure label is first */
 		}
 
-		/* Input styling */
-		body.woocommerce-checkout .woocommerce-form-login input.input-text {
+		/* Input styling - Always below label */
+		body.woocommerce-checkout .woocommerce-form-login input.input-text,
+		body.woocommerce-checkout .woocommerce-form-login .woocommerce-Input {
+			order: 2 !important;
 			background: #141924 !important;
 			border: 1px solid rgba(255, 255, 255, 0.1) !important;
 			color: #ffffff !important;
@@ -315,6 +322,15 @@ function learnsimply_checkout_mobile_inline_fix()
 			font-size: 15px !important;
 			transition: all 0.3s ease !important;
 			box-sizing: border-box !important;
+		}
+
+		/* Fix for password visibility toggle wrapper if exists */
+		body.woocommerce-checkout .woocommerce-form-login .show-password-input,
+		body.woocommerce-checkout .woocommerce-form-login span.password-input {
+			display: block !important;
+			width: 100% !important;
+			order: 2 !important;
+			position: relative !important;
 		}
 
 		body.woocommerce-checkout .woocommerce-form-login input.input-text:focus {
@@ -331,6 +347,7 @@ function learnsimply_checkout_mobile_inline_fix()
 			justify-content: flex-end !important;
 			gap: 20px !important;
 			margin-top: 10px !important;
+			grid-column: 1 / 2 !important;
 		}
 
 		body.woocommerce-checkout .woocommerce-form-login .woocommerce-form__label-for-checkbox {
@@ -340,9 +357,11 @@ function learnsimply_checkout_mobile_inline_fix()
 			margin: 0 !important;
 			cursor: pointer !important;
 			color: #afb1b9 !important;
+			order: 1 !important; /* Move checkbox to the side of button */
 		}
 
 		body.woocommerce-checkout .woocommerce-form-login .button {
+			order: 2 !important;
 			background: #4077f3 !important;
 			color: #ffffff !important;
 			padding: 12px 30px !important;
@@ -364,6 +383,7 @@ function learnsimply_checkout_mobile_inline_fix()
 			margin-top: 5px !important;
 			font-size: 14px !important;
 			text-align: right !important;
+			display: block !important;
 		}
 
 		body.woocommerce-checkout .woocommerce-form-login .lost_password a {
