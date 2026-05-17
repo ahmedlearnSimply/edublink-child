@@ -226,11 +226,11 @@
                 </a>
               {% endif %}
               
-              <a 
-                href="{{ course.link }}" 
+             <a 
+                href="{{ cart_url|default(site.url ~ '/cart-1/') }}?add-to-cart={{ course.product_id }}" 
                 class="learnsimply-buy-now-button buy-button"
               >
-                <span>اشتر الآن</span>
+                <span>اضف الي السلة</span>
               </a>
               {% endif %}
             </div>
