@@ -675,3 +675,11 @@
 	background: linear-gradient(135deg, #e8922d, #d4820a) !important;
 	box-shadow: 0 8px 28px rgba(240, 160, 48, 0.3) !important;
 }
+.bundle-card-premium {
+	display: flex;
+	flex-direction: column;
+}
+
+.bundle-card-premium .action-buttons {
+	margin-top: auto;
+}
