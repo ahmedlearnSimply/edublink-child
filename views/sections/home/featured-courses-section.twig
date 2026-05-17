@@ -201,9 +201,9 @@
 
             <!-- Action Buttons -->
             <div class="action-buttons">
-              {% if course.is_enrolled %}
+          {% if course.is_enrolled %}
                 <a 
-                  href="{{ course.link }}" 
+                  href="{{ course.first_lesson_url }}"
                   class="learnsimply-buy-now-button buy-button"
                 >
                   <span>ابدأ التعلم</span>

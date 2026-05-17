@@ -126,6 +126,24 @@ if ( function_exists( 'tutor_utils' ) ) {
 				}
 				// Check if current user is enrolled in this course
 				$course->is_enrolled = is_user_logged_in() && tutor_utils()->is_enrolled( $course_id, get_current_user_id() );
+				// Get first lesson URL for enrolled students
+if ( $course->is_enrolled ) {
+    $topics = tutor_utils()->get_topics( $course_id );
+    if ( $topics && $topics->have_posts() ) {
+        $topics->the_post();
+        $topic_id = get_the_ID();
+        $lessons = tutor_utils()->get_course_contents_by_topic( $topic_id, -1 );
+        if ( ! empty( $lessons ) && isset( $lessons->posts[0] ) ) {
+            $first_lesson = $lessons->posts[0];
+            $course->first_lesson_url = get_permalink( $first_lesson->ID );
+        }
+        wp_reset_postdata();
+    }
+    if ( empty( $course->first_lesson_url ) ) {
+        $course->first_lesson_url = $course->link;
+    }
+}
+				
 				$context['courses'][] = $course;
 			}
 		}
