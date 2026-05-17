@@ -18,5 +18,16 @@
             }
         });
     });
+/* ======================================================================
+       Make dashboard stat cards clickable
+       ====================================================================== */
+    $(document).on('click', '.tutor-dashboard-content-inner .tutor-card', function () {
+        var $link = $('.tutor-dashboard-permalinks a[href*="enrolled-courses"]');
+        if ($link.length) {
+            window.location.href = $link.attr('href');
+        }
+    });
 
+    // Add pointer cursor to cards
+    $('.tutor-dashboard-content-inner .tutor-card').css('cursor', 'pointer');
 })(jQuery);
