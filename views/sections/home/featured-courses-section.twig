@@ -200,9 +200,9 @@
             </div>
 
             <!-- Action Buttons -->
+<!-- Action Buttons -->
             <div class="action-buttons">
-           {% if course.is_enrolled %}
-                {# Enrolled course - show start learning button #}
+              {% if course.is_enrolled %}
                 <a 
                   href="{{ course.link }}" 
                   class="learnsimply-buy-now-button buy-button"
@@ -210,7 +210,13 @@
                   <span>ابدأ التعلم</span>
                 </a>
               {% elseif course.is_free %}
-                {# Free course - show enroll/start learning button #}
+                <a 
+                  href="{{ course.link }}" 
+                  class="learnsimply-buy-now-button buy-button"
+                >
+                  <span>ابدأ التعلم</span>
+                </a>
+              {% else %}
               {% if course.product_id %}
                 <a 
                   href="{{ cart_url|default(site.url ~ '/cart-1/') }}?add-to-cart={{ course.product_id }}"
@@ -229,9 +235,6 @@
               </a>
               {% endif %}
             </div>
-          </article>
-          {% endfor %}
-        </div>
 
         <a href="{% if site.courses_archive_url %}{{ site.courses_archive_url }}{% else %}{{ site.url }}/courses/{% endif %}" class="learnsimply-view-all-button">عرض كل الدورات</a>
       </div>
