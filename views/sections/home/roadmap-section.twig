@@ -1,178 +1,440 @@
-<!-- ===== START: Roadmap Section ===== -->
-    <style>
-    .ls-roadmap{padding:80px 0}
-    .ls-roadmap-container{max-width:1100px;margin:0 auto;padding:0 24px}
-    .ls-roadmap-header{text-align:center;margin-bottom:56px}
-    .ls-roadmap-label{display:inline-flex;align-items:center;gap:6px;background:rgba(64,119,243,0.08);border:1px solid rgba(64,119,243,0.15);border-radius:100px;padding:6px 16px;margin-bottom:20px;font-size:13px;color:#4077f3;font-weight:500;font-family:"IBM Plex Sans Arabic",sans-serif}
-    .ls-roadmap-label-dot{width:5px;height:5px;border-radius:50%;background:#4077f3}
-    .ls-roadmap-title{font-size:36px;font-weight:700;line-height:1.5;margin-bottom:12px;color:#fff;font-family:"IBM Plex Sans Arabic",sans-serif}
-    .ls-roadmap-subtitle{font-size:15px;color:#8893b0;line-height:1.7;max-width:550px;margin:0 auto;font-family:"IBM Plex Sans Arabic",sans-serif}
-    .ls-roadmap-path{display:flex;flex-direction:column;gap:0;position:relative}
-    .ls-roadmap-step{display:flex;gap:24px;position:relative;align-items:flex-start}
-    .ls-roadmap-step:last-child .ls-roadmap-line{display:none}
-    .ls-roadmap-timeline{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:56px;position:relative}
-    .ls-roadmap-number{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff;position:relative;z-index:2;font-family:"IBM Plex Sans Arabic",sans-serif;flex-shrink:0}
-    .ls-roadmap-number.step-1{background:linear-gradient(135deg,#4077f3,#2563eb)}
-    .ls-roadmap-number.step-2{background:linear-gradient(135deg,#f0a030,#e8922d)}
-    .ls-roadmap-number.step-3{background:linear-gradient(135deg,#18A963,#15904f)}
-    .ls-roadmap-number.step-4{background:linear-gradient(135deg,#a855f7,#7c3aed)}
-    .ls-roadmap-line{width:2px;flex:1;min-height:40px;background:linear-gradient(180deg,rgba(64,119,243,0.3),rgba(64,119,243,0.05))}
-    .ls-roadmap-step:nth-child(2) .ls-roadmap-line{background:linear-gradient(180deg,rgba(240,160,48,0.3),rgba(240,160,48,0.05))}
-    .ls-roadmap-step:nth-child(3) .ls-roadmap-line{background:linear-gradient(180deg,rgba(24,169,99,0.3),rgba(24,169,99,0.05))}
-    .ls-roadmap-card{flex:1;background:#0d1220;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:24px 28px;margin-bottom:24px;transition:border-color 0.3s,box-shadow 0.3s;font-family:"IBM Plex Sans Arabic",sans-serif}
-    .ls-roadmap-card:hover{border-color:rgba(64,119,243,0.2);box-shadow:0 8px 32px rgba(0,0,0,0.2)}
-    .ls-roadmap-step:nth-child(2) .ls-roadmap-card:hover{border-color:rgba(240,160,48,0.2)}
-    .ls-roadmap-step:nth-child(3) .ls-roadmap-card:hover{border-color:rgba(24,169,99,0.2)}
-    .ls-roadmap-step:nth-child(4) .ls-roadmap-card:hover{border-color:rgba(168,85,247,0.2)}
-    .ls-roadmap-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
-    .ls-roadmap-card-tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:6px;font-family:"IBM Plex Sans Arabic",sans-serif}
-    .ls-roadmap-card-tag.beginner{background:rgba(64,119,243,0.1);color:#4077f3}
-    .ls-roadmap-card-tag.intermediate{background:rgba(240,160,48,0.1);color:#f0a030}
-    .ls-roadmap-card-tag.advanced{background:rgba(24,169,99,0.1);color:#18A963}
-    .ls-roadmap-card-tag.pro{background:rgba(168,85,247,0.1);color:#a855f7}
-    .ls-roadmap-card-tag.free{background:rgba(24,169,99,0.1);color:#18A963}
-    .ls-roadmap-card-title{font-size:20px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.5}
-    .ls-roadmap-card-desc{font-size:14px;color:#8893b0;line-height:1.8;margin-bottom:16px}
-    .ls-roadmap-card-courses{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-    .ls-roadmap-course-chip{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:6px 12px;font-size:12px;color:#c8cfe0;font-weight:500;font-family:"IBM Plex Sans Arabic",sans-serif;transition:border-color 0.2s}
-    .ls-roadmap-course-chip:hover{border-color:rgba(64,119,243,0.3)}
-    .ls-roadmap-card-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#4077f3;text-decoration:none;transition:gap 0.2s;font-family:"IBM Plex Sans Arabic",sans-serif}
-    .ls-roadmap-card-link:hover{gap:10px;color:#5a93ff;text-decoration:none}
-    .ls-roadmap-step:nth-child(2) .ls-roadmap-card-link{color:#f0a030}
-    .ls-roadmap-step:nth-child(2) .ls-roadmap-card-link:hover{color:#ffb84d}
-    .ls-roadmap-step:nth-child(3) .ls-roadmap-card-link{color:#18A963}
-    .ls-roadmap-step:nth-child(3) .ls-roadmap-card-link:hover{color:#22c97a}
-    .ls-roadmap-step:nth-child(4) .ls-roadmap-card-link{color:#a855f7}
-    .ls-roadmap-step:nth-child(4) .ls-roadmap-card-link:hover{color:#c084fc}
-    .ls-roadmap-arrow{display:inline-block;transition:transform 0.2s}
-    .ls-roadmap-card-link:hover .ls-roadmap-arrow{transform:translateX(-4px)}
-    @media(max-width:768px){.ls-roadmap{padding:56px 0}.ls-roadmap-title{font-size:26px}.ls-roadmap-step{gap:14px}.ls-roadmap-timeline{width:40px}.ls-roadmap-number{width:38px;height:38px;font-size:15px}.ls-roadmap-card{padding:18px 20px}.ls-roadmap-card-title{font-size:17px}}
-    @media(max-width:480px){.ls-roadmap-card-header{flex-direction:column;align-items:flex-start}}
-    </style>
+<!-- ===== START: Learning Path Section ===== -->
+<style>
+  .ls-path {
+    padding: 86px 0;
+    direction: rtl;
+    font-family: "IBM Plex Sans Arabic", sans-serif;
+  }
 
-    <section class="ls-roadmap">
-      <div class="ls-roadmap-container">
+  .ls-path * {
+    box-sizing: border-box;
+  }
 
-        <div class="ls-roadmap-header">
-          <div class="ls-roadmap-label">
-            <span class="ls-roadmap-label-dot"></span>
-            <span>خارطة الطريق</span>
-          </div>
-          <h2 class="ls-roadmap-title">من أين أبدأ؟</h2>
-          <p class="ls-roadmap-subtitle">مش لازم تتوه — دي الخطوات اللي هتوصلك من الصفر للاحتراف بالترتيب الصح</p>
+  .ls-path-container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .ls-path-header {
+    text-align: center;
+    margin-bottom: 54px;
+  }
+
+  .ls-path-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 17px;
+    margin-bottom: 18px;
+    border-radius: 999px;
+    background: rgba(64, 119, 243, 0.09);
+    border: 1px solid rgba(64, 119, 243, 0.18);
+    color: #6f9cff;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .ls-path-badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4077f3;
+    box-shadow: 0 0 16px rgba(64, 119, 243, 0.9);
+  }
+
+  .ls-path-title {
+    margin: 0 0 14px;
+    color: #ffffff;
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.45;
+    letter-spacing: -0.5px;
+  }
+
+  .ls-path-subtitle {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #9aa6c2;
+    font-size: 16px;
+    line-height: 1.9;
+  }
+
+  .ls-path-list {
+    position: relative;
+    display: grid;
+    gap: 22px;
+  }
+
+  .ls-path-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 58px 1fr;
+    gap: 22px;
+    align-items: stretch;
+  }
+
+  .ls-path-track {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .ls-path-number {
+    position: relative;
+    z-index: 2;
+    width: 50px;
+    height: 50px;
+    display: grid;
+    place-items: center;
+    border-radius: 18px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 800;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
+  }
+
+  .ls-path-number.java {
+    background: linear-gradient(135deg, #f0a030, #e87722);
+  }
+
+  .ls-path-number.dsa {
+    background: linear-gradient(135deg, #18a963, #0f8f52);
+  }
+
+  .ls-path-item:not(:last-child) .ls-path-track::after {
+    content: "";
+    position: absolute;
+    top: 58px;
+    bottom: -22px;
+    width: 2px;
+    border-radius: 99px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.03)
+    );
+  }
+
+  .ls-path-card {
+    position: relative;
+    overflow: hidden;
+    padding: 28px;
+    border-radius: 22px;
+    background:
+      radial-gradient(circle at top left, rgba(255, 255, 255, 0.055), transparent 34%),
+      linear-gradient(180deg, #111827, #0b1020);
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .ls-path-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 18px 46px rgba(0, 0, 0, 0.24);
+  }
+
+  .ls-path-card::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    opacity: 0.95;
+  }
+
+  .ls-path-card.java::before {
+    background: linear-gradient(180deg, #f0a030, #e87722);
+  }
+
+  .ls-path-card.dsa::before {
+    background: linear-gradient(180deg, #18a963, #0f8f52);
+  }
+
+  .ls-path-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .ls-path-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .ls-path-tag.java {
+    background: rgba(240, 160, 48, 0.12);
+    color: #f7b955;
+  }
+
+  .ls-path-tag.dsa {
+    background: rgba(24, 169, 99, 0.12);
+    color: #36d786;
+  }
+
+  .ls-path-note {
+    color: #7f8baa;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .ls-path-card-title {
+    margin: 0 0 10px;
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.5;
+  }
+
+  .ls-path-card-desc {
+    max-width: 760px;
+    margin: 0 0 18px;
+    color: #9aa6c2;
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  .ls-path-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .ls-path-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 13px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    color: #d7deef;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .ls-path-check {
+    width: 15px;
+    height: 15px;
+    flex: 0 0 auto;
+  }
+
+  .ls-path-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    width: fit-content;
+    padding: 11px 16px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 800;
+    transition: gap 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  }
+
+  .ls-path-link:hover {
+    gap: 13px;
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  .ls-path-link.java {
+    color: #ffbf60;
+    background: rgba(240, 160, 48, 0.1);
+  }
+
+  .ls-path-link.java:hover {
+    background: rgba(240, 160, 48, 0.16);
+    color: #ffd28a;
+  }
+
+  .ls-path-link.dsa {
+    color: #3ce08d;
+    background: rgba(24, 169, 99, 0.1);
+  }
+
+  .ls-path-link.dsa:hover {
+    background: rgba(24, 169, 99, 0.16);
+    color: #63f2a7;
+  }
+
+  .ls-path-arrow {
+    transform: scaleX(-1);
+  }
+
+  @media (max-width: 768px) {
+    .ls-path {
+      padding: 62px 0;
+    }
+
+    .ls-path-title {
+      font-size: 28px;
+    }
+
+    .ls-path-subtitle {
+      font-size: 14px;
+    }
+
+    .ls-path-item {
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+    }
+
+    .ls-path-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      font-size: 16px;
+    }
+
+    .ls-path-item:not(:last-child) .ls-path-track::after {
+      top: 48px;
+    }
+
+    .ls-path-card {
+      padding: 22px 18px;
+      border-radius: 18px;
+    }
+
+    .ls-path-card-title {
+      font-size: 19px;
+    }
+
+    .ls-path-card-desc {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .ls-path-container {
+      padding: 0 16px;
+    }
+
+    .ls-path-top {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>
+
+<section class="ls-path">
+  <div class="ls-path-container">
+
+    <div class="ls-path-header">
+      <div class="ls-path-badge">
+        <span class="ls-path-badge-dot"></span>
+        <span>ابدأ بالترتيب الصح</span>
+      </div>
+
+      <h2 class="ls-path-title">المسار المقترح للتعلم</h2>
+
+      <p class="ls-path-subtitle">
+        لو هدفك تفهم البرمجة بجد وتبني أساس قوي للانترفيوهات وحل المشكلات،
+        ابدأ بالمسار ده خطوة بخطوة.
+      </p>
+    </div>
+
+    <div class="ls-path-list">
+
+      <!-- Step 1 -->
+      <div class="ls-path-item">
+        <div class="ls-path-track">
+          <div class="ls-path-number java">1</div>
         </div>
 
-        <div class="ls-roadmap-path">
-
-          <!-- Step 1 -->
-          <div class="ls-roadmap-step">
-            <div class="ls-roadmap-timeline">
-              <div class="ls-roadmap-number step-1">1</div>
-              <div class="ls-roadmap-line"></div>
-            </div>
-            <div class="ls-roadmap-card">
-              <div class="ls-roadmap-card-header">
-                <span class="ls-roadmap-card-tag beginner">مبتدئ</span>
-                <span class="ls-roadmap-card-tag free">مجاني</span>
-              </div>
-              <h3 class="ls-roadmap-card-title">ابدأ بمشاريع بايثون 🐍</h3>
-              <p class="ls-roadmap-card-desc">لو أول مرة تكتب كود — ابدأ هنا. هتتعلم أساسيات البرمجة من خلال مشاريع عملية بسيطة بلغة Python.</p>
-              <div class="ls-roadmap-card-courses">
-                <span class="ls-roadmap-course-chip">
-                  <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167 3.333 10" stroke="#4077f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  مشاريع بايثون للمبتدئين
-                </span>
-              </div>
-              <a href="{{ site.url }}/courses/python-projects/" class="ls-roadmap-card-link">
-                <span>ابدأ مجاناً</span>
-                <svg class="ls-roadmap-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            </div>
+        <div class="ls-path-card java">
+          <div class="ls-path-top">
+            <span class="ls-path-tag java">الخطوة الأولى</span>
+            <span class="ls-path-note">مناسب لو لسه بتبني الأساس</span>
           </div>
 
-          <!-- Step 2 -->
-          <div class="ls-roadmap-step">
-            <div class="ls-roadmap-timeline">
-              <div class="ls-roadmap-number step-2">2</div>
-              <div class="ls-roadmap-line"></div>
-            </div>
-            <div class="ls-roadmap-card">
-              <div class="ls-roadmap-card-header">
-                <span class="ls-roadmap-card-tag beginner">أساسيات</span>
-              </div>
-              <h3 class="ls-roadmap-card-title">اتعلم Java من الصفر ☕</h3>
-              <p class="ls-roadmap-card-desc">بعد ما فهمت أساسيات البرمجة — الخطوة الجاية إنك تتعلم لغة Java من الأساسيات لحد البرمجة الكائنية OOP.</p>
-              <div class="ls-roadmap-card-courses">
-                <span class="ls-roadmap-course-chip">
-                  <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167 3.333 10" stroke="#f0a030" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  كورس Java Basics
-                </span>
-                <span class="ls-roadmap-course-chip">
-                  <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167 3.333 10" stroke="#f0a030" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  كورس OOP المتقدم
-                </span>
-              </div>
-              <a href="{{ site.url }}/product/java-basics-oop-bundle/" class="ls-roadmap-card-link">
-                <span>اشترك في باقة Java الكاملة</span>
-                <svg class="ls-roadmap-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            </div>
+          <h3 class="ls-path-card-title">ابدأ بـ Java من الصفر ☕</h3>
+
+          <p class="ls-path-card-desc">
+            هنا هتتعلم أساسيات البرمجة صح، وبعدها تدخل على OOP بشكل عملي.
+            الهدف مش إنك تحفظ Syntax، الهدف إنك تفهم إزاي تفكر كمبرمج.
+          </p>
+
+          <div class="ls-path-chips">
+            <span class="ls-path-chip">
+              <svg class="ls-path-check" viewBox="0 0 20 20" fill="none">
+                <path d="M16.667 5L7.5 14.167 3.333 10" stroke="#f0a030" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Java Basics
+            </span>
+
+            <span class="ls-path-chip">
+              <svg class="ls-path-check" viewBox="0 0 20 20" fill="none">
+                <path d="M16.667 5L7.5 14.167 3.333 10" stroke="#f0a030" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Object Oriented Programming
+            </span>
           </div>
 
-          <!-- Step 3 -->
-          <div class="ls-roadmap-step">
-            <div class="ls-roadmap-timeline">
-              <div class="ls-roadmap-number step-3">3</div>
-              <div class="ls-roadmap-line"></div>
-            </div>
-            <div class="ls-roadmap-card">
-              <div class="ls-roadmap-card-header">
-                <span class="ls-roadmap-card-tag intermediate">متوسط — متقدم</span>
-              </div>
-              <h3 class="ls-roadmap-card-title">هياكل البيانات — أهم مرحلة 🧠</h3>
-              <p class="ls-roadmap-card-desc">دي المرحلة اللي بتفرق بينك وبين أي حد بيكتب كود وخلاص. هتتعلم Data Structures اللي بتتسأل عنها في كل انترفيو.</p>
-              <div class="ls-roadmap-card-courses">
-                <span class="ls-roadmap-course-chip">
-                  <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167 3.333 10" stroke="#18A963" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Data Structure Level 1
-                </span>
-                <span class="ls-roadmap-course-chip">
-                  <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167 3.333 10" stroke="#18A963" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Data Structure Level 2
-                </span>
-              </div>
-              <a href="{{ site.url }}/product/data-structure-level-1-2/" class="ls-roadmap-card-link">
-                <span>اشترك في باقة DSA الكاملة</span>
-                <svg class="ls-roadmap-arrow" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- Step 4 -->
-          <div class="ls-roadmap-step">
-            <div class="ls-roadmap-timeline">
-              <div class="ls-roadmap-number step-4">4</div>
-            </div>
-            <div class="ls-roadmap-card">
-              <div class="ls-roadmap-card-header">
-                <span class="ls-roadmap-card-tag pro">احتراف</span>
-              </div>
-              <h3 class="ls-roadmap-card-title">جاهز للشغل 🚀</h3>
-              <p class="ls-roadmap-card-desc">بعد ما خلصت المسار ده — أنت جاهز تقدم على شغل، تعدي الانترفيوهات، وتشتغل كمبرمج. ابدأ قدم على وظائف وابني بورتفوليو.</p>
-              <div class="ls-roadmap-card-courses">
-                <span class="ls-roadmap-course-chip">
-                  <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167 3.333 10" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  شهادة إتمام
-                </span>
-                <span class="ls-roadmap-course-chip">
-                  <svg width="12" height="12" viewBox="0 0 20 20" fill="none"><path d="M16.667 5L7.5 14.167 3.333 10" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  بورتفوليو جاهز
-                </span>
-              </div>
-            </div>
-          </div>
-
+          <a href="{{ site.url }}/product/java-basics-oop-bundle/" class="ls-path-link java">
+            <span>شوف باقة Java الكاملة</span>
+            <svg class="ls-path-arrow" width="15" height="15" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </div>
       </div>
-    </section>
-    <!-- ===== END: Roadmap Section ===== -->
+
+      <!-- Step 2 -->
+      <div class="ls-path-item">
+        <div class="ls-path-track">
+          <div class="ls-path-number dsa">2</div>
+        </div>
+
+        <div class="ls-path-card dsa">
+          <div class="ls-path-top">
+            <span class="ls-path-tag dsa">المرحلة الأهم</span>
+            <span class="ls-path-note">Level 1 + Level 2</span>
+          </div>
+
+          <h3 class="ls-path-card-title">ادخل على هياكل البيانات 🧠</h3>
+
+          <p class="ls-path-card-desc">
+            بعد ما تفهم الأساسيات، دي المرحلة اللي هتنقل مستواك بجد.
+            هتتعلم Data Structures بطريقة منظمة، وتفهم إزاي تختار الحل الصح
+            بدل ما تكتب كود وخلاص.
+          </p>
+
+          <div class="ls-path-chips">
+            <span class="ls-path-chip">
+              <svg class="ls-path-check" viewBox="0 0 20 20" fill="none">
+                <path d="M16.667 5L7.5 14.167 3.333 10" stroke="#18A963" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Data Structure Level 1
+            </span>
+
+            <span class="ls-path-chip">
+              <svg class="ls-path-check" viewBox="0 0 20 20" fill="none">
+                <path d="M16.667 5L7.5 14.167 3.333 10" stroke="#18A963" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Data Structure Level 2
+            </span>
+          </div>
+
+          <a href="https://learrnsimply.com/product/%d9%87%d9%8a%d8%a7%d9%83%d9%84-%d8%a7%d9%84%d8%a8%d9%8a%d8%a7%d9%86%d8%a7%d8%aa-%d8%a7%d9%84%d9%83%d8%a7%d9%85%d9%84%d8%a9-data-structure-level-1-2/" class="ls-path-link dsa">
+            <span>شوف باقة هياكل البيانات الكاملة</span>
+            <svg class="ls-path-arrow" width="15" height="15" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ===== END: Learning Path Section ===== -->
