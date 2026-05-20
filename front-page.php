@@ -394,7 +394,6 @@ if ( $articles_query->have_posts() ) {
 	}
 	wp_reset_postdata();
 }
-echo '<div style="background: red; color: white; padding: 20px; text-align: center; font-size: 24px; position: fixed; top: 0; left: 0; right: 0; z-index: 99999;">TEST - Ahmed repo is working!</div>';
-// Render Twig template
+
 Timber::render( 'front-page.twig', $context );
 

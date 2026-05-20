@@ -1,4 +1,7 @@
 <?php
+add_action('wp_footer', function() {
+    echo '<div style="background: red; color: white; padding: 20px; text-align: center; font-size: 24px; position: fixed; bottom: 0; left: 0; right: 0; z-index: 99999;">TEST - Ahmed repo is working!</div>';
+});
 // DEPLOY TEST - April 28 2026
 /**
  * EduBlink Child Theme functions and definitions
