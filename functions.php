@@ -210,11 +210,24 @@ function learnsimply_checkout_mobile_inline_fix()
 		body.woocommerce-checkout .edublink-main-wrapper,
 		body.woocommerce-checkout #primary,
 		body.woocommerce-checkout #content,
-		body.woocommerce-checkout main,
 		body.woocommerce-checkout .site-main,
 		body.woocommerce-checkout .eb-container,
 		body.woocommerce-checkout .site-content-inner {
 			padding-top: 10px !important;
+			padding-bottom: 0 !important;
+			margin-top: 0 !important;
+			margin-bottom: 0 !important;
+			min-height: 0 !important;
+		}
+
+		/* `main` is the only wrapper that has to clear the fixed site header
+		   (~80px tall, positioned at top: 10px → footprint ends at ~y=90).
+		   Without this, the page title and the first checkout card end up
+		   hidden behind the header. The other wrappers above stay at 10px
+		   because they sit INSIDE main and would otherwise stack their own
+		   padding on top. */
+		body.woocommerce-checkout main {
+			padding-top: 100px !important;
 			padding-bottom: 0 !important;
 			margin-top: 0 !important;
 			margin-bottom: 0 !important;
