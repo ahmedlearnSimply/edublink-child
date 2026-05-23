@@ -218,17 +218,17 @@
                 <a href="{{ cart_url|default(site.url ~ '/cart-1/') }}?add-to-cart={{ course.product_id }}" class="cart-button" aria-label="أضف إلى السلة">
                   <img class="cart-icon" src="{{ theme_uri }}/assets/img/Cart.png" alt="سلة التسوق" />
                 </a>
-                {% endif %}
                 <a href="{{ cart_url|default(site.url ~ '/cart-1/') }}?add-to-cart={{ course.product_id }}" class="learnsimply-buy-now-button buy-button">
                   <span>اضف الي السلة</span>
                 </a>
+                {% endif %}
               {% endif %}
             </div>
           </article>
           {% endfor %}
         </div>
 
-        <a href="{% if site.courses_archive_url %}{{ site.courses_archive_url }}{% else %}{{ site.url }}/courses/{% endif %}" class="learnsimply-view-all-button">عرض كل الدورات</a>
+        <a href="{{ courses_archive_url|default(site.url ~ '/courses/') }}" class="learnsimply-view-all-button">عرض كل الدورات</a>
       </div>
     </section>
     <!-- ===== END: Featured Courses Section ===== -->
