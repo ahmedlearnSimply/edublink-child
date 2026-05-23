@@ -218,8 +218,8 @@
                 <a href="{{ cart_url|default(site.url ~ '/cart-1/') }}?add-to-cart={{ course.product_id }}" class="cart-button" aria-label="أضف إلى السلة">
                   <img class="cart-icon" src="{{ theme_uri }}/assets/img/Cart.png" alt="سلة التسوق" />
                 </a>
-                <a href="{{ cart_url|default(site.url ~ '/cart-1/') }}?add-to-cart={{ course.product_id }}" class="learnsimply-buy-now-button buy-button">
-                  <span>اضف الي السلة</span>
+                <a href="{{ course.product_url ?: course.link }}" class="learnsimply-buy-now-button buy-button">
+                  <span>ادفع الآن</span>
                 </a>
                 {% endif %}
               {% endif %}
