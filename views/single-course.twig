@@ -217,7 +217,7 @@
                     ></iframe>
                   {% elseif course_video.source == 'embedded' and course_video.embed_code %}
                     {# Embedded Code #}
-                    {{ course_video.embed_code|raw }}
+                    {{ course_video.embed_code|safe_embed }}
                   {% elseif course_video.url %}
                     {# HTML5 or External URL Video #}
                     <video 
@@ -290,7 +290,7 @@
                   '1️⃣': '\n1️⃣', '2️⃣': '\n2️⃣', '3️⃣': '\n3️⃣', '4️⃣': '\n4️⃣', '5️⃣': '\n5️⃣', 
                   '6️⃣': '\n6️⃣', '7️⃣': '\n7️⃣', '8️⃣': '\n8️⃣', '9️⃣': '\n9️⃣', '🔟': '\n🔟',
                   '📂': '\n📂', '🎯': '\n🎯'
-                })|raw }}
+                })|safe_html }}
               </div>
             </div>
           </div>
@@ -341,7 +341,7 @@
 
             <!-- نص الوصف -->
             <div class="description-text">
-              {{ course_content|raw }}
+              {{ course_content|safe_html }}
             </div>
           </div>
 

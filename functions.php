@@ -1019,6 +1019,46 @@ if (class_exists('Timber\Timber')) {
 	Timber::$dirname = array('views', 'templates');
 
 	/**
+	 * Register sanitizing Twig filters so templates can stop using |raw on
+	 * content authored by instructors/admins (course descriptions, video
+	 * embeds, product bodies). |raw bypasses Twig's auto-escaping entirely.
+	 *
+	 * - |safe_html  : wp_kses_post — allows the post-editor tag whitelist.
+	 *                 Use for course/product body content and rich text.
+	 * - |safe_embed : wp_kses with an iframe whitelist for video embeds
+	 *                 (YouTube, Vimeo, etc.). Strips script/onerror/etc.
+	 */
+	add_filter('timber/twig', function ($twig) {
+		$twig->addFilter(new \Twig\TwigFilter('safe_html', function ($content) {
+			return wp_kses_post((string) $content);
+		}));
+
+		$twig->addFilter(new \Twig\TwigFilter('safe_embed', function ($content) {
+			$allowed_html = array(
+				'iframe' => array(
+					'src'             => true,
+					'width'           => true,
+					'height'          => true,
+					'frameborder'     => true,
+					'allow'           => true,
+					'allowfullscreen' => true,
+					'loading'         => true,
+					'title'           => true,
+					'referrerpolicy'  => true,
+					'class'           => true,
+					'style'           => true,
+				),
+				'div'    => array('class' => true, 'style' => true),
+				'video'  => array('src' => true, 'controls' => true, 'width' => true, 'height' => true, 'poster' => true),
+				'source' => array('src' => true, 'type' => true),
+			);
+			return wp_kses((string) $content, $allowed_html);
+		}));
+
+		return $twig;
+	});
+
+	/**
 	 * Add WordPress conditional functions to Timber context
 	 */
 	add_filter('timber/context', 'edublink_child_add_to_context');

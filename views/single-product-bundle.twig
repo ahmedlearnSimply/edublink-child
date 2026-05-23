@@ -225,7 +225,7 @@
                   '1️⃣': '\n1️⃣', '2️⃣': '\n2️⃣', '3️⃣': '\n3️⃣', '4️⃣': '\n4️⃣', '5️⃣': '\n5️⃣', 
                   '6️⃣': '\n6️⃣', '7️⃣': '\n7️⃣', '8️⃣': '\n8️⃣', '9️⃣': '\n9️⃣', '🔟': '\n🔟',
                   '📂': '\n📂', '🎯': '\n🎯'
-                })|raw }}
+                })|safe_html }}
               </div>
             </div>
           </div>
@@ -313,7 +313,7 @@
 
             <!-- Description text -->
             <div class="description-text">
-              {{ product_content|raw }}
+              {{ product_content|safe_html }}
             </div>
           </div>
 
