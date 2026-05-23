@@ -202,7 +202,10 @@ function learnsimply_checkout_mobile_inline_fix()
 		   CHECKOUT PAGE — AGGRESSIVE GAP FIX
 		   ============================================================ */
 
-		/* 1. Kill all potential top/bottom gaps from wrappers */
+		/* 1. Kill all potential top/bottom gaps from wrappers.
+		   `.site-main` is intentionally NOT in this list — it's the same node
+		   as <main> (`<main class="site-main" id="main">`) and we need main
+		   to keep its header-clearance padding (see rule below). */
 		body.woocommerce-checkout .woocommerce,
 		body.woocommerce-checkout .entry-content,
 		body.woocommerce-checkout .page-content,
@@ -210,7 +213,6 @@ function learnsimply_checkout_mobile_inline_fix()
 		body.woocommerce-checkout .edublink-main-wrapper,
 		body.woocommerce-checkout #primary,
 		body.woocommerce-checkout #content,
-		body.woocommerce-checkout .site-main,
 		body.woocommerce-checkout .eb-container,
 		body.woocommerce-checkout .site-content-inner {
 			padding-top: 10px !important;
@@ -220,13 +222,14 @@ function learnsimply_checkout_mobile_inline_fix()
 			min-height: 0 !important;
 		}
 
-		/* `main` is the only wrapper that has to clear the fixed site header
-		   (~80px tall, positioned at top: 10px → footprint ends at ~y=90).
-		   Without this, the page title and the first checkout card end up
-		   hidden behind the header. The other wrappers above stay at 10px
-		   because they sit INSIDE main and would otherwise stack their own
-		   padding on top. */
-		body.woocommerce-checkout main {
+		/* main has to clear the fixed site header (~80px tall at top:10px →
+		   footprint ends at ~y=90). Targeting `main` AND `main.site-main`
+		   AND `#main` so this rule beats any leftover `.site-main` selector
+		   in custom-override.css or theme parent CSS that would otherwise
+		   win on specificity (class > element). */
+		body.woocommerce-checkout main,
+		body.woocommerce-checkout main.site-main,
+		body.woocommerce-checkout #main {
 			padding-top: 100px !important;
 			padding-bottom: 0 !important;
 			margin-top: 0 !important;
