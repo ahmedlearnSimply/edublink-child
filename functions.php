@@ -455,7 +455,14 @@ function learnsimply_checkout_mobile_inline_fix()
 	<script id="checkout-gap-nuke">
 		(function () {
 			function nukeCheckoutGaps() {
-				var wc = document.querySelector('.woocommerce');
+				// WC adds the `woocommerce` class to <body> on checkout pages,
+				// so plain `.woocommerce` matches the body first. Iterating its
+				// direct children then nukes margins/padding on top-level layout
+				// elements like <header class="learnsimply-header-main-container">
+				// (it ends up with padding-top: 0, making the nav items look
+				// crammed at the top of the header bar). Exclude body so we
+				// hit the actual WC content wrapper inside the page instead.
+				var wc = document.querySelector('.woocommerce:not(body)');
 				if (wc) {
 					wc.style.setProperty('margin-top', '0', 'important');
 					wc.style.setProperty('padding-top', '10px', 'important');
