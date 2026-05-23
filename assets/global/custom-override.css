@@ -19,9 +19,12 @@
 */
 
 /* ── Checkout Page Gap Fixes — Aggressive Nuke ──
-   `main` is intentionally excluded: it needs ~100px padding-top to clear
-   the fixed site header (assets/global/styles.css). Zeroing it here pushes
-   the page title and the first checkout card up behind the header bar. */
+   Both `main` and `.site-main` are excluded: the page's
+   <main class="site-main"> element needs ~100px padding-top to clear the
+   fixed site header (assets/global/styles.css). Zeroing it here pushes
+   the page title and the first checkout card up behind the header bar.
+   (Removing only the `main` selector wasn't enough — the same element
+   matches `.site-main` too, so the zero kept winning.) */
 body.woocommerce-checkout .woocommerce,
 body.woocommerce-checkout .entry-content,
 body.woocommerce-checkout .page-content,
@@ -29,7 +32,6 @@ body.woocommerce-checkout .site-content,
 body.woocommerce-checkout .edublink-main-wrapper,
 body.woocommerce-checkout #primary,
 body.woocommerce-checkout #content,
-body.woocommerce-checkout .site-main,
 body.woocommerce-checkout .eb-container,
 body.woocommerce-checkout .site-content-inner,
 body.woocommerce-checkout .elementor-section,
