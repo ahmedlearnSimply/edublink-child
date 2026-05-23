@@ -296,14 +296,25 @@ function learnsimply_checkout_mobile_inline_fix()
 		}
 
 		/* ─── NUCLEAR RESET FOR FORM ROWS (Force Vertical Stacking) ─── */
+		/* WC default markup uses `form-row-first` (float: left, 47%) and
+		   `form-row-last` (float: right, 47%) on the username + password rows
+		   so they render as two columns. We need to neutralize that floating
+		   layout AND force full width so the password field doesn't sit at
+		   half-width below the (full-width) username. */
 		body.woocommerce-checkout .woocommerce-form-login .form-row,
 		body.woocommerce-checkout .woocommerce-form-login p.form-row,
+		body.woocommerce-checkout .woocommerce-form-login .form-row-first,
+		body.woocommerce-checkout .woocommerce-form-login .form-row-last,
+		body.woocommerce-checkout .woocommerce-form-login p.form-row-first,
+		body.woocommerce-checkout .woocommerce-form-login p.form-row-last,
 		body.woocommerce-checkout .woocommerce-form-login .form-group,
 		body.woocommerce-checkout .woocommerce-form-login .lost_password {
 			width: 100% !important;
+			max-width: 100% !important;
 			margin: 0 0 15px 0 !important;
 			display: block !important;
 			clear: both !important;
+			float: none !important;
 		}
 
 		/* Break any inner flex containers that might hold label and input */
