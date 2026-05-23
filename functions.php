@@ -12,6 +12,21 @@ if (!defined('ABSPATH')) {
 }
 
 /**
+ * Disable public REST API endpoints that expose user data and admin status.
+ * Without this filter, /wp-json/wp/v2/users leaks usernames + is_super_admin
+ * for every registered user, enabling targeted brute-force attempts.
+ */
+add_filter('rest_endpoints', function ($endpoints) {
+	if (isset($endpoints['/wp/v2/users'])) {
+		unset($endpoints['/wp/v2/users']);
+	}
+	if (isset($endpoints['/wp/v2/users/(?P<id>[\d]+)'])) {
+		unset($endpoints['/wp/v2/users/(?P<id>[\d]+)']);
+	}
+	return $endpoints;
+});
+
+/**
  * Enqueue IBM Plex Sans Arabic from Google Fonts (site-wide font)
  */
 add_action('wp_enqueue_scripts', 'learnsimply_enqueue_ibm_plex_font', 1);
