@@ -152,7 +152,24 @@ if ( have_posts() ) {
 				$course->product_id = null;
 				$course->product_url = null;
 			}
-			
+
+			// Enrollment + resume-learning URL (matches front-page.php logic so home + archive
+			// render the same buttons for the same student/course combination).
+			$course->is_enrolled = is_user_logged_in() && tutor_utils()->is_enrolled( $course_id, get_current_user_id() );
+			$course->first_lesson_url = $course->link;
+			if ( $course->is_enrolled ) {
+				$topics = tutor_utils()->get_topics( $course_id );
+				if ( $topics && $topics->have_posts() ) {
+					$topics->the_post();
+					$topic_id = get_the_ID();
+					$lessons  = tutor_utils()->get_course_contents_by_topic( $topic_id, -1 );
+					if ( ! empty( $lessons ) && isset( $lessons->posts[0] ) ) {
+						$course->first_lesson_url = get_permalink( $lessons->posts[0]->ID );
+					}
+					wp_reset_postdata();
+				}
+			}
+
 			$context['courses'][] = $course;
 		}
 	}
