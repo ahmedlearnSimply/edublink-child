@@ -508,7 +508,11 @@ function learnsimply_checkout_mobile_inline_fix()
 						titles[i].style.setProperty('margin-top', '0', 'important');
 						titles[i].style.setProperty('margin-bottom', '10px', 'important');
 						var p = titles[i].parentElement;
-						while (p && p.tagName !== 'BODY') {
+						// Stop the walk at MAIN (don't nuke main's padding-top,
+						// it has to keep its ~100px to clear the fixed site
+						// header — otherwise the title and the first checkout
+						// card slide up behind the header bar).
+						while (p && p.tagName !== 'BODY' && p.tagName !== 'MAIN') {
 							if (p.classList.contains('learnsimply-promo-banner')) break;
 							p.style.setProperty('padding-top', '0', 'important');
 							p.style.setProperty('margin-top', '0', 'important');
