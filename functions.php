@@ -371,8 +371,15 @@ function learnsimply_checkout_mobile_inline_fix()
 			outline: none !important;
 		}
 
-		/* Checkbox and Login Button row */
-		body.woocommerce-checkout .woocommerce-form-login .form-row:has(button) {
+		/* Checkbox and Login Button row.
+		   Use `:has(> button)` (direct child) instead of `:has(button)` because
+		   the password input is wrapped in `<span class="password-input">` that
+		   contains a `<button class="show-password-input">` (the show/hide
+		   eye toggle). The looser `:has(button)` selector was matching the
+		   password row too, turning it into a 2-column flex (label | input)
+		   so the password input rendered at ~50% width while the username
+		   above it was full width. */
+		body.woocommerce-checkout .woocommerce-form-login .form-row:has(> button) {
 			display: flex !important;
 			flex-direction: row-reverse !important; /* Button then checkbox in RTL flow */
 			align-items: center !important;
